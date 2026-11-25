@@ -1,0 +1,32 @@
+{
+  "id": "H03_heldout_geometry_plan_pmos_2gate",
+  "adapter": "geometry_plan",
+  "title": "泛化：冻结库的扩散段几何策略（PMOS 双栅，未见 W/L）",
+  "expect_rejection": false,
+  "params": {
+    "library_file": "data/primitive_generalization/relation_training_v1/learned_primitive.json",
+    "kind": "pmos",
+    "chain": [
+      "rail",
+      "output",
+      "rail"
+    ],
+    "w_nm": 2650,
+    "l_nm": 550,
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VDD"
+    }
+  },
+  "expected": {
+    "derivation": "冻结库 pmos:outer:rail 超额 0.2102273×220 = 46.25 → 段长 round((440+46.25)/5)×5 = 485，位置比例 0 → 区间 [180, 485−260 = 225] 的起点 180，末段换算为 485−180 = 305；pmos:shared:output 超额 0.5909091×220 = 130 → 520+130 = 650，比例 1 → 共享段区间 [260, 650−260 = 390] 的终点 390。",
+    "statements": [
+      "segment_lengths_nm = [485, 650, 485]。",
+      "contact_x_in_segment_nm = [180, 390, 305]。",
+      "GDS 有源区宽 485+550+650+550+485 = 2720，高 2650；两栅 x = 485–1035、1685–2235。",
+      "中间孔列中心 x = 1035+390 = 1425，距右栅恰 150（CO.7 下限）；右列中心 x = 2540，距有源区右沿 70（CO.4 下限）。",
+      "contact_plan 为 [1260, 1730]（与 H02 一致）。"
+    ]
+  }
+}

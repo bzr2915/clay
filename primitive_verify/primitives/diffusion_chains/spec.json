@@ -1,0 +1,110 @@
+{
+  "primitive": "diffusion_chains",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "text": ".subckt t a b c y z w vdd vss\nM1 y a n1 vss nfet_01v8 W=0.42 L=0.15\nM2 n1 b vss vss nfet_01v8 W=0.42 L=0.15\nM3 z c w vss nfet_01v8 W=0.42 L=0.15\nM4 y a vdd vdd pfet_01v8 W=0.84 L=0.15\n.ends\n"
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "r.chains"
+    },
+    {
+      "name": "E2",
+      "from": "r.shared_segments"
+    },
+    {
+      "name": "E3",
+      "from": "c0.fingers"
+    },
+    {
+      "name": "E4",
+      "from": "c0.segment_nets"
+    },
+    {
+      "name": "E5",
+      "from": "c0.gate_nets"
+    },
+    {
+      "name": "E6",
+      "from": "c1.segment_nets"
+    },
+    {
+      "name": "E7",
+      "from": "c2.kind"
+    },
+    {
+      "name": "E8",
+      "from": "c2.well"
+    },
+    {
+      "name": "E9",
+      "from": "c2.segment_nets"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": 3
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": 1
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": [
+        "M1#0",
+        "M2#0"
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": [
+        "y",
+        "n1",
+        "vss"
+      ]
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": [
+        "w",
+        "z"
+      ]
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": "pmos"
+    },
+    {
+      "name": "E8",
+      "how": "eq",
+      "value": "vdd"
+    },
+    {
+      "name": "E9",
+      "how": "eq",
+      "value": [
+        "vdd",
+        "y"
+      ]
+    }
+  ],
+  "derivation": "兼容组 = (类别, 极性, 模型, L, 指宽, 阱网)：NMOS 420 一组，PMOS 840/阱 vdd 一组；组按字符串排序 nmos 在前。NMOS 组按 S/D 网连通分量：{M1(n1,y), M2(vss,n1)} 与 {M3(w,z)}。前者网多重图度数 y=1,n1=2,vss=1，奇点按插入顺序 [y, vss] → 从 y 出发的欧拉迹 y–M1–n1–M2–vss：段网 [y,n1,vss]、栅网 [a,b]，共享 1 段（只在同网 n1 共享，满足 v(ta)=v(tb)）。M3 单独成链 [w,z]。PMOS M4 单指，从首个奇点 vdd 出发 → [vdd,y]，阱 vdd。链数 3，共享段数 = Σ(指数−1) = 1。",
+  "notes": "新原语：论文式 (3) 的扩散共享条件的构造性实现。"
+}

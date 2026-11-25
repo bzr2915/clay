@@ -1,0 +1,36 @@
+{
+  "id": "H06_heldout_symmetry_pair",
+  "adapter": "symmetry_placement",
+  "title": "泛化：镜像对称作用于新尺寸的一对矩形",
+  "expect_rejection": false,
+  "params": {
+    "devices": {
+      "A": {
+        "w": 1700,
+        "h": 900,
+        "kind": "nmos"
+      },
+      "B": {
+        "w": 1700,
+        "h": 900,
+        "kind": "nmos"
+      }
+    },
+    "symmetry_pairs": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "symmetry_axis": "x",
+    "time_limit_s": 10
+  },
+  "expected": {
+    "derivation": "同 S01，仅尺寸不同。",
+    "statements": [
+      "A、B 同一 y，尺寸 1700×900 不变。",
+      "轴到 A 右边缘距离 = 轴到 B 左边缘距离。",
+      "水平间距 ≥1400。"
+    ]
+  }
+}

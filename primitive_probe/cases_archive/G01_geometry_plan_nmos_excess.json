@@ -1,0 +1,138 @@
+{
+  "id": "G01_geometry_plan_nmos_excess",
+  "adapter": "geometry_plan",
+  "title": "几何规划器：外段超额长度与段内孔位置",
+  "expect_rejection": false,
+  "params": {
+    "library": {
+      "schema": "clay.geometry-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "contacts": {
+        "schema": "clay.contact-primitive.v1",
+        "pdk": "gf180mcu_5v",
+        "patterns": {
+          "nmos": [
+            {
+              "gate_count": 1,
+              "segments": [
+                "output",
+                "rail"
+              ]
+            },
+            {
+              "gate_count": 2,
+              "segments": [
+                "rail",
+                "output",
+                "rail"
+              ]
+            }
+          ],
+          "pmos": [
+            {
+              "gate_count": 1,
+              "segments": [
+                "output",
+                "rail"
+              ]
+            },
+            {
+              "gate_count": 2,
+              "segments": [
+                "rail",
+                "output",
+                "rail"
+              ]
+            }
+          ]
+        },
+        "contact_policies": {
+          "nmos": {
+            "rows": {
+              "kind": "width_stump",
+              "threshold_nm": 1070.0,
+              "low": 1,
+              "high": 2
+            },
+            "first_contact_free_margin_fraction": 0.5
+          },
+          "pmos": {
+            "rows": {
+              "kind": "constant",
+              "count": 2
+            },
+            "first_contact_free_margin_fraction": 0.5
+          }
+        },
+        "binding": "target_W_L_models_and_nets",
+        "operator": "rectangular_diffusion_chain_v1"
+      },
+      "geometry_policies": {
+        "nmos:outer:output": {
+          "excess_contact_units": 0.5,
+          "contact_fraction": 0.5,
+          "island_count": 1,
+          "position_island_count": 1
+        },
+        "nmos:outer:rail": {
+          "excess_contact_units": 0.0,
+          "contact_fraction": null,
+          "island_count": 1,
+          "position_island_count": 0
+        }
+      },
+      "operator": "rectangular_chain_with_learned_segments_v1"
+    },
+    "kind": "nmos",
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "w_nm": 1320,
+    "l_nm": 600,
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "策略（params.library）：output 外段超额 0.5 个孔宽（0.5×220=110），孔位比例 0.5；rail 外段无超额、位置不可辨识。外段孔中心可行区间（自外沿计）[70+110, 段长−150−110]。",
+    "statements": [
+      "geometry_plan.segment_lengths_nm = [550, 440]（440+110；440）。",
+      "contact_x_in_segment_nm = [235, 260]：output 段区间 [180, 290] 的 0.5 处 = 235；rail 段区间退化为 180（自右外沿计），换算为段内左起 = 440 − 180 = 260。",
+      "GDS 有源区宽 550 + 600 + 440 = 1590；多晶 x 550–1150。",
+      "左列孔中心 x = 235（距栅 550−345 = 205 ≥150）；右列孔中心 x = 1150 + 260 = 1410（距有源区右沿 70）。",
+      "contact_plan：W 1320 > 1070 → 2 行，y 中心 425、895。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          0,
+          0,
+          1590,
+          1320
+        ],
+        "label": "有源区"
+      },
+      {
+        "bbox_nm": [
+          125,
+          315,
+          345,
+          535
+        ],
+        "label": "左下孔"
+      },
+      {
+        "bbox_nm": [
+          1300,
+          315,
+          1520,
+          535
+        ],
+        "label": "右下孔"
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "primitive": "symmetry_placement",
+  "inputs": {
+    "w": 1000,
+    "h": 600,
+    "pairs": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "kinds": {
+      "A": "nmos",
+      "B": "nmos"
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "m.row_delta"
+    },
+    {
+      "name": "E2",
+      "from": "m.gap_left"
+    },
+    {
+      "name": "E3",
+      "from": "m.gap_right"
+    },
+    {
+      "name": "E4",
+      "from": "m.a_width"
+    },
+    {
+      "name": "E5",
+      "from": "m.a_height"
+    },
+    {
+      "name": "E6",
+      "from": "m.b_width"
+    },
+    {
+      "name": "E7",
+      "from": "m.b_height"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": 0
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": 700
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": 700
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": 1000
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": 600
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": 1000
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": 600
+    }
+  ],
+  "derivation": "对称对语义：同一行（row_delta = 0），关于单一竖直轴镜像（gap_left = gap_right）。GF180 器件间最小间距 1400（annotate_to_solver._dev_gap_from_tech），故轴两侧各 700。器件尺寸不得改变：A、B 均 1000×600。",
+  "notes": "对应测试 U06；坐标形态。"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "H02_heldout_contact_plan_pmos",
+  "adapter": "contact_plan",
+  "title": "泛化：冻结库的 PMOS 接触策略作用于未见宽度 W=2650",
+  "expect_rejection": false,
+  "params": {
+    "library_file": "data/primitive_generalization/relation_training_v1/learned_primitive.json",
+    "kind": "pmos",
+    "w_nm": 2650,
+    "l_nm": 550,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VDD"
+    }
+  },
+  "expected": {
+    "derivation": "冻结库 PMOS：常数 2 行，比例 0.5939103。区间 [180, 2650−650] = [180,2000]；180 + 0.5939103×1820 = 1260.92 → 1260。",
+    "statements": [
+      "count = 2。",
+      "centers_nm = [1260, 1730]。",
+      "GDS：有源区 1430×2650，N 阱 = 有源区外扩 600。"
+    ]
+  }
+}

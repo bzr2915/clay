@@ -1,0 +1,868 @@
+# Primitive classification: the single machine-readable source of truth.
+#
+# Why this file exists
+# --------------------
+# Before this file the project described its primitives twice, in two places,
+# with different vocabularies: primitive_probe/core.py carried a free-form
+# `category` string (constructor | planner | relation | transform | assembly |
+# routing | decision) and primitive_verify/registry.py carried only an output
+# `form` (layout | data | coords). Neither was a superset of the other, the two
+# disagreed about the same primitive (solve_area was "relation" on one side and
+# had no category at all on the other), and adding a primitive meant editing
+# two files consistently by hand.
+#
+# The classification is closed orthogonal axes, not a tree. A tree would have to
+# be edited whenever a new kind of primitive appears; closed axes do not.
+#
+#   stage           where the primitive sits in the generation pipeline
+#   form            what it returns (how a harness reads its output back)
+#   freedom_effect  which degree of freedom acting through it changes
+#   pdk_binding     the semantic rule keys it reads from the rule pack
+#   decision_role   for `decide` primitives only: the part it plays in one
+#                   decision level of the coordinator (added 2026-11-14)
+#
+# Capability fields (added 2026-11-15, design doc §4.4). Every entry must have
+# `implementation` and `signature`; the closed type and value vocabularies live
+# in clay/learning/primitive_classification.py.
+#
+#   implementation    module:function; the tests import it
+#   signature         inputs (typed, required), optional_inputs (typed, may be
+#                     absent), params (θ and settings), output (one type).
+#                     Parameter names are checked against the function.
+#   composition       step (default) | dispatch (chosen by device class,
+#                     applies_to disjoint) | alternative (a genuine option,
+#                     grouped by alternative_group)
+#   applies_to        device classes served; empty = not device-specific
+#   options_domain    for decision_role options: complete | truncated
+#   determinism       pure (covered by the determinism proof) | unaudited
+#   cost              cheap (default) | solver
+#   mutates           typed inputs the function writes into (not pure)
+#
+# Together, `stage` and `freedom_effect` answer the retrieval question ("show me
+# every primitive that can rotate something") without touching code, and
+# `pdk_binding` makes "what does this primitive need from a PDK" a query rather
+# than a code reading.
+#
+# Adding a PDK must not require editing this file: `pdk_binding` names semantic
+# keys, not layers or rule ids, and every key must resolve in every pack that
+# supports the primitive's stage.
+
+schema: clay.primitive-classification.v1
+
+# Closed vocabularies. A value outside these sets is an error, so a typo cannot
+# quietly create a new category that nothing groups under.
+axes:
+  stage: [observe, decide, plan, construct, transform, assemble, verify]
+  form: [layout, coords, data]
+  freedom_effect: [none, translation, rotation, structure, net]
+  # The part a `decide` primitive plays in one decision level of the
+  # coordinator (docs/GLOBAL_COORDINATOR_DESIGN_zh.md §4.2). Only `decide`
+  # entries may use a value other than `none`; omitted means `none`. Solving
+  # is not a role: solvers are `plan` primitives that a level calls.
+  decision_role: [none, admissibility, options, reduce, bound, feedback]
+
+primitives:
+
+  # ---------------------------------------------------------------- observe
+  inverter_topology:
+    stage: observe
+    form: data
+    freedom_effect: net
+    pdk_binding: []
+    implementation: clay.learning.circuit:parse_cdl
+    signature: {inputs: {text: NetlistText}, params: [cell], output: InverterCircuit}
+    applies_to: [mos]
+    determinism: pure
+    summary: >-
+      Read a CDL netlist into a circuit graph and group devices into the
+      complementary inverter this experiment supports.
+    aliases: {probe: [inverter_topology], verify: inverter_topology}
+
+  relation_features:
+    stage: observe
+    form: data
+    freedom_effect: none
+    pdk_binding: []
+    implementation: clay.learning.placement_relations:features
+    signature:
+      inputs: {layout: Layout, circuit: InverterCircuit, contract: Contract}
+      optional_inputs: {pack: Pack}
+      output: RelationFeatures
+    applies_to: [mos]
+    summary: >-
+      Measure coordinate-free orientation and net-access features of an
+      already-built layout. Reads geometry, never a pack rule.
+    aliases: {probe: [relation_features], verify: relation_features}
+
+  # ----------------------------------------------------------------- decide
+  relation_rank:
+    stage: decide
+    form: data
+    freedom_effect: none
+    pdk_binding: []
+    implementation: clay.learning.placement_relations:rank
+    signature:
+      inputs: {trials: Trials, measurements: RelationFeatures, lib: RelationLibrary}
+      optional_inputs: {pack: Pack}
+      params: [weights]
+      output: Ranking
+    applies_to: [mos]
+    # Writes each trial's 'ranking' into the list it is given.
+    mutates: [trials]
+    summary: >-
+      Rank legal candidates by area, relation residual and a wirelength proxy.
+      A heuristic ordering, not a proof of optimality.
+    aliases: {probe: [relation_rank], verify: relation_rank}
+
+  # ---------------------------------------------------------------- plan
+  contact_plan:
+    stage: plan
+    form: layout
+    freedom_effect: none
+    pdk_binding: [cut, cut_space, cut_to_active, cut_pitch, grid]
+    implementation: clay.learning.contact_primitives:contact_plan
+    signature:
+      inputs: {lib: InverterLibrary}
+      optional_inputs: {pack: Pack}
+      params: [kind, width]
+      output: ContactPlan
+    applies_to: [mos]
+    determinism: pure
+    summary: >-
+      Decide how many contact rows a given active width takes and where the
+      first row sits, from the learned policy and the pack's cut geometry.
+    aliases: {probe: [contact_plan], verify: contact_plan}
+
+  geometry_plan:
+    stage: plan
+    form: layout
+    freedom_effect: none
+    pdk_binding: [grid, cut, shared_segment, side_extension, cut_to_gate,
+                  cut_to_active, poly_endcap, metal_over_cut, gate_cut_to_active, cut_pitch]
+    implementation: clay.learning.geometry_primitives:geometry_plan
+    signature:
+      inputs: {lib: InverterLibrary}
+      optional_inputs: {pack: Pack}
+      params: [kind, chain]
+      output: GeometryPlan
+    applies_to: [mos]
+    summary: >-
+      Decide per-segment diffusion lengths and contact x-offsets from the learned
+      geometry policies, expressed in rule-normalised units.
+    aliases: {probe: [geometry_plan], verify: geometry_plan}
+
+  solve_area:
+    stage: plan
+    form: layout
+    freedom_effect: translation
+    pdk_binding: [grid]
+    implementation: clay.layout.synth.area_placement:solve_area
+    signature:
+      inputs: {rectangles: Rectangles, outer_boxes: Boxes, clearances: Clearances}
+      params: [preferences, grid, seconds, bands, core_boxes]
+      output: Placement
+    determinism: pure
+    cost: solver
+    summary: >-
+      Exact CP-SAT placement of the built parts: minimise the material envelope
+      area, honouring the clearance between the parts that carry it.
+    aliases: {probe: [solve_area_core, solve_area_relation], verify: solve_area}
+
+  # ------------------------------------------------------------- construct
+  build_row:
+    stage: construct
+    form: layout
+    freedom_effect: structure
+    pdk_binding: [grid, cut, cut_half, cut_to_active, cut_to_gate, cut_to_poly,
+                  cut_pitch, metal_space, metal_over_cut, metal_area,
+                  poly_endcap, poly_over_cut, pad_half_x, pad_half_y,
+                  gate_pad_half, gate_clear_active, first_sd_contact_x,
+                  side_extension, shared_segment, well_over_active,
+                  implant_over_active, width_min, poly_space, sd_overhang]
+    # Read only when the pack defines them (``pack.has``): a process without an
+    # oxide marker legitimately omits these, and the primitive skips the layer.
+    # npc / threshold-marker / varactor keys are likewise read only where the
+    # pack states them (sky130) or where a varactor construction asks for them.
+    optional_binding: [oxide_over_active, oxide_over_poly, npc_over_cut,
+                       vt_marker_over_gate, var_cut_to_gate, tap_cut_enclosure,
+                       var_well_over_poly]
+    implementation: clay.learning.contact_primitives:build_row
+    signature:
+      inputs: {devices: Devices, plan: ContactPlan, pack: Pack}
+      optional_inputs: {geometry: GeometryPlan}
+      params: [chain, gate, output, rail, gate_nets, segment_nets, kind, diffusion_role,
+               well, rule_overrides, finger_names]
+      output: Row
+    # The drawing engine of a contacted chain. Since S3 it is no longer the
+    # dispatch constructor of the circuit flow (build_chain_row is, and calls
+    # it); the inverter flow still calls it directly, so it stays a step.
+    applies_to: [mos, cap_var]
+    determinism: pure
+    summary: >-
+      Build one contacted diffusion chain: active (or tap), gates, one landing
+      pad per terminal, optional well and implant, and the marker layers the
+      pack declares. General form (comparator learning): every channel names
+      its own gate net and every segment its own net, so devices share
+      diffusion only at equal nets; pad-spacing obligations widen segments,
+      gate contacts stagger when neighbouring pads would clash, npc encloses
+      poly cuts, threshold markers enclose the gate. The varactor is this
+      construction on n+ tap in an n-well with the varactor cut rules.
+    aliases: {probe: [build_row], verify: [build_row, build_chain, build_varactor]}
+
+  build_contacted_device:
+    stage: construct
+    form: layout
+    freedom_effect: structure
+    pdk_binding: [grid, cut, cut_to_active, cut_to_gate, cut_to_poly,
+                  cut_space, cut_half, gate_pad_half, pad_half_x, pad_half_y,
+                  side_extension, poly_endcap, well_over_active,
+                  implant_over_active, gate_cut_to_active, metal_area,
+                  metal_space, width_min, sd_overhang]
+    # Both are real DV rules on GF180 and neither exists on SKY130, where the
+    # constructor legitimately draws no oxide marker at all. Declaring them
+    # optional is what lets one constructor serve a pack that has no such layer,
+    # instead of failing on a missing key.
+    optional_binding: [oxide_over_active, oxide_over_poly]
+    implementation: clay.pdk.device_placement:build_contacted_device
+    signature:
+      inputs: {device: Device}
+      optional_inputs: {pack: Pack}
+      params: [contact_rows]
+      output: DeviceCell
+    applies_to: [mos]
+    summary: >-
+      The single-finger contacted device constructor. Reads every number and
+      layer from the bound pack, so it is process-neutral: it builds a legal
+      device on GF180MCU 5 V and on any pack that declares the cut/well/implant
+      keys, drawing the dual-gate and 5 V selector markers only where the pack
+      declares those layers.
+    aliases: {probe: [build_contacted_device], verify: build_contacted_device}
+
+  orthogonal_path:
+    stage: construct
+    form: layout
+    freedom_effect: net
+    pdk_binding: [grid, metal_width, metal_space, poly_width, poly_space]
+    implementation: clay.learning.routing_primitives:orthogonal_path
+    signature:
+      inputs: {obstacles: Region}
+      optional_inputs: {pack: Pack}
+      params: [start, goal, width, axis_fraction, vertical]
+      output: Path
+    summary: >-
+      Exact orthogonal single-layer path search between two access points,
+      avoiding expanded obstacles at the pack's widths and spacings.
+    aliases: {probe: [orthogonal_path], verify: orthogonal_path}
+
+  # ------------------------------------------------------------- transform
+  turn:
+    stage: transform
+    form: layout
+    freedom_effect: rotation
+    pdk_binding: []
+    implementation: clay.learning.contact_primitives:turn
+    signature: {inputs: {row: Row}, params: [n], output: Row}
+    determinism: pure
+    summary: >-
+      Rotate a built row by a whole number of quarter turns about its active
+      origin. Pure geometry: reads no rule and needs no pack.
+    aliases: {probe: [turn], verify: [turn]}
+
+  # -------------------------------------------------------------- assemble
+  materialize:
+    stage: assemble
+    form: layout
+    freedom_effect: translation
+    pdk_binding: []
+    # Read only in merge='close' mode, and only where the pack states them.
+    optional_binding: [implant_space, implant_to_opposite_active, vt_marker_space,
+                       npc_space, rpm_space]
+    implementation: clay.learning.contact_primitives:materialize
+    signature:
+      inputs: {rows: Rows, origins: Placement}
+      optional_inputs: {pack: Pack}
+      params: [cell_name, merge]
+      output: Layout
+    determinism: pure
+    summary: >-
+      Place rows at their solved origins, merge marker layers, emit the
+      boundary and the net labels (on the text layer of the conductor each
+      terminal lands on). merge='envelope' (default, inverter flow) takes one
+      bounding box per marker layer; merge='close' (circuit flow) keeps one
+      n-well per well domain and closes implant/select/npc/rpm layers with
+      their own spacing rule, never covering opposite-polarity diffusion.
+    aliases: {probe: [materialize], verify: [materialize, materialize_close]}
+
+  # ---------------------------------------------------------------- verify
+  candidate_verify:
+    stage: verify
+    form: data
+    freedom_effect: none
+    pdk_binding: [grid, cut, cut_space, cut_to_active, cut_to_poly, cut_to_gate,
+                  gate_cut_to_active, metal_width, metal_space, metal_area,
+                  metal_over_cut, active_space, poly_width, poly_space,
+                  poly_endcap, well_over_active, well_to_opposite_active,
+                  well_width, implant_over_active, implant_space,
+                  implant_area, implant_to_opposite_active]
+    optional_binding: [well_space, oxide_over_active, oxide_over_poly, oxide_width]
+    implementation: clay.learning.contact_primitives:verify
+    signature:
+      inputs: {layout: Layout, circuit: InverterCircuit, contract: Contract,
+               expected_plans: ContactPlans}
+      optional_inputs: {pack: Pack}
+      params: [routed]
+      output: Verification
+    applies_to: [mos]
+    determinism: pure
+    summary: >-
+      Local geometric checks on a built layout plus labelled-topology extraction
+      compared against the target netlist. Not full DRC/LVS.
+    aliases: {probe: [candidate_verify], verify: candidate_verify}
+
+  symmetry_placement:
+    stage: decide
+    form: coords
+    freedom_effect: structure
+    pdk_binding: []
+    implementation: clay.layout.annotate_to_solver:solve_placement_from_constraints
+    signature:
+      inputs: {constraints: SolverConstraints, devs: Devices}
+      params: [tech, pdk, height_weight, grid_nm, time_limit_s]
+      output: Placement
+    applies_to: [mos]
+    cost: solver
+    summary: >-
+      Constraint-driven symmetric placement returning extents; used by the
+      differential-pair path rather than the digital-style chain.
+    aliases: {probe: [symmetry_placement], verify: symmetry_placement}
+
+  # ------------------------------------------------ circuit-general (v3)
+  # Added with the comparator learning work (2026-11-11). They replace the
+  # inverter-only front end (inverter_topology), two-row placement (solve_area)
+  # and check (candidate_verify) for arbitrary netlists; the inverter entries
+  # above stay for the inverter flow.
+  netlist_flatten:
+    stage: observe
+    form: data
+    freedom_effect: net
+    pdk_binding: [grid]
+    implementation: clay.learning.netlist:parse_spice
+    signature: {inputs: {text: NetlistText, pack: Pack}, params: [top, net_alias], output: Netlist}
+    determinism: pure
+    summary: >-
+      Parse a SPICE/CDL hierarchy and flatten it into leaf devices of the
+      classes the pack can construct (MOS, poly resistor, MIM, varactor), with
+      W/L in grid nm, nf and multiplicity. Unknown models fail closed;
+      model-less parasitic R/C are counted and dropped.
+    aliases: {verify: netlist_flatten}
+
+  netlist_symmetry:
+    stage: observe
+    form: data
+    freedom_effect: none
+    pdk_binding: []
+    implementation: clay.learning.symmetry:netlist_symmetry
+    signature: {inputs: {circuit: Netlist}, params: [max_iterations], output: Symmetry}
+    determinism: pure
+    summary: >-
+      Name-free search for an involutive, port-preserving automorphism of the
+      device-net graph (VF2): the mirror pairs and the sigma-fixed devices of a
+      differential circuit.
+    aliases: {verify: netlist_symmetry}
+
+  finger_fold:
+    stage: plan
+    form: data
+    freedom_effect: structure
+    pdk_binding: [grid, width_min, cut, cut_to_active]
+    optional_binding: [var_min_width, tap_cut_enclosure]
+    implementation: clay.learning.diffusion_chains:fold_devices
+    signature:
+      inputs: {circuit: Netlist, pack: Pack}
+      params: [target_nm, targets]
+      output: Fingers
+    applies_to: [mos, cap_var]
+    determinism: pure
+    summary: >-
+      Split every MOS/varactor into fingers: the netlist nf*m times the
+      smallest extra fold that brings a finger under a target width while
+      staying on grid and able to hold one contacted column. A layout freedom.
+    aliases: {verify: finger_fold}
+
+  diffusion_chains:
+    stage: plan
+    form: data
+    freedom_effect: structure
+    pdk_binding: []
+    implementation: clay.learning.diffusion_chains:diffusion_chains
+    signature:
+      inputs: {fingers: Fingers}
+      optional_inputs: {symmetry: Symmetry}
+      params: [max_fingers, share]
+      output: Chains
+    applies_to: [mos, cap_var]
+    determinism: pure
+    summary: >-
+      Order fingers of each compatible group into the fewest diffusion-sharing
+      chains (Euler trail decomposition); sharing only at equal nets. With a
+      netlist symmetry the chain set is sigma-invariant: mirror chain pairs and
+      palindromic chains for sigma-invariant components.
+    aliases: {verify: diffusion_chains}
+
+  contact_policy_plan:
+    stage: plan
+    form: data
+    freedom_effect: none
+    pdk_binding: [grid, cut, cut_space, cut_to_active]
+    implementation: clay.learning.contact_primitives:contact_plan_from_policy
+    signature:
+      inputs: {policy: ContactPolicy}
+      optional_inputs: {pack: Pack}
+      params: [width, rule_overrides]
+      output: ContactPlan
+    applies_to: [mos, cap_var]
+    determinism: pure
+    summary: >-
+      Contact rows and centres for one diffusion segment from a learned policy
+      (constant / width stump / fraction of capacity), clipped to the column
+      capacity; independent of the inverter library format.
+    aliases: {verify: contact_policy_plan}
+
+  reflect:
+    stage: transform
+    form: layout
+    freedom_effect: rotation
+    pdk_binding: []
+    implementation: clay.learning.contact_primitives:reflect
+    signature: {inputs: {row: Row}, params: [axis, net_map], output: Row}
+    determinism: pure
+    summary: >-
+      Mirror a built row about a vertical or horizontal line, re-anchor it on
+      its active box and optionally rename its nets: the mirror half of a
+      matched pair is the same geometry, reflected, carrying the mate nets.
+    aliases: {verify: reflect}
+
+  build_poly_resistor:
+    stage: construct
+    form: layout
+    freedom_effect: structure
+    pdk_binding: [grid, cut_to_poly, metal_over_cut]
+    # Needed only by a pack that constructs poly resistors (sky130 high_po);
+    # without the layers the constructor fails closed.
+    optional_binding: [res_width_min, rpm_over_res, res_implant_over_res, npc_over_res,
+                       rpm_width]
+    implementation: clay.learning.passive_primitives:build_poly_resistor
+    signature: {inputs: {device: Device, style: ResistorStyle, pack: Pack}, output: Row}
+    composition: dispatch
+    applies_to: [res_poly]
+    determinism: pure
+    summary: >-
+      Straight poly resistor with contacted heads; head-cut size and margins are
+      a learned style (clipped up to the rules), body and markers from the pack.
+    aliases: {verify: build_poly_resistor}
+
+  build_mim_cap:
+    stage: construct
+    form: layout
+    freedom_effect: structure
+    pdk_binding: [grid]
+    optional_binding: [cap_width_min, plate_over_cap, via3, via3_space, cap_over_via,
+                       metal4_over_via3]
+    implementation: clay.learning.passive_primitives:build_mim_cap
+    signature: {inputs: {device: Device, pack: Pack}, output: Row}
+    composition: dispatch
+    applies_to: [cap_mim]
+    determinism: pure
+    summary: >-
+      Metal-insulator-metal capacitor: capm W x L over a metal3 plate, a centred
+      cut3 array, metal4 top terminal; every margin is a pack rule.
+    aliases: {verify: build_mim_cap}
+
+  block_from_row:
+    stage: plan
+    form: data
+    freedom_effect: none
+    pdk_binding: [active_space, poly_space, metal_space]
+    optional_binding: [field_poly_active, rpm_space, res_space, rpm_over_res, plate_space,
+                       cap_space]
+    implementation: clay.learning.passive_primitives:block_from_row
+    signature:
+      inputs: {row: Row, pack: Pack}
+      params: [name, cls, well, mirror_of, self_symmetric, sources]
+      output: Block
+    determinism: pure
+    summary: >-
+      Wrap a construction as a rigid placement block: core, diffusion, well and
+      outer boxes, its plane (device or MIM) and the halo of half its largest
+      same-plane spacing.
+    aliases: {verify: block_from_row}
+
+  solve_blocks:
+    stage: plan
+    form: coords
+    freedom_effect: translation
+    pdk_binding: [grid]
+    implementation: clay.layout.synth.area_placement:solve_blocks
+    signature:
+      inputs: {blocks: Blocks}
+      params: [grid, well_to_opposite, well_space, axis, pairs, centred, soft_centred,
+               seconds, workers, seed, hint, ties, variant_hint, deterministic,
+               canonical_seconds, constraints, defer_canonical, pinned_area_nm2]
+      output: Placement
+    # Pure under the conditions of the proof (design doc §15.2: C1-C4).
+    # Called only inside place_blocks since S3.
+    composition: engine
+    determinism: pure
+    cost: solver
+    summary: >-
+      Exact-area CP-SAT placement of N blocks: halo spacing per plane, one
+      rectangular n-well per well domain, opposite-diffusion and well-to-well
+      spacing, learned mirror pairs about one axis, hard and soft centring.
+    aliases: {verify: solve_blocks}
+
+  # ------------------------------------------- split out of assemble (S3)
+  # Added 2026-11-15 (docs/GLOBAL_COORDINATOR_DESIGN_zh.md §5, step S3). They
+  # were glue inside circuit_generate.assemble/evaluate; the flow now composes
+  # them and picks constructors by dispatch, naming no device class.
+  build_chain_row:
+    stage: construct
+    form: layout
+    freedom_effect: structure
+    pdk_binding: [grid, cut, cut_half, cut_space, cut_to_active, cut_to_gate, cut_to_poly,
+                  cut_pitch, metal_space, metal_over_cut, metal_area,
+                  poly_endcap, poly_over_cut, pad_half_x, pad_half_y,
+                  gate_pad_half, gate_clear_active, first_sd_contact_x,
+                  side_extension, shared_segment, well_over_active,
+                  implant_over_active, width_min, poly_space, sd_overhang]
+    optional_binding: [oxide_over_active, oxide_over_poly, npc_over_cut,
+                       vt_marker_over_gate, var_cut_to_gate, tap_cut_enclosure,
+                       var_well_over_poly]
+    implementation: clay.learning.circuit_construct:build_chain_row
+    signature: {inputs: {chain: Chain, policy: ContactPolicy, pack: Pack}, output: Row}
+    composition: dispatch
+    applies_to: [mos, cap_var]
+    determinism: pure
+    summary: >-
+      One diffusion chain -> contacted row: contact plan from the learned
+      policy, then build_row. A device class the pack lists in
+      chain_construction (the SKY130 varactor) is drawn on that diffusion role
+      with those rule replacements; any other class is a plain MOS chain.
+
+  build_learned_pattern_row:
+    stage: construct
+    form: layout
+    freedom_effect: structure
+    pdk_binding: [grid, cut, cut_half, cut_space, cut_to_active, cut_to_gate, cut_to_poly,
+                  cut_pitch, metal_space, metal_over_cut, metal_area,
+                  poly_endcap, poly_over_cut, pad_half_x, pad_half_y,
+                  gate_pad_half, gate_clear_active, first_sd_contact_x,
+                  side_extension, shared_segment, well_over_active,
+                  implant_over_active, width_min, poly_space, sd_overhang]
+    optional_binding: [oxide_over_active, oxide_over_poly, npc_over_cut, vt_marker_over_gate]
+    implementation: clay.learning.circuit_construct:build_learned_pattern_row
+    signature: {inputs: {chain: Chain, library: InverterLibrary, pack: Pack}, output: Row}
+    # Added 2026-11-15 (design doc §6.3, step S5): the inverter-trained
+    # construction, offered to the coordinator next to build_chain_row.
+    composition: alternative
+    alternative_group: mos_chain_constructor
+    applies_to: [mos]
+    determinism: pure
+    summary: >-
+      Alternative MOS chain constructor: the inverter flow's learned rail/output
+      segment pattern (per gate count) and contact policy (per polarity), for
+      any chain whose channels share one gate net and whose segment nets bind
+      consistently to the pattern; other chains are refused.
+
+  placement_units:
+    stage: plan
+    form: data
+    freedom_effect: structure
+    pdk_binding: []
+    implementation: clay.learning.circuit_construct:placement_units
+    signature:
+      inputs: {chains: Chains, circuit: Netlist}
+      optional_inputs: {symmetry: Symmetry}
+      params: [chain_classes]
+      output: Units
+    determinism: pure
+    summary: >-
+      The units to place, in build order: chains, their mirror chains, then
+      every device whose class is not built as a chain, each followed by its
+      mirror mate. Records per unit whether its devices have mirror mates.
+
+  placement_intents:
+    stage: plan
+    form: data
+    freedom_effect: none
+    pdk_binding: []
+    implementation: clay.learning.circuit_construct:placement_intents
+    signature:
+      inputs: {units: Units}
+      optional_inputs: {symmetry: Symmetry}
+      params: [axis, soft_centre]
+      output: PlacementIntents
+    determinism: pure
+    summary: >-
+      Mirror pairs, hard-centred and soft-centred units about the axis: a
+      mirror unit pairs with its source, a self-symmetric paired unit is
+      centred, an unpaired unit is softly centred (learned
+      centre_fixed_devices).
+
+  place_blocks:
+    stage: plan
+    form: coords
+    freedom_effect: translation
+    pdk_binding: [grid, well_to_opposite_active, well_space]
+    implementation: clay.learning.circuit_construct:place_blocks
+    signature:
+      inputs: {spaces: BlockSpaces, intents: PlacementIntents, pack: Pack}
+      params: [axis, seconds, workers, hint, variant_hint, canonical_seconds,
+               defer_canonical, pinned_area_nm2]
+      output: Placement
+    determinism: pure
+    cost: solver
+    summary: >-
+      Orientation and position of every block, jointly: the block spaces'
+      variants, mirror ties and the placement intents, with the pack's well
+      rules, solved by solve_blocks.
+
+  # ------------------------------------- coordinator decision levels (S4)
+  # Added 2026-11-15 (docs/GLOBAL_COORDINATOR_DESIGN_zh.md §6, step S4): the
+  # symmetry-mapping level and the feedback of the construction search.
+  netlist_symmetries:
+    stage: decide
+    decision_role: options
+    form: data
+    freedom_effect: structure
+    pdk_binding: []
+    implementation: clay.learning.symmetry:netlist_symmetries
+    signature: {inputs: {circuit: Netlist}, params: [max_iterations], output: Symmetries}
+    # Complete only when no seed port pair reaches max_iterations VF2 mappings.
+    options_domain: truncated
+    determinism: pure
+    summary: >-
+      Every involutive, port-preserving automorphism of the device-net graph,
+      best first by netlist_symmetry's rule (structure, then names); each seed
+      pair contributes its first max_iterations mappings.
+
+  symmetry_classes:
+    stage: decide
+    decision_role: reduce
+    form: data
+    freedom_effect: structure
+    pdk_binding: []
+    implementation: clay.learning.symmetry:symmetry_classes
+    signature: {inputs: {circuit: Netlist, symmetries: Symmetries}, output: SymmetryClasses}
+    determinism: pure
+    summary: >-
+      Group mappings that differ only in which twin devices (same label, same
+      connections) they exchange; such mappings yield the same construction up
+      to the names of identical devices. Sound: nothing else is merged.
+
+  verification_feedback:
+    stage: decide
+    decision_role: feedback
+    form: data
+    freedom_effect: rotation
+    pdk_binding: []
+    implementation: clay.learning.circuit_construct:verification_feedback
+    signature: {inputs: {record: Candidate}, params: [orientation_search], output: Feedback}
+    determinism: pure
+    summary: >-
+      Decision, as data, for a solved candidate that fails a layout check:
+      retry with the fixed orientation (valid layout, not a proof; the
+      candidate stays open unless its bound settles it), or nothing.
+
+  circuit_verify:
+    stage: verify
+    form: data
+    freedom_effect: none
+    pdk_binding: [grid, cut, cut_space, cut_to_active, cut_to_poly, cut_to_gate,
+                  gate_cut_to_active, metal_width, metal_space, metal_area,
+                  metal_over_cut, active_space, poly_width, poly_space,
+                  well_over_active, well_to_opposite_active, well_width,
+                  implant_over_active, implant_space, implant_area,
+                  implant_to_opposite_active]
+    optional_binding: [well_space, tap_cut_enclosure, var_cut_to_gate, var_well_over_poly,
+                       npc_over_cut, npc_space, npc_width, vt_marker_over_gate,
+                       vt_marker_width, vt_marker_space, rpm_over_res, res_space,
+                       rpm_space, plate_over_cap, cap_over_via, cap_space, plate_space,
+                       metal4_over_via3]
+    implementation: clay.learning.circuit_verify:verify_circuit_layout
+    signature: {inputs: {layout: Layout, circuit: Netlist, pack: Pack}, params: [routed], output: Verification}
+    determinism: pure
+    summary: >-
+      Local DRC subset for every rule the constructors read, plus label-based
+      device LVS after parallel reduction (MOS, varactor, resistor, MIM) for any
+      netlist. Unrouted scope; not a foundry deck.
+    aliases: {verify: circuit_verify}
+
+  observe_layout:
+    stage: observe
+    form: data
+    freedom_effect: none
+    pdk_binding: [active_space, cut, cut_space, cut_to_active]
+    implementation: clay.learning.circuit_library:observe_layout
+    signature:
+      inputs: {gds_path: ReferenceLayout, circuit: Netlist, pack: Pack}
+      params: [sample_id]
+      output: Observation
+    summary: >-
+      Training-only measurements of a reference layout: contacts per segment,
+      mirror axis and paired fraction, gate orientation, diffusion sharing,
+      wells per domain, resistor head geometry, material extent.
+    aliases: {verify: observe_layout}
+
+  fit_library:
+    stage: decide
+    form: data
+    freedom_effect: none
+    pdk_binding: [grid, cut, cut_space, cut_to_active, cut_pitch]
+    implementation: clay.learning.circuit_library:fit_library
+    signature: {inputs: {observations: Observations, packs: Packs}, output: Library}
+    summary: >-
+      Freeze the learned circuit library: per-PDK contact policy, mirror-pair
+      and gate-orientation relations, resistor style; construction choices are
+      recorded as observed but explicitly not imitated.
+    aliases: {verify: fit_library}
+
+  # ------------------------------------------- action decider (step S1)
+  # Added 2026-11-14 (docs/GLOBAL_COORDINATOR_DESIGN_zh.md §11, step S1). These
+  # parts of the action decider were in use but outside the classification, so
+  # retrieval could not find them. Each names its code in `implementation`.
+  # Not registered on purpose: actions.search / decide_actions (search loops,
+  # which belong to the coordinator core, not to the primitive set) and
+  # circuit_generate.assemble (glue to be split into primitives in step S3).
+  angle_verdicts:
+    stage: decide
+    decision_role: admissibility
+    form: data
+    freedom_effect: rotation
+    pdk_binding: []
+    signature: {inputs: {pack: Pack}, params: [layer_roles], output: AngleVerdicts}
+    determinism: pure
+    summary: >-
+      Close every candidate angle of a rigid part from the pack's angle rules,
+      exact edge lengths, grid and direction capability: executable,
+      deck_forbidden, grid_unrealizable, deck_infeasible, or open (unknown,
+      not_executable). Reads Pack.freedom, not semantic rule keys.
+    implementation: clay.learning.freedom:angle_verdicts
+
+  enforce:
+    stage: decide
+    decision_role: admissibility
+    form: data
+    freedom_effect: rotation
+    pdk_binding: []
+    signature:
+      inputs: {freedom: Freedom, plan: ActionPlan}
+      params: [predicates]
+      output: Admission
+    determinism: pure
+    summary: >-
+      Refuse an action plan the freedom model does not allow (angle, mirror
+      axis, off-grid translation, uncoupled coupled parts, failed predicate).
+      Raises; never clamps or repairs.
+    implementation: clay.learning.freedom:enforce
+
+  orientations:
+    stage: decide
+    decision_role: options
+    form: data
+    freedom_effect: rotation
+    pdk_binding: []
+    signature: {inputs: {freedom_of_part: PartFreedom}, output: Orientations}
+    options_domain: complete
+    determinism: pure
+    summary: >-
+      The executable orthogonal orientations of one part as (degrees, mirrored),
+      identity first, in a fixed order. Complete over the eight rectangle
+      symmetries the freedom model permits. A non-orthogonal executable
+      direction is a hard error, not a filter: a rigid turn by anything other
+      than a quarter turn leaves the nanometre lattice, and silently dropping
+      such an angle would leave the certificate claiming a closed angle that was
+      never searched.
+    implementation: clay.learning.freedom:orientations
+
+  fold_candidates:
+    stage: decide
+    decision_role: options
+    form: data
+    freedom_effect: structure
+    pdk_binding: [grid, width_min]
+    signature: {inputs: {circuit: Netlist, pack: Pack}, output: FoldTargets}
+    options_domain: truncated
+    applies_to: [mos, cap_var]
+    determinism: pure
+    summary: >-
+      Fold targets a construction level tries: none, the median finger width,
+      and half of it (not below twice the diffusion minimum). A truncated
+      option set; the certificate scope says so.
+    implementation: clay.learning.circuit_generate:fold_candidates
+
+  canonical_rotation_class:
+    stage: decide
+    decision_role: reduce
+    form: data
+    freedom_effect: rotation
+    pdk_binding: []
+    signature: {inputs: {plan: ActionPlan}, params: [parts, step_deg], output: RotationClass}
+    determinism: pure
+    summary: >-
+      Equivalence class of a rotation plan under global rotation: each part's
+      angle relative to the first, in part order (not sorted). Plans in one
+      class have the same achievable area.
+    implementation: clay.learning.actions:canonical
+
+  two_box_lower_bound:
+    stage: decide
+    decision_role: bound
+    form: data
+    freedom_effect: translation
+    pdk_binding: []
+    signature: {inputs: {outer: Boxes, rects: Rectangles}, params: [gap], output: Bound}
+    determinism: pure
+    summary: >-
+      Sound lower bound on the envelope area of two placed rows: the minimum
+      over the four separation orders of exactly what solve_area enforces
+      (active rectangles apart by the plan's gap, envelope holding both outer
+      boxes).
+    implementation: clay.learning.actions:two_box_lower_bound
+
+  block_space:
+    stage: plan
+    form: data
+    freedom_effect: rotation
+    pdk_binding: [active_space, poly_space, metal_space]
+    optional_binding: [field_poly_active, rpm_space, res_space, rpm_over_res, plate_space,
+                       cap_space]
+    signature:
+      inputs: {row: Row, pack: Pack}
+      params: [name, cls, well, self_symmetric, sources, keep_gates, keep_axis_symmetry,
+               orient]
+      output: BlockSpace
+    determinism: pure
+    summary: >-
+      Every legal orientation of one constructed block as a placement variant,
+      each gated by enforce before its geometry is transformed; variants with
+      identical boxes merged. Learned gate orientation and centred-chain
+      symmetry restrict it to 0/180 (+/- mirror).
+    implementation: clay.learning.action_space:block_space
+
+  mirror_space:
+    stage: plan
+    form: data
+    freedom_effect: rotation
+    pdk_binding: [active_space, poly_space, metal_space]
+    optional_binding: [field_poly_active, rpm_space, res_space, rpm_over_res, plate_space,
+                       cap_space]
+    signature:
+      inputs: {source: BlockSpace, pack: Pack}
+      params: [name, axis, net_map, well, sources]
+      output: BlockSpace
+    determinism: pure
+    summary: >-
+      The mirror half of a matched pair: variant k is the reflection of the
+      source's variant k (nets renamed by the symmetry), so tying the indices
+      keeps the pair mirrored under every orientation.
+    implementation: clay.learning.action_space:mirror_space

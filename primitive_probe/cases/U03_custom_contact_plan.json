@@ -1,0 +1,89 @@
+{
+  "id": "U03_custom_contact_plan",
+  "adapter": "contact_plan",
+  "title": "自定义起点：接触孔规划器",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。",
+  "expect_rejection": false,
+  "params": {
+    "library": {
+      "schema": "clay.contact-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "patterns": {
+        "nmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ]
+      },
+      "contact_policies": {
+        "nmos": {
+          "rows": {
+            "kind": "width_stump",
+            "threshold_nm": 1070.0,
+            "low": 1,
+            "high": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        },
+        "pmos": {
+          "rows": {
+            "kind": "constant",
+            "count": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        }
+      },
+      "binding": "target_W_L_models_and_nets",
+      "operator": "rectangular_diffusion_chain_v1"
+    },
+    "kind": "nmos",
+    "w_nm": 1500,
+    "l_nm": 600,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "NMOS：W 1500 > 阈值 1070 → 2 行；区间 [180, 1500−180−470 = 850]；首孔 180 + 0.5×670 = 515。",
+    "statements": [
+      "count = 2。",
+      "centers_nm = [515, 985]。",
+      "GDS 有源区 1480×1500，每个 S/D 段 2 个孔，y = 515、985。"
+    ]
+  }
+}

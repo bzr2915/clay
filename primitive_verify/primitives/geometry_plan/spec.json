@@ -1,0 +1,165 @@
+{
+  "primitive": "geometry_plan",
+  "inputs": {
+    "library": {
+      "schema": "clay.geometry-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "contacts": {
+        "schema": "clay.contact-primitive.v1",
+        "pdk": "gf180mcu_5v",
+        "patterns": {
+          "nmos": [
+            {
+              "gate_count": 1,
+              "segments": [
+                "output",
+                "rail"
+              ]
+            },
+            {
+              "gate_count": 2,
+              "segments": [
+                "rail",
+                "output",
+                "rail"
+              ]
+            }
+          ],
+          "pmos": [
+            {
+              "gate_count": 1,
+              "segments": [
+                "output",
+                "rail"
+              ]
+            },
+            {
+              "gate_count": 2,
+              "segments": [
+                "rail",
+                "output",
+                "rail"
+              ]
+            }
+          ]
+        },
+        "contact_policies": {
+          "nmos": {
+            "rows": {
+              "kind": "width_stump",
+              "threshold_nm": 1070.0,
+              "low": 1,
+              "high": 2
+            },
+            "first_contact_free_margin_fraction": 0.5
+          },
+          "pmos": {
+            "rows": {
+              "kind": "constant",
+              "count": 2
+            },
+            "first_contact_free_margin_fraction": 0.5
+          }
+        },
+        "binding": "target_W_L_models_and_nets",
+        "operator": "rectangular_diffusion_chain_v1"
+      },
+      "geometry_policies": {
+        "nmos:outer:output": {
+          "excess_contact_units": 1.0,
+          "contact_fraction": 0.0,
+          "island_count": 1,
+          "position_island_count": 1
+        },
+        "nmos:outer:rail": {
+          "excess_contact_units": 0.0,
+          "contact_fraction": null,
+          "island_count": 1,
+          "position_island_count": 0
+        }
+      },
+      "operator": "rectangular_chain_with_learned_segments_v1"
+    },
+    "kind": "nmos",
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "w_nm": 1000,
+    "device": {
+      "name": "M1",
+      "model": "nfet_05v0",
+      "drain": "OUT",
+      "gate": "IN",
+      "source": "VSS",
+      "body": "VPW",
+      "w_nm": 1000,
+      "l_nm": 600,
+      "m": 1,
+      "nf": 1
+    },
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "gp.segment_lengths_nm"
+    },
+    {
+      "name": "E2",
+      "from": "gp.contact_x_in_segment_nm"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[22/0][0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[30/0][0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": [
+        660,
+        440
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": [
+        180,
+        260
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1700,
+        1000
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "bbox",
+      "value": [
+        660,
+        -220,
+        1260,
+        1460
+      ]
+    }
+  ],
+  "derivation": "output 段超额 1.0 个孔宽 = 220 → 段长 440+220 = 660；孔位比例 0 → 区间 [180, 400] 起点 180。rail 段无超额 → 440，区间退化 180（自右外沿计），段内左起 = 440−180 = 260。有源区宽 = 660+600+440 = 1700。多晶 x 660–1260（宽 = L = 600）。",
+  "notes": "对应测试 U04。"
+}

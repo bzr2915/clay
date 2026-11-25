@@ -1,0 +1,154 @@
+{
+  "primitive": "build_varactor",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "device": {
+      "name": "C1",
+      "model": "sky130_fd_pr__cap_var_lvt",
+      "drain": "B",
+      "gate": "T",
+      "source": "B",
+      "body": "B",
+      "w_nm": 1000,
+      "l_nm": 180
+    },
+    "plan": {
+      "count": 1,
+      "centers_nm": [
+        500
+      ]
+    },
+    "top": "T",
+    "bot": "B",
+    "rule_map": {
+      "cut_to_gate": "var_cut_to_gate",
+      "cut_to_active": "tap_cut_enclosure"
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[65/44][0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[65/20]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[66/20][0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[66/44]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[64/20][0]"
+    },
+    {
+      "name": "E6",
+      "from": "layout.polygons[125/44][0]"
+    },
+    {
+      "name": "E7",
+      "from": "layout.polygons[93/44][0]"
+    },
+    {
+      "name": "E8",
+      "from": "layout.polygons[95/20][0]"
+    },
+    {
+      "name": "E9",
+      "from": "row.channels[0].gate"
+    },
+    {
+      "name": "E10",
+      "from": "row.diffusion_role"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1260,
+        1000
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "count",
+      "value": 0
+    },
+    {
+      "name": "E3",
+      "how": "bbox",
+      "value": [
+        495,
+        -130,
+        765,
+        1410
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E5",
+      "how": "bbox",
+      "value": [
+        -180,
+        -280,
+        1440,
+        1280
+      ]
+    },
+    {
+      "name": "E6",
+      "how": "bbox",
+      "value": [
+        -180,
+        -180,
+        1440,
+        1180
+      ]
+    },
+    {
+      "name": "E7",
+      "how": "bbox",
+      "value": [
+        -125,
+        -125,
+        1385,
+        1125
+      ]
+    },
+    {
+      "name": "E8",
+      "how": "bbox",
+      "value": [
+        445,
+        1090,
+        815,
+        1460
+      ]
+    },
+    {
+      "name": "E9",
+      "how": "eq",
+      "value": "T"
+    },
+    {
+      "name": "E10",
+      "how": "eq",
+      "value": "tap"
+    }
+  ],
+  "derivation": "变容管规则替换：cut_to_gate→licon.10 = 250，cut_to_active→licon.7 = 120。first_x = 120+85 = 205；端段 = max(150, 120+170+250=540, (2×205+330+170−180+1)//2=365) = 540；tap 宽 = 2×540+180 = 1260，高 W=1000，画在 tap 层 65/44（diff 65/20 无图形）。栅 gy = max(1000+275, 500+165+170+165) = 1275；poly 条 [540,−130,720,1275+135=1410]，栅垫宽 270 → [495,1140,765,1410]，bbox [495,−130,765,1410]。孔 = 2 S/D + 1 栅 = 3。n 阱 = tap 外扩 180 (difftap.8) 与 沟道 poly [540,−130,720,1130] 外扩 150 (varac.5) 的包络 = [−180,−280,1440,1280]。lvtn = tap 外扩 180 (lvtn.4b/hvtp.3 包栅)；nsdm = 外扩 125；npc = 栅孔 [545,1190,715,1360] 外扩 100 = [445,1090,815,1460]。",
+  "notes": "新原语配置：测试集出现、训练集未出现的器件类别，由 PDK 规则构造（非学习）。"
+}

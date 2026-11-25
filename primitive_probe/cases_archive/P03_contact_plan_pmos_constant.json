@@ -1,0 +1,88 @@
+{
+  "id": "P03_contact_plan_pmos_constant",
+  "adapter": "contact_plan",
+  "title": "接触规划器：PMOS 常数策略（恒 2 行）",
+  "expect_rejection": false,
+  "params": {
+    "library": {
+      "schema": "clay.contact-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "patterns": {
+        "nmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ]
+      },
+      "contact_policies": {
+        "nmos": {
+          "rows": {
+            "kind": "width_stump",
+            "threshold_nm": 1070.0,
+            "low": 1,
+            "high": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        },
+        "pmos": {
+          "rows": {
+            "kind": "constant",
+            "count": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        }
+      },
+      "binding": "target_W_L_models_and_nets",
+      "operator": "rectangular_diffusion_chain_v1"
+    },
+    "kind": "pmos",
+    "w_nm": 1000,
+    "l_nm": 500,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VDD"
+    }
+  },
+  "expected": {
+    "derivation": "PMOS 策略 constant count=2。区间 [180, 1000−180−470] = [180, 350]，0.5 处 = 265（5 nm 网格）。",
+    "statements": [
+      "count = 2（与 W 无关）。",
+      "centers_nm = [265, 735]。",
+      "GDS 中每段 2 个孔，孔之间间距 250（孔距 470）。"
+    ]
+  }
+}

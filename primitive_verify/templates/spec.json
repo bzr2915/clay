@@ -1,0 +1,23 @@
+{
+  "primitive": "contact_plan",
+  "inputs": {
+    "library": {},
+    "kind": "nmos",
+    "w_nm": 1500,
+    "l_nm": 600,
+    "chain": ["output", "rail"],
+    "nets": {"gate": "IN", "output": "OUT", "rail": "VSS"}
+  },
+  "actual": [
+    {"name": "E1", "from": "plan.count"},
+    {"name": "E2", "from": "plan.centers_nm"},
+    {"name": "E3", "from": "layout.polygons[22/0]"}
+  ],
+  "expected": [
+    {"name": "E1", "how": "eq", "value": 2},
+    {"name": "E2", "how": "eq", "value": [515, 985]},
+    {"name": "E3", "how": "bbox", "value": [0, 0, 1480, 1500]}
+  ],
+  "derivation": "NMOS 策略 width_stump：W 1500 > 1070 取 2 行；区间 [180, 1500-180-470=850]，首孔 180+0.5*670=515，次孔 985。有源区 1480×1500 = L 600 + 2×440。",
+  "notes": "示例，仅供参照格式；实际提交时替换为被验证原语的数据。"
+}

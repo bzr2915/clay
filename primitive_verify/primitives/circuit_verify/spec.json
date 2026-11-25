@@ -1,0 +1,105 @@
+{
+  "primitive": "circuit_verify",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "good": ".subckt t a b y vss\nM1 y a n1 vss nfet_01v8 W=0.42 L=0.15\nM2 n1 b vss vss nfet_01v8 W=0.42 L=0.15\n.ends\n",
+    "bad": ".subckt t a b y vss\nM1 y a n1 vss nfet_01v8 W=0.42 L=0.15\nM2 n1 c vss vss nfet_01v8 W=0.42 L=0.15\n.ends\n",
+    "devices": [
+      {
+        "name": "M1",
+        "model": "nfet_01v8",
+        "drain": "x",
+        "gate": "a",
+        "source": "x",
+        "body": "vss",
+        "w_nm": 420,
+        "l_nm": 150
+      },
+      {
+        "name": "M2",
+        "model": "nfet_01v8",
+        "drain": "x",
+        "gate": "b",
+        "source": "x",
+        "body": "vss",
+        "w_nm": 420,
+        "l_nm": 150
+      }
+    ],
+    "plan": {
+      "count": 1,
+      "centers_nm": [
+        210
+      ]
+    },
+    "gate_nets": [
+      "a",
+      "b"
+    ],
+    "segment_nets": [
+      "y",
+      "n1",
+      "vss"
+    ]
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "ok.passed"
+    },
+    {
+      "name": "E2",
+      "from": "ok.checks.devices_match"
+    },
+    {
+      "name": "E3",
+      "from": "ok.devices.keys"
+    },
+    {
+      "name": "E4",
+      "from": "ko.passed"
+    },
+    {
+      "name": "E5",
+      "from": "ko.checks.devices_match"
+    },
+    {
+      "name": "E6",
+      "from": "ko.checks.channels_resolved"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": true
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": true
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": 2
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": false
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": false
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": true
+    }
+  ],
+  "derivation": "版图为 y–M1(a)–n1–M2(b)–vss 的两沟道链（与 build_chain 同一构造规则，端段 300、共享段 350，各间距满足 sky130 规则；npc 间隙 130 已在 close 模式合并）。提取：沟道 1 栅标签 a、两侧 {y,n1}，沟道 2 栅 b、两侧 {n1,vss}，各 W=420、L=150 → 两个并联归约键，与正确网表一致 → devices_match=True、passed=True、keys=2。错网表把 M2 栅改为 c：提取仍能解析全部沟道（channels_resolved=True），但键 (…, b, {n1,vss}) 与期望 (…, c, …) 不符 → devices_match=False、passed=False。",
+  "notes": "新原语：通用本地 DRC 子集 + 标签式器件级 LVS（替代反相器专用 candidate_verify）。"
+}

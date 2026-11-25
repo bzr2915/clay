@@ -1,0 +1,67 @@
+{
+  "id": "gf180_ishi_kai_chipathon2023_dynamic_comparator",
+  "split": "training",
+  "architecture_as_described_upstream": "dynamic comparator from the GF180 Chipathon2023 ADC project",
+  "repository": "https://github.com/ishi-kai/Chipathon2023_ADC",
+  "commit": "3dce439b2125a9d628e43be40c65cf8fce5d795c",
+  "license": "Apache-2.0",
+  "retrieved_date": "2026-11-10",
+  "notes": [
+    "The repository README describes a GF180 6-bit SAR-ADC project; the parent ISHI-KAI wafer project identifies this member project as a dynamic comparator.",
+    "The bundled Magic DRC text reports zero errors for its current cell; this dataset does not rerun that check.",
+    "Magic CDL and TOP_pex_extracted.spice are layout/extraction artifacts, not normalized training input."
+  ],
+  "files": [
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "url": "https://github.com/ishi-kai/Chipathon2023_ADC/blob/3dce439b2125a9d628e43be40c65cf8fce5d795c/LICENSE",
+      "role": "upstream license",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "design/comp_20240331.sch",
+      "upstream_path": "gitefu/comp_20240331/comp_20240331.sch",
+      "url": "https://github.com/ishi-kai/Chipathon2023_ADC/blob/3dce439b2125a9d628e43be40c65cf8fce5d795c/gitefu/comp_20240331/comp_20240331.sch",
+      "role": "source xschem schematic",
+      "bytes": 7975,
+      "sha256": "126b33946934df1213e790054809fcf6ae8351e6cf9b300b8355bc5249902f53"
+    },
+    {
+      "path": "layout/comp_20240331.gds",
+      "upstream_path": "gitefu/comp_20240331/comp_20240331.gds",
+      "url": "https://github.com/ishi-kai/Chipathon2023_ADC/blob/3dce439b2125a9d628e43be40c65cf8fce5d795c/gitefu/comp_20240331/comp_20240331.gds",
+      "role": "reference layout GDS",
+      "bytes": 42172,
+      "sha256": "e9ccd51ffddf95536b87e4d82c4959183dbd02674c8fd56c65f311cdc31e10c9"
+    },
+    {
+      "path": "netlist/comp_20240331_magic.cdl",
+      "upstream_path": "gitefu/comp_20240331/comp_20240331_magic.cdl",
+      "url": "https://github.com/ishi-kai/Chipathon2023_ADC/blob/3dce439b2125a9d628e43be40c65cf8fce5d795c/gitefu/comp_20240331/comp_20240331_magic.cdl",
+      "role": "layout-extracted Magic CDL",
+      "bytes": 1102,
+      "sha256": "2c2d6cf3dc995c8a50f4115e346db08d9c95fd28e9f151dd52e4d6426ad75c55"
+    },
+    {
+      "path": "netlist/TOP_pex_extracted.spice",
+      "upstream_path": "gitefu/comp_20240331/TOP_pex_extracted.spice",
+      "url": "https://github.com/ishi-kai/Chipathon2023_ADC/blob/3dce439b2125a9d628e43be40c65cf8fce5d795c/gitefu/comp_20240331/TOP_pex_extracted.spice",
+      "role": "PEX-extracted SPICE",
+      "bytes": 5616,
+      "sha256": "370565f2c975d2cd56d0b3a4042ba9e6e1ea8a5ed4b83441f23018eb354dc198"
+    },
+    {
+      "path": "evidence/gf180mcu_magic_drc.txt",
+      "upstream_path": "gitefu/comp_20240331/gf180mcu_magic_drc.txt",
+      "url": "https://github.com/ishi-kai/Chipathon2023_ADC/blob/3dce439b2125a9d628e43be40c65cf8fce5d795c/gitefu/comp_20240331/gf180mcu_magic_drc.txt",
+      "role": "upstream Magic DRC report",
+      "bytes": 151,
+      "sha256": "d59655578069fb112722b28650970362bafc9b96d692fd917fce3ffd72f29097"
+    }
+  ],
+  "pdk_family": "GF180MCU",
+  "device_flavor": "3.3 V (nfet_03v3 / pfet_03v3)",
+  "nominal_supply_v": 3.3
+}

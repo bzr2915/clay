@@ -1,0 +1,46 @@
+{
+  "id": "U14_custom_candidate_verify",
+  "adapter": "candidate_verify",
+  "title": "自定义起点：候选局部检查器",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。 默认检查附件图中的布局；可改 plans（期望孔数/位置）或换 layout_gds。",
+  "expect_rejection": false,
+  "params": {
+    "layout_gds": "data/primitive_generalization/primitive_lab/internal_flow_final4/generated/placement.gds",
+    "netlist": "* Copyright 2022 GlobalFoundries PDK Authors\n*\n* Licensed under the Apache License, Version 2.0 (the \"License\");\n* you may not use this file except in compliance with the License.\n* You may obtain a copy of the License at\n*\n*      http://www.apache.org/licenses/LICENSE-2.0\n*\n* Unless required by applicable law or agreed to in writing, software\n* distributed under the License is distributed on an \"AS IS\" BASIS,\n* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n* See the License for the specific language governing permissions and\n* limitations under the License.\n\n.SUBCKT gf180mcu_fd_sc_mcu9t5v0__inv_2 I ZN VDD VNW VPW VSS\n*.PININFO I:I ZN:O VDD:P VNW:P VPW:P VSS:G\n*.EQN ZN=!I\nM_i_0_0 ZN I VSS VPW nfet_05v0 W=1.320000U L=0.600000U\nM_i_0_1 VSS I ZN VPW nfet_05v0 W=1.320000U L=0.600000U\nM_i_1_0 ZN I VDD VNW pfet_05v0 W=1.830000U L=0.500000U\nM_i_1_1 VDD I ZN VNW pfet_05v0 W=1.830000U L=0.500000U\n.ENDS\n",
+    "contract": {
+      "high": "VDD",
+      "low": "VSS",
+      "n_body": "VPW",
+      "p_body": "VNW",
+      "pdk": "gf180mcu_5v",
+      "mode": "free_placement_external_taps",
+      "floorplan": "free_single_pair_rotations",
+      "device_recipe": "gf180_5v_learned_geometry_v1",
+      "grid_nm": 5,
+      "solver_seconds": 3
+    },
+    "plans": {
+      "nmos": {
+        "count": 2,
+        "centers_nm": [
+          515,
+          985
+        ]
+      },
+      "pmos": {
+        "count": 2,
+        "centers_nm": [
+          775,
+          1245
+        ]
+      }
+    }
+  },
+  "expected": {
+    "derivation": "该布局为流程选中的合法候选；plans 与流程记录一致。",
+    "statements": [
+      "passed = true，failed 为空。",
+      "若把 plans.nmos.count 改为 1，应只出现 nmos_contact_count 失败。"
+    ]
+  }
+}

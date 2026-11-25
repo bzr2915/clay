@@ -1,0 +1,39 @@
+{
+  "id": "H04_heldout_build_row_nmos_2gate",
+  "adapter": "build_row",
+  "title": "泛化：行构造器在未见 W/L 的双栅 NMOS",
+  "expect_rejection": false,
+  "params": {
+    "kind": "nmos",
+    "w_nm": 2150,
+    "l_nm": 750,
+    "chain": [
+      "rail",
+      "output",
+      "rail"
+    ],
+    "contact_plan": {
+      "count": 2,
+      "centers_nm": [
+        1085,
+        1555
+      ]
+    },
+    "geometry_plan": null,
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "同 B02 的规则推导，仅尺寸不同（变形测试：W、L 改变时只应改变相应尺寸）。",
+    "statements": [
+      "有源区 2900×2150：440+750+520+750+440。",
+      "两栅宽 750：x = 440–1190、1710–2460。",
+      "6 个 S/D 孔（3 列 × y 1085/1555）+ 2 个栅孔在有源区上方。",
+      "N+ = 有源区外扩 230；无 N 阱。",
+      "与 B01/B02 对比：除尺寸外，结构（层数、孔数规律、栅接入方向）不变。"
+    ]
+  }
+}

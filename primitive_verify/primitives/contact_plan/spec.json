@@ -1,0 +1,139 @@
+{
+  "primitive": "contact_plan",
+  "inputs": {
+    "library": {
+      "schema": "clay.contact-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "patterns": {
+        "nmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ]
+      },
+      "contact_policies": {
+        "nmos": {
+          "rows": {
+            "kind": "width_stump",
+            "threshold_nm": 1070.0,
+            "low": 1,
+            "high": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        },
+        "pmos": {
+          "rows": {
+            "kind": "constant",
+            "count": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        }
+      },
+      "binding": "target_W_L_models_and_nets",
+      "operator": "rectangular_diffusion_chain_v1"
+    },
+    "kind": "nmos",
+    "w_nm": 1500,
+    "l_nm": 600,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    },
+    "device": {
+      "name": "M1",
+      "model": "nfet_05v0",
+      "drain": "OUT",
+      "gate": "IN",
+      "source": "VSS",
+      "body": "VPW",
+      "w_nm": 1500,
+      "l_nm": 600,
+      "m": 1,
+      "nf": 1
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "plan.count"
+    },
+    {
+      "name": "E2",
+      "from": "plan.centers_nm"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[22/0][0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[33/0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": 2
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": [
+        515,
+        985
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1480,
+        1500
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "count",
+      "value": 5
+    }
+  ],
+  "derivation": "NMOS 策略 width_stump：W 1500 > 阈值 1070 取 2 行；孔中心区间 [180, 1500-180-470=850]，首孔 180+0.5*670=515，次孔 515+470=985。有源区宽 = L 600 + 2*440 = 1480，高 = W 1500。孔数 = 2 段 S/D * 2 + 1 个栅孔 = 5。",
+  "notes": "示例提交：演示 U 测试 U03 的同等内容，由数据 + 薄绑定构成。"
+}

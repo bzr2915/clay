@@ -1,0 +1,37 @@
+{
+  "id": "W01_orthogonal_path_detour",
+  "adapter": "orthogonal_path",
+  "title": "单层正交寻路：绕过障碍",
+  "purpose": "起点、终点之间放一个矩形禁区（青色），观察工程寻路器与线段构造器生成的 M1 线。",
+  "expect_rejection": false,
+  "params": {
+    "start": [
+      0,
+      0
+    ],
+    "goal": [
+      4000,
+      0
+    ],
+    "obstacles": [
+      [
+        1500,
+        -1000,
+        2500,
+        1000
+      ]
+    ],
+    "width_nm": 230,
+    "axis_fraction": 0.5,
+    "vertical": true
+  },
+  "expected": {
+    "derivation": "禁区已是扩展后的 keep-out；线宽 230。",
+    "statements": [
+      "34/0 金属线从 START 连续连到 GOAL。",
+      "金属线与青色禁区无任何重叠。",
+      "所有线段水平或竖直，线宽 230。",
+      "绕行从禁区上方或下方经过（线边缘 |y| > 1000）。"
+    ]
+  }
+}

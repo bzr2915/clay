@@ -1,0 +1,103 @@
+{
+  "primitive": "build_mim_cap",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "name": "C1",
+    "model": "sky130_fd_pr__cap_mim_m3_1",
+    "nets": {
+      "top": "T",
+      "bot": "B"
+    },
+    "w_nm": 2000,
+    "l_nm": 1500
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[89/44][0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[70/20][0]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[70/44]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[70/44][0]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[71/20][0]"
+    },
+    {
+      "name": "E6",
+      "from": "row.terminals[0][0]"
+    },
+    {
+      "name": "E7",
+      "from": "row.terminals[0][2]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        2000,
+        1500
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        -140,
+        -140,
+        2140,
+        1640
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "count",
+      "value": 12
+    },
+    {
+      "name": "E4",
+      "how": "bbox",
+      "value": [
+        300,
+        250,
+        500,
+        450
+      ]
+    },
+    {
+      "name": "E5",
+      "how": "bbox",
+      "value": [
+        235,
+        185,
+        1765,
+        1315
+      ]
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": "T"
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": "metal4"
+    }
+  ],
+  "derivation": "capm = W×L = [0,0,2000,1500]；met3 底板 = capm 外扩 140 (capm.3_a)。via3 200 (via3.1a)、间距 200 (via3.2) → 节距 400，capm 包 via 140 (capm.4)：nx = (2000−280−200)//400+1 = 4，ny = (1500−280−200)//400+1 = 3，共 12；阵列居中 ox = (2000−1400)//2 = 300，oy = (1500−1000)//2 = 250 → 首个 via [300,250,500,450]，阵列 bbox [300,250,1700,1250]；met4 = 阵列外扩 65 (m4.3) = [235,185,1765,1315]。top 端子落在 metal4。",
+  "notes": "新原语：测试集出现的器件类别，纯 PDK 规则构造。"
+}

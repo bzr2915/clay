@@ -15,6 +15,10 @@ clay/_native/*.so
 clay/_native/*.dll
 *.gds
 !benchmarks/**/final/*.gds
+# Open comparator reference layouts used for training/evaluation (Apache-2.0, see each LICENSE).
+!data/comparator_learning_v1/**/*.gds
+# Input layouts of primitive verification cases (primitive_verify/primitives/<name>/input).
+!primitive_verify/primitives/*/input/*.gds
 *.lyrdb
 *.lvsdb
 *.ext

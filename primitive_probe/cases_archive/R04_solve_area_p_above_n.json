@@ -1,0 +1,41 @@
+{
+  "id": "R04_solve_area_p_above_n",
+  "adapter": "solve_area_relation",
+  "title": "放置关系 p_above_n（A 视为 N，B 视为 P）",
+  "expect_rejection": false,
+  "params": {
+    "rectangles": {
+      "A": [
+        2000,
+        2000
+      ],
+      "B": [
+        1500,
+        500
+      ]
+    },
+    "clearances": [
+      [
+        "A",
+        "B",
+        300
+      ]
+    ],
+    "preferences": [
+      [
+        "A",
+        "B",
+        "p_above_n"
+      ]
+    ],
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "两个矩形 A 2000×2000、B 1500×500，净距 300。上下堆叠外框 2000×2800 = 5.6 µm²，左右并排 3800×2000 = 7.6 µm²，故面积最优为上下堆叠。关系是软约束，仅在面积最优解集合内生效。 p_above_n 偏好 (a,b)：b 位于 a 上方。",
+    "statements": [
+      "面积不变（上下堆叠 5.6 µm²）。",
+      "B 位于 A 上方：B 下沿 ≥ A 上沿 + 300（与 R00 对照应翻转）。",
+      "preference_cost = 0。"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "S02_symmetry_pair_with_axis_device",
+  "adapter": "symmetry_placement",
+  "title": "镜像对称：对称对 + 轴上器件",
+  "expect_rejection": false,
+  "params": {
+    "devices": {
+      "A": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      },
+      "B": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      },
+      "C": {
+        "w": 800,
+        "h": 400,
+        "kind": "nmos"
+      }
+    },
+    "symmetry_pairs": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "on_axis_devices": [
+      "C"
+    ],
+    "symmetry_axis": "x",
+    "time_limit_s": 10
+  },
+  "expected": {
+    "derivation": "on_axis_devices 语义：器件中心位于对称轴上。",
+    "statements": [
+      "A、B 同行且关于轴镜像（同 S01）。",
+      "C 的水平中心 = axis_x（C 被轴平分，左右各 400）。",
+      "三者互不重叠且间距 ≥1400。"
+    ]
+  }
+}

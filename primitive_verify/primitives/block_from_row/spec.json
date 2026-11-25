@@ -1,0 +1,115 @@
+{
+  "primitive": "block_from_row",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "row": {
+      "active": [
+        [
+          0,
+          0,
+          1000,
+          500
+        ]
+      ],
+      "poly": [
+        [
+          400,
+          -200,
+          600,
+          700
+        ]
+      ],
+      "metal1": [
+        [
+          -50,
+          100,
+          150,
+          400
+        ]
+      ],
+      "nplus": [
+        [
+          -125,
+          -125,
+          1125,
+          625
+        ]
+      ]
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "b.core"
+    },
+    {
+      "name": "E2",
+      "from": "b.outer"
+    },
+    {
+      "name": "E3",
+      "from": "b.diff"
+    },
+    {
+      "name": "E4",
+      "from": "b.halo"
+    },
+    {
+      "name": "E5",
+      "from": "b.plane"
+    },
+    {
+      "name": "E6",
+      "from": "b.well_box"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": [
+        -50,
+        -200,
+        1000,
+        700
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": [
+        -125,
+        -200,
+        1125,
+        700
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": [
+        0,
+        0,
+        1000,
+        500
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": 135
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": "device"
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": null
+    }
+  ],
+  "derivation": "核心层 = active ∪ poly ∪ metal1 → bbox [−50,−200,1000,700]；外框含 nsdm → [−125,−200,1125,700]；扩散框 = 有源区 [0,0,1000,500]。光环 = ⌈max(difftap.3 270, poly.2 210, li.3 170)/2⌉ = 135（sky130 pack 无 field_poly_active）。器件平面，无阱。",
+  "notes": "新原语：放置块抽象（论文 3.1：构造组整体移动）。"
+}

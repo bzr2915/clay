@@ -1,0 +1,41 @@
+{
+  "id": "D01_build_contacted_device_nmos_v1",
+  "adapter": "build_contacted_device",
+  "title": "两带流程的单器件构造器（v1 单孔）",
+  "expect_rejection": false,
+  "params": {
+    "device": {
+      "name": "M1",
+      "model": "nfet_05v0",
+      "drain": "OUT",
+      "gate": "IN",
+      "source": "VSS",
+      "body": "VPW",
+      "w_nm": 1320,
+      "l_nm": 600
+    },
+    "contact_rows": false
+  },
+  "expected": {
+    "derivation": "GF180 5V 规则（clay/pdk/device_placement.py 注释所列 DRC 编号）：CO.1 接触孔 220；CO.2a 孔距 250；CO.4 有源区包孔 70；CO.7 孔到栅 150；CO.8 栅孔到有源区 170；CO.3 多晶包孔 70；PL.4 端帽 220；DF.6 S/D 伸出 400；M1.1 宽 230；M1.2a 距 230；M1.3 面积 144400 nm²；NP/PP.5a 注入包围 230；DF.4c N阱包P有源区 600；DV.6/DV.8 双栅氧标记包有源区 240、包多晶 400。",
+    "statements": [
+      "22/0 1 个矩形 1480×1320，左下 (0,0)。",
+      "30/0 多晶宽 600，x 440–1040，有源区下沿以下伸出 ≥220；向上延伸至覆盖栅极孔且包孔 ≥70。",
+      "33/0 共 3 个 220×220 孔：源孔中心 x=180、漏孔中心 x=1300（均距有源区边 70），v1 配方每端仅 1 个；栅孔位于有源区上方 ≥170。",
+      "34/0 M1 着陆覆盖各孔余量 ≥60，面积 ≥144400。",
+      "32/0 N+ = 有源区外扩 230；55/0、112/1 包有源区 ≥240、包多晶 ≥400；0/0 边界 = 全部图形外框。",
+      "34/10 文本：VSS 在左（source）、OUT 在右（drain）、IN 在栅。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          0,
+          0,
+          1480,
+          1320
+        ],
+        "label": "有源区"
+      }
+    ]
+  }
+}

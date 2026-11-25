@@ -1,0 +1,94 @@
+{
+  "primitive": "contact_policy_plan",
+  "inputs": {
+    "pdk": "gf180mcu_3v3",
+    "policy": {
+      "rows": {
+        "kind": "constant",
+        "count": 5
+      },
+      "first_contact_free_margin_fraction": 0.5
+    },
+    "wide_nm": 2800,
+    "narrow_nm": 1400
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "wide.count"
+    },
+    {
+      "name": "E2",
+      "from": "wide.capacity"
+    },
+    {
+      "name": "E3",
+      "from": "wide.centers_nm"
+    },
+    {
+      "name": "E4",
+      "from": "narrow.count"
+    },
+    {
+      "name": "E5",
+      "from": "narrow.predicted"
+    },
+    {
+      "name": "E6",
+      "from": "narrow.capacity"
+    },
+    {
+      "name": "E7",
+      "from": "narrow.centers_nm"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": 5
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": 6
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": [
+        460,
+        930,
+        1400,
+        1870,
+        2340
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": 3
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": 5
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": 3
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": [
+        230,
+        700,
+        1170
+      ]
+    }
+  ],
+  "derivation": "GF180：cut 220 (CO.1)、cut_space 250 (CO.2a) → 节距 470；cut_to_active 70 (CO.3)。容量 = (W − 2×70 − 220)//470 + 1：W=2800 → 2440//470+1 = 6；W=1400 → 1040//470+1 = 3。策略 constant 5 截断到 [1, 容量]：5 与 3（predicted 仍记 5）。首孔中心：lo = 70+110 = 180，hi = W − 180 − (n−1)×470；W=2800：hi=740，180+round(0.5×560)=460 → 460,930,1400,1870,2340；W=1400：hi=280，180+50=230 → 230,700,1170。",
+  "notes": "新原语：与反相器库解耦的接触孔规划，策略来自比较器训练集 (GF180 学到 constant 5)。"
+}

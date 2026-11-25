@@ -1,0 +1,104 @@
+{
+  "primitive": "finger_fold",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "text": ".subckt t a y vss\nM1 y a vss vss nfet_01v8 W=4 L=0.15 nf=2\nM2 y a vss vss nfet_01v8 W=0.42 L=0.15\n.ends\n",
+    "target_nm": 1000
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "f"
+    },
+    {
+      "name": "E2",
+      "from": "f[0].w_nm"
+    },
+    {
+      "name": "E3",
+      "from": "f[0].source"
+    },
+    {
+      "name": "E4",
+      "from": "f[0].drain"
+    },
+    {
+      "name": "E5",
+      "from": "f[1].source"
+    },
+    {
+      "name": "E6",
+      "from": "f[3].index"
+    },
+    {
+      "name": "E7",
+      "from": "f[0].gate"
+    },
+    {
+      "name": "E8",
+      "from": "f[4].device"
+    },
+    {
+      "name": "E9",
+      "from": "f[4].w_nm"
+    },
+    {
+      "name": "E10",
+      "from": "f[0].well"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "count",
+      "value": 5
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": 1000
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": "vss"
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": "y"
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": "y"
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": 3
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": "a"
+    },
+    {
+      "name": "E8",
+      "how": "eq",
+      "value": "M2"
+    },
+    {
+      "name": "E9",
+      "how": "eq",
+      "value": 420
+    },
+    {
+      "name": "E10",
+      "how": "eq",
+      "value": null
+    }
+  ],
+  "derivation": "最小指宽 = max(width_min 150, cut 170 + 2×cut_to_active 40 = 250) = 250。M1：W=4000、nf=2 → 每指 2000 > 目标 1000；k=2 时 1000 在 5 nm 网格上且 ≥250 且 ≤1000 → 额外折叠 2，共 nf×m×k = 4 指，每指 4000/(2×2) = 1000。各指 S/D 交替：偶数指 (s,d)=(vss,y)，奇数指 (y,vss)；索引 0..3。M2：420 ≤ 1000，k=1，1 指 420。NMOS 不在阱内 → well=None。总计 5 指。",
+  "notes": "新原语：折叠是布局自由度（不改变总 W/L），由决策步骤选择。"
+}

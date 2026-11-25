@@ -1,0 +1,107 @@
+{
+  "primitive": "observe_layout",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "sample": "chain2",
+    "netlist": ".subckt t a b y vss\nM1 y a n1 vss nfet_01v8 W=0.42 L=0.15\nM2 n1 b vss vss nfet_01v8 W=0.42 L=0.15\n.ends\n",
+    "gds": "primitive_verify/primitives/observe_layout/input/chain2.gds"
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "o.gates"
+    },
+    {
+      "name": "E2",
+      "from": "o.gate_orientation_uniformity"
+    },
+    {
+      "name": "E3",
+      "from": "o.contacts"
+    },
+    {
+      "name": "E4",
+      "from": "o.contacts[0].width_nm"
+    },
+    {
+      "name": "E5",
+      "from": "o.contacts[0].count"
+    },
+    {
+      "name": "E6",
+      "from": "o.contacts[0].first_offset_nm"
+    },
+    {
+      "name": "E7",
+      "from": "o.gates_per_island"
+    },
+    {
+      "name": "E8",
+      "from": "o.best_axis"
+    },
+    {
+      "name": "E9",
+      "from": "o.axis_relative_to_gates"
+    },
+    {
+      "name": "E10",
+      "from": "o.material_area_nm2"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": 2
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": 1.0
+    },
+    {
+      "name": "E3",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": 420
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": 1
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": 125
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": [
+        2
+      ]
+    },
+    {
+      "name": "E8",
+      "how": "eq",
+      "value": "vertical"
+    },
+    {
+      "name": "E9",
+      "how": "eq",
+      "value": "parallel"
+    },
+    {
+      "name": "E10",
+      "how": "eq",
+      "value": 1537500
+    }
+  ],
+  "derivation": "输入 GDS（input/chain2.gds）由工程 build_row+materialize 生成：sky130 两沟道链，有源区 [0,0,1250,420]（端段 300、共享段 350、L 150），沟道 [300,450]、[800,950]。观测：栅 2 个、均竖直 → 一致性 1.0；S/D 段 3 个，每段 1 孔，段宽（沿栅方向）420，孔下沿 210−85 = 125；单岛 2 栅 → [2]。镜像：竖直轴 x=625 使两栅互为镜像（配对率 1.0），水平轴只能让每栅自镜像 → 选竖直，且与竖直栅平行 → parallel。材料外框：x 由 nsdm [−125, 1250+125=1375]，y 下由 poly 端帽 −130、上由 npc 栅孔(710±85)+100 = 895 → 1500×1025 = 1537500。",
+  "notes": "新原语：训练观测（只读训练版图）。"
+}

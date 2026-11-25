@@ -1,0 +1,35 @@
+{
+  "id": "S03_symmetry_unequal_pair",
+  "adapter": "symmetry_placement",
+  "title": "镜像对称：尺寸不同的一对（边界情况）",
+  "expect_rejection": false,
+  "params": {
+    "devices": {
+      "A": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      },
+      "B": {
+        "w": 600,
+        "h": 600,
+        "kind": "nmos"
+      }
+    },
+    "symmetry_pairs": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "symmetry_axis": "x",
+    "time_limit_s": 10
+  },
+  "expected": {
+    "derivation": "镜像对称对通常要求匹配器件；此用例观察工程对不匹配尺寸的处理。",
+    "statements": [
+      "要么工程报错/提示，要么 A、B 中心关于轴等距（中心到轴距离相等）。",
+      "人工记录工程实际采用的是“中心对称”还是“边缘对称”，判断是否符合设计意图。"
+    ]
+  }
+}

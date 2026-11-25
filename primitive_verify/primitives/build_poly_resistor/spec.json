@@ -1,0 +1,155 @@
+{
+  "primitive": "build_poly_resistor",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "name": "R1",
+    "model": "sky130_fd_pr__res_high_po_0p35",
+    "nets": {
+      "a": "A",
+      "b": "B",
+      "sub": "VSS"
+    },
+    "w_nm": 350,
+    "l_nm": 2000,
+    "style": {
+      "head_cut_nm": [
+        190,
+        2000
+      ],
+      "poly_over_head_cut_nm": 100,
+      "metal_over_head_cut_nm": 100,
+      "marker_over_poly_nm": 200
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[66/20]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[66/20][0]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[66/13][0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[66/44]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[66/44][0]"
+    },
+    {
+      "name": "E6",
+      "from": "layout.polygons[67/20][0]"
+    },
+    {
+      "name": "E7",
+      "from": "layout.polygons[86/20][0]"
+    },
+    {
+      "name": "E8",
+      "from": "layout.polygons[94/20][0]"
+    },
+    {
+      "name": "E9",
+      "from": "layout.polygons[95/20][0]"
+    },
+    {
+      "name": "E10",
+      "from": "row.terminals[0][0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "count",
+      "value": 1
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        2780,
+        2200
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "bbox",
+      "value": [
+        390,
+        925,
+        2390,
+        1275
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "count",
+      "value": 2
+    },
+    {
+      "name": "E5",
+      "how": "bbox",
+      "value": [
+        100,
+        100,
+        290,
+        2100
+      ]
+    },
+    {
+      "name": "E6",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        390,
+        2200
+      ]
+    },
+    {
+      "name": "E7",
+      "how": "bbox",
+      "value": [
+        -200,
+        -200,
+        2980,
+        2400
+      ]
+    },
+    {
+      "name": "E8",
+      "how": "bbox",
+      "value": [
+        -200,
+        -200,
+        2980,
+        2400
+      ]
+    },
+    {
+      "name": "E9",
+      "how": "bbox",
+      "value": [
+        -200,
+        -200,
+        2980,
+        2400
+      ]
+    },
+    {
+      "name": "E10",
+      "how": "eq",
+      "value": "A"
+    }
+  ],
+  "derivation": "风格（2AM 训练样本学得）：头部槽孔 190×2000，poly 包槽孔 100，金属包槽孔 100，标记包 poly 200。头长 = 190+2×100 = 390，头宽 = max(2000+200, 350) = 2200；本体长 L=2000，宽 W=350，纵向居中 y0 = (2200−350)//2 = 925。poly = 两头 [0,0,390,2200]、[2390,0,2780,2200] + 本体 [390,925,2390,1275] 连成一个多边形，bbox [0,0,2780,2200]；polyres 只标本体。槽孔在头部中心 (195,1100) → [100,100,290,2100]，共 2 个。li 焊盘 = 槽孔外扩 max(100, li.5 80) = [0,0,390,2200]。标记外扩 = max(学得 200, rpm.3 200, rpm.4 110, rpm.5 95) = 200 → rpm/psdm/npc 均为 [−200,−200,2980,2400]（3180×2600 ≥ rpm.1a 1270）。端子 a→A。",
+  "notes": "新原语：电阻构造器，几何风格来自训练样本 sky130_2amlogic。"
+}

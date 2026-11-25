@@ -1,0 +1,40 @@
+{
+  "id": "D02_build_contacted_device_pmos_v2_rows",
+  "adapter": "build_contacted_device",
+  "title": "单器件构造器 v2：按 W 生成多行 S/D 接触（PMOS）",
+  "expect_rejection": false,
+  "params": {
+    "device": {
+      "name": "M2",
+      "model": "pfet_05v0",
+      "drain": "OUT",
+      "gate": "IN",
+      "source": "VDD",
+      "body": "VNW",
+      "w_nm": 1830,
+      "l_nm": 500
+    },
+    "contact_rows": true
+  },
+  "expected": {
+    "derivation": "GF180 5V 规则（clay/pdk/device_placement.py 注释所列 DRC 编号）：CO.1 接触孔 220；CO.2a 孔距 250；CO.4 有源区包孔 70；CO.7 孔到栅 150；CO.8 栅孔到有源区 170；CO.3 多晶包孔 70；PL.4 端帽 220；DF.6 S/D 伸出 400；M1.1 宽 230；M1.2a 距 230；M1.3 面积 144400 nm²；NP/PP.5a 注入包围 230；DF.4c N阱包P有源区 600；DV.6/DV.8 双栅氧标记包有源区 240、包多晶 400。 W 内可放孔数 n 满足 220n + 250(n−1) ≤ 1830 − 2×70 ⇒ n = 4。",
+    "statements": [
+      "22/0 1 个矩形 1380×1830（500 + 2×440）。",
+      "源、漏各 4 个接触孔（共 8）+ 1 个栅孔；同列孔距 470。",
+      "PMOS 栅极孔位于有源区下方（版图上下翻转），距有源区 ≥170。",
+      "21/0 N 阱 = 有源区外扩 600；31/0 P+ = 外扩 230；无 N+。",
+      "源/漏各自的 M1 着陆把本端 4 个孔连成一块，源漏之间不相连。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          -600,
+          -600,
+          1980,
+          2430
+        ],
+        "label": "N 阱（有源区外扩 600）"
+      }
+    ]
+  }
+}

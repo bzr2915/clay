@@ -1,0 +1,25 @@
+{
+  "schema": "clay.comparator-reference-dataset.v1",
+  "title": "Open comparator reference circuits: GF180 + SKY130 training, JKU SKY130 held-out test",
+  "created_date": "2026-11-10",
+  "state": "collected_not_trained",
+  "learning_performed": false,
+  "training": [
+    "gf180_ishi_kai_chipathon2023_dynamic_comparator",
+    "sky130_2amlogic_dynamic_latched"
+  ],
+  "test": [
+    "sky130_jku_sar_adc1_adc_comp_latch"
+  ],
+  "test_is_held_out": true,
+  "manifests": {
+    "gf180_ishi_kai_chipathon2023_dynamic_comparator": "training/gf180_ishi_kai_chipathon2023_dynamic_comparator/SOURCE.json",
+    "sky130_2amlogic_dynamic_latched": "training/sky130_2amlogic_dynamic_latched/SOURCE.json",
+    "sky130_jku_sar_adc1_adc_comp_latch": "test/sky130_jku_sar_adc1_adc_comp_latch/SOURCE.json"
+  },
+  "limitations": [
+    "One sample per PDK is a seed dataset; it does not establish generalization.",
+    "Upstream source files are preserved as published; no common CDL conversion or feature extraction was performed.",
+    "This dataset does not assert that existing inverter-oriented learning/generation entry points can consume comparator samples."
+  ]
+}
