@@ -10,8 +10,9 @@ readme = "README.md"
 license = { text = "AGPL-3.0-only" }
 requires-python = ">=3.12"
 authors = [
-    { name = "Zhaori Bi", email = "zhaori_bi@fudan.edu.cn" },
-    { name = "Jiangyc08", email = "2430XH20034@m.fudan.edu.cn" },
+    { name = "Zhaori Bi (毕朝日)", email = "zhaori_bi@fudan.edu.cn" },
+    { name = "Yuchen Jiang (姜雨辰)", email = "2430XH20034@m.fudan.edu.cn" },
+    { name = "Rouxi Huang (黄柔希)", email = "15858488647@163.com" },
 ]
 keywords = ["EDA", "analog", "layout", "sky130", "gf180mcu", "GDSII", "C++20", "PnR"]
 classifiers = [

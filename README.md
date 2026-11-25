@@ -4,6 +4,8 @@
 
 # clay
 
+<p><strong>English</strong> &nbsp;·&nbsp; <a href="README.zh-CN.md">简体中文</a></p>
+
 ### **Analog layout was never automatable. Until now.**
 
 *A netlist describes structure. A layout embodies physics.*<br />
@@ -146,6 +148,8 @@ Ready-to-run analog circuits targeting **GlobalFoundries GF180MCU** and **SkyWat
 | **Voltage References** | [`bandgap_reference`](benchmarks/gf180mcu/bandgap_reference) | [`bandgap_reference`](benchmarks/sky130/bandgap_reference) |
 | **Mixed-Signal / RF / Bias** | [`cs_dac_4bit`](benchmarks/gf180mcu/cs_dac_4bit) | [`lc_tank_vco`](benchmarks/sky130/lc_tank_vco) · [`bias_tree`](benchmarks/sky130/bias_tree) |
 
+Additional curated SKY130 schematic/layout reference circuits (with provenance and SHA-256 manifests) are available in [`references/circuits/`](references/circuits/).
+
 ---
 
 ## Development & Contributing
@@ -157,6 +161,7 @@ Ready-to-run analog circuits targeting **GlobalFoundries GF180MCU** and **SkyWat
 | [`clay/`](clay/) | Language frontend, intent compiler, PDK adapters (`gf180mcu`, `sky130`), and physical flow orchestration |
 | [`cpp/clay_pnr/`](cpp/clay_pnr/) | C++20 geometry, MOS PCell, placement, routing, and binary GDSII engine + `clay_engine_cli` |
 | [`benchmarks/`](benchmarks/) | Open-PDK circuit benchmarks (`.clay` designs, testbenches, and manifests) |
+| [`references/`](references/) | Collected open-source SKY130 reference circuits with upstream provenance and licenses |
 | [`data/`](data/) | Open-PDK BSIM `gm/Id` lookup tables for GF180MCU and SKY130 |
 | [`tools/`](tools/) | KLayout DRC/LVS runners, intent optimizer, formatter, linter, and GDS renderer |
 | [`docker/`](docker/) | Open-source signoff setup guide (`hpretl/iic-osic-tools`) |
@@ -172,8 +177,9 @@ Contributions—new open-PDK benchmarks, design primitives, placement/routing im
 
 ### Authors & Maintainers
 
-- **Zhaori Bi** ([@bzr2915](https://github.com/bzr2915)) — Fudan University
-- **[@Jiangyc08](https://github.com/Jiangyc08)** — Fudan University
+- **Zhaori Bi (毕朝日)** ([@bzr2915](https://github.com/bzr2915)) — Fudan University
+- **Yuchen Jiang (姜雨辰)** ([@Jiangyc08](https://github.com/Jiangyc08)) — Fudan University
+- **Rouxi Huang (黄柔希)** ([@HRXrosy](https://github.com/HRXrosy)) — Fudan University
 
 ---
 
