@@ -1,0 +1,1616 @@
+{
+  "schema_version": 1,
+  "pdk": "sky130",
+  "collection_date_from_inventory": "2026-11-11",
+  "source_comparison_date": "2026-11-24",
+  "files": [
+    {
+      "path": "sky130/01_basic_opamp/LICENSE",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "LICENSE",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "packaged_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/README.md",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "README.md",
+      "source_sha256": "f67e6ad142896c3ed54dd9c6c4a331ab9745e34aa1c3abe0a157609051eb0f20",
+      "packaged_sha256": "f67e6ad142896c3ed54dd9c6c4a331ab9745e34aa1c3abe0a157609051eb0f20",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/SOURCE.txt",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": null,
+      "source_sha256": "95efa4a703517eb91eb3bf1a22caa6046c17b097bbb7d49d4b1c73b6528ea984",
+      "packaged_sha256": "95efa4a703517eb91eb3bf1a22caa6046c17b097bbb7d49d4b1c73b6528ea984",
+      "provenance_check": "local_provenance_file",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/docs/sky130_ef_ip__opamp.md",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "docs/sky130_ef_ip__opamp.md",
+      "source_sha256": "b5cb062037ae8cf7b64833c87b84f1f9d41def36bd5523ceab770c4137a64ae8",
+      "packaged_sha256": "b5cb062037ae8cf7b64833c87b84f1f9d41def36bd5523ceab770c4137a64ae8",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/docs/sky130_ef_ip__opamp_b.png",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "docs/sky130_ef_ip__opamp_b.png",
+      "source_sha256": "a8530aa5e6734889522b7cfe468349db63429677a89e5ba1b6b67be3e9b95752",
+      "packaged_sha256": "a8530aa5e6734889522b7cfe468349db63429677a89e5ba1b6b67be3e9b95752",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/docs/sky130_ef_ip__opamp_rcx.md",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "docs/sky130_ef_ip__opamp_rcx.md",
+      "source_sha256": "84fca835fc456bd841c6bae52be22ddea593217dad29081ed30d08e8db9813f9",
+      "packaged_sha256": "84fca835fc456bd841c6bae52be22ddea593217dad29081ed30d08e8db9813f9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/docs/sky130_ef_ip__opamp_schematic.svg",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "docs/sky130_ef_ip__opamp_schematic.svg",
+      "source_sha256": "26d40aa9efcb33460587f0763a87a5417d01a0b3b2ee8b50de27dac12d1d10c5",
+      "packaged_sha256": "26d40aa9efcb33460587f0763a87a5417d01a0b3b2ee8b50de27dac12d1d10c5",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/docs/sky130_ef_ip__opamp_symbol.svg",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "docs/sky130_ef_ip__opamp_symbol.svg",
+      "source_sha256": "1de12f5e1c8ad8b8c315b46fd39165faae8409f193e26d70782a63fe273e5ece",
+      "packaged_sha256": "1de12f5e1c8ad8b8c315b46fd39165faae8409f193e26d70782a63fe273e5ece",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/docs/sky130_ef_ip__opamp_w.png",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "docs/sky130_ef_ip__opamp_w.png",
+      "source_sha256": "680b3b70547c22d428a82f5d0aa6b2263970797cd51bdcbf3f8e73ae7d8f93e0",
+      "packaged_sha256": "680b3b70547c22d428a82f5d0aa6b2263970797cd51bdcbf3f8e73ae7d8f93e0",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/gds/sky130_ef_ip__opamp.gds",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "gds/sky130_ef_ip__opamp.gds",
+      "source_sha256": "7c4752f85bb444907ba8999a6afabbedd1257764e8b3b173840627398d816977",
+      "packaged_sha256": "7c4752f85bb444907ba8999a6afabbedd1257764e8b3b173840627398d816977",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__diode_pw2nd_05v5_L93GHW.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__diode_pw2nd_05v5_L93GHW.mag",
+      "source_sha256": "3e37ab3f24608f73fa6627e15dd7e0c216072043cb8fdc2c61448bb70e395444",
+      "packaged_sha256": "3e37ab3f24608f73fa6627e15dd7e0c216072043cb8fdc2c61448bb70e395444",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__nfet_03v3_nvt_EJGQJV.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_03v3_nvt_EJGQJV.mag",
+      "source_sha256": "dcee5a0f81421f9354296567887c6bcdf2f8298b67e12dc29fc63c664e5d2709",
+      "packaged_sha256": "dcee5a0f81421f9354296567887c6bcdf2f8298b67e12dc29fc63c664e5d2709",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_EJGQJV.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_EJGQJV.mag",
+      "source_sha256": "17dd1339e25a590233c69810ee7f146636d83e682963b2764a24562bd38b73f5",
+      "packaged_sha256": "17dd1339e25a590233c69810ee7f146636d83e682963b2764a24562bd38b73f5",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_H7BQ24.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_H7BQ24.mag",
+      "source_sha256": "c9c597f6111a1baa6e17750157907fed0e623b73c5bee8817cdeae479772b02b",
+      "packaged_sha256": "c9c597f6111a1baa6e17750157907fed0e623b73c5bee8817cdeae479772b02b",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_UC3VEF.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_UC3VEF.mag",
+      "source_sha256": "9cae2c230b75606635f1338fb3b5e18835b127fb094018e72d4cde26546b3dd8",
+      "packaged_sha256": "9cae2c230b75606635f1338fb3b5e18835b127fb094018e72d4cde26546b3dd8",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_AQ2AJT.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_AQ2AJT.mag",
+      "source_sha256": "ea10f77c24cfec042c838867caa259f5060a6cd3f8c2e48c5033cb2325ea8512",
+      "packaged_sha256": "ea10f77c24cfec042c838867caa259f5060a6cd3f8c2e48c5033cb2325ea8512",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_U62SY6.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_U62SY6.mag",
+      "source_sha256": "97a58d1824351237bebd40984bb8e172c43b0032e154e0ac6dd27faae43e188d",
+      "packaged_sha256": "97a58d1824351237bebd40984bb8e172c43b0032e154e0ac6dd27faae43e188d",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_U6NWY6.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_U6NWY6.mag",
+      "source_sha256": "a8b790858e72603082dc3e1a28e24da9e0b7dd6ecec30dd0ce10fe709960be6c",
+      "packaged_sha256": "a8b790858e72603082dc3e1a28e24da9e0b7dd6ecec30dd0ce10fe709960be6c",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_D7NTZ8.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_D7NTZ8.mag",
+      "source_sha256": "526f035df28e3edabe2b78a1cda29f378423d1f8795433e01721181fe200e0ba",
+      "packaged_sha256": "526f035df28e3edabe2b78a1cda29f378423d1f8795433e01721181fe200e0ba",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/mag/sky130_ef_ip__opamp.mag",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "mag/sky130_ef_ip__opamp.mag",
+      "source_sha256": "f91dcd6a76d984d1f0d484ff1fbd562714956ea185ab226398b7638bc8c4197c",
+      "packaged_sha256": "f91dcd6a76d984d1f0d484ff1fbd562714956ea185ab226398b7638bc8c4197c",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/xschem/sky130_ef_ip__opamp.sch",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "xschem/sky130_ef_ip__opamp.sch",
+      "source_sha256": "7825e07a205352236a0c43ea208cb7c8677bc9ee068de30e163bd42a17682f85",
+      "packaged_sha256": "7825e07a205352236a0c43ea208cb7c8677bc9ee068de30e163bd42a17682f85",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/xschem/sky130_ef_ip__opamp.sym",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "xschem/sky130_ef_ip__opamp.sym",
+      "source_sha256": "a9122884b19a3515e72242763e46a81e9f26cf7c54dacbfeabd18149b7cae7bb",
+      "packaged_sha256": "a9122884b19a3515e72242763e46a81e9f26cf7c54dacbfeabd18149b7cae7bb",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/01_basic_opamp/xschem/sky130_ef_ip__opamp_tb.sch",
+      "repository": "https://github.com/efabless/sky130_ef_ip__opamp",
+      "checked_revision": "f0eb5cd47112d90fd6d7792ba68e763beacac8e7",
+      "upstream_path": "xschem/sky130_ef_ip__opamp_tb.sch",
+      "source_sha256": "e8ca722527ce0cf47165944efff657629d01b06fa0803b83c2b6bd7f999bef1b",
+      "packaged_sha256": "e8ca722527ce0cf47165944efff657629d01b06fa0803b83c2b6bd7f999bef1b",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/LICENSE",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "LICENSE",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "packaged_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/README.md",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "README.md",
+      "source_sha256": "60165a19f5b7a8651de07642a2c8d549949104713093bb76043ea4ca0152fcaf",
+      "packaged_sha256": "60165a19f5b7a8651de07642a2c8d549949104713093bb76043ea4ca0152fcaf",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/SOURCE.txt",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": null,
+      "source_sha256": "7d057492b2c888f302d71e778f3be6ebb4f71f370076f125b2ebad64af7c62ae",
+      "packaged_sha256": "7d057492b2c888f302d71e778f3be6ebb4f71f370076f125b2ebad64af7c62ae",
+      "provenance_check": "local_provenance_file",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/docs/sky130_pa_ip__instramp.md",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "docs/sky130_pa_ip__instramp.md",
+      "source_sha256": "28d726bf6397e3654447711a4570a7bcb5635c77636dab695b925d35c79963b2",
+      "packaged_sha256": "28d726bf6397e3654447711a4570a7bcb5635c77636dab695b925d35c79963b2",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/docs/sky130_pa_ip__instramp_b.png",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "docs/sky130_pa_ip__instramp_b.png",
+      "source_sha256": "8e44b0149140e5be423128ad75a9fc7ffde08d97a60572418673ed522ec44cbe",
+      "packaged_sha256": "8e44b0149140e5be423128ad75a9fc7ffde08d97a60572418673ed522ec44cbe",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/docs/sky130_pa_ip__instramp_schematic.md",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "docs/sky130_pa_ip__instramp_schematic.md",
+      "source_sha256": "f6dfbdbb5b3553e564dcc2d4421103838288b9054aa33297bdb3b68f9ac163b3",
+      "packaged_sha256": "f6dfbdbb5b3553e564dcc2d4421103838288b9054aa33297bdb3b68f9ac163b3",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/docs/sky130_pa_ip__instramp_schematic.svg",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "docs/sky130_pa_ip__instramp_schematic.svg",
+      "source_sha256": "8421552855b6b1e4f10f9f8b2c202f6963aaadbcbcef75abc6c8c7cd122f6789",
+      "packaged_sha256": "087ac05fd7587af26cc573007b3df330d9ec9a9d21a07c033bc4c6014dbcc60e",
+      "provenance_check": "exact_match",
+      "changes": [
+        "Made the displayed upstream source path relative and added a modification notice; circuit drawing and author attribution unchanged."
+      ]
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/docs/sky130_pa_ip__instramp_symbol.svg",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "docs/sky130_pa_ip__instramp_symbol.svg",
+      "source_sha256": "40f6e156827136a41913cded17a1e98665f8ed473d256a9f203b238aedcc2d45",
+      "packaged_sha256": "40f6e156827136a41913cded17a1e98665f8ed473d256a9f203b238aedcc2d45",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/docs/sky130_pa_ip__instramp_w.png",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "docs/sky130_pa_ip__instramp_w.png",
+      "source_sha256": "ba3cc420da0a4f8c384e6d848e9cc4426cb9c1b5d51310e7d5fc95fdc7006e2d",
+      "packaged_sha256": "ba3cc420da0a4f8c384e6d848e9cc4426cb9c1b5d51310e7d5fc95fdc7006e2d",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/gds/sky130_pa_ip__instramp.gds",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "gds/sky130_pa_ip__instramp.gds.gz",
+      "source_sha256": "559e9f06b81bfc6f72de8724f2635e50c6a44ca001cf78365a27deaf46bcbb06",
+      "packaged_sha256": "559e9f06b81bfc6f72de8724f2635e50c6a44ca001cf78365a27deaf46bcbb06",
+      "provenance_check": "exact_decompression_of_upstream_gds_gz",
+      "changes": [],
+      "upstream_compressed_blob_sha": "d73e3bd2ff75770494e19e2eae15c4fd2e8407ee",
+      "source_transformation": "Lossless gzip decompression."
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/Input_Stage_OA1.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/Input_Stage_OA1.mag",
+      "source_sha256": "bb14fd7a5e0e1747ce1d109a94d167b227bf5f0441f4094694659114aaa94a44",
+      "packaged_sha256": "bb14fd7a5e0e1747ce1d109a94d167b227bf5f0441f4094694659114aaa94a44",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/Input_Stage_OA2.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/Input_Stage_OA2.mag",
+      "source_sha256": "a9796a9c39797b6b837effacdc244f9f118bd5229222ff16c2b88d7481fc1c09",
+      "packaged_sha256": "a9796a9c39797b6b837effacdc244f9f118bd5229222ff16c2b88d7481fc1c09",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/Input_Stage_v1.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/Input_Stage_v1.mag",
+      "source_sha256": "fdd43ed3fa4b638f201cf8dd05f393376002930fa892ef0d2ce6990784623385",
+      "packaged_sha256": "fdd43ed3fa4b638f201cf8dd05f393376002930fa892ef0d2ce6990784623385",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/Output_OA.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/Output_OA.mag",
+      "source_sha256": "e177ca9457e580e3abeb6bfa1eeb0ec4d7cc9acfec6089923d27dfc6e9f8251b",
+      "packaged_sha256": "e177ca9457e580e3abeb6bfa1eeb0ec4d7cc9acfec6089923d27dfc6e9f8251b",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/Parallel_10B_Block2.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/Parallel_10B_Block2.mag",
+      "source_sha256": "63c4927aacc920f29e0d2990425f103fcbc5e2417adae100fb60aebdcffe98c9",
+      "packaged_sha256": "63c4927aacc920f29e0d2990425f103fcbc5e2417adae100fb60aebdcffe98c9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/T_Gate_5V.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/T_Gate_5V.mag",
+      "source_sha256": "77a087e8679cb62568c26b7e5793a5554260181ebc67ba60c1771316593b5fcc",
+      "packaged_sha256": "77a087e8679cb62568c26b7e5793a5554260181ebc67ba60c1771316593b5fcc",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/Universal_R_2R_Block2.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/Universal_R_2R_Block2.mag",
+      "source_sha256": "8298ca465f9da0b6d6a3f592b6a0e9ffe39bf6639943cc761f1455ea9632dbb7",
+      "packaged_sha256": "8298ca465f9da0b6d6a3f592b6a0e9ffe39bf6639943cc761f1455ea9632dbb7",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__cap_mim_m3_1_BHK9HY.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__cap_mim_m3_1_BHK9HY.mag",
+      "source_sha256": "204539503cee92081f5224030248bc64e8258a8b728b670fd458daf30d60512a",
+      "packaged_sha256": "204539503cee92081f5224030248bc64e8258a8b728b670fd458daf30d60512a",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_01v8_lvt_AJ3MPE.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_01v8_lvt_AJ3MPE.mag",
+      "source_sha256": "5ec9687daaa9734a693e95355f36d5733e1edb33311d710d81c744eeefcb1b2d",
+      "packaged_sha256": "5ec9687daaa9734a693e95355f36d5733e1edb33311d710d81c744eeefcb1b2d",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_01v8_lvt_GPVK5X.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_01v8_lvt_GPVK5X.mag",
+      "source_sha256": "08af4815131e76781b6fa6c942dea35ab3bab18c7d5fdd7c3bcc43c10122cb5b",
+      "packaged_sha256": "08af4815131e76781b6fa6c942dea35ab3bab18c7d5fdd7c3bcc43c10122cb5b",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_01v8_lvt_J5SA94.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_01v8_lvt_J5SA94.mag",
+      "source_sha256": "323a01db4723815d9a824998bb25980916a3fd2d206a74067eafcdcf99bf0c25",
+      "packaged_sha256": "323a01db4723815d9a824998bb25980916a3fd2d206a74067eafcdcf99bf0c25",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_05v0_nvt_DGVVYJ.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_05v0_nvt_DGVVYJ.mag",
+      "source_sha256": "7bc790eed2aaf48bf46aa00de33add15feae507212d14b94a9657e1de3f750f0",
+      "packaged_sha256": "7bc790eed2aaf48bf46aa00de33add15feae507212d14b94a9657e1de3f750f0",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_05v0_nvt_FEJX3A.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_05v0_nvt_FEJX3A.mag",
+      "source_sha256": "c95abe0a5637227bdb2aeb09cfecc6dffd9eee2b1015802db45c7f84decb2410",
+      "packaged_sha256": "c95abe0a5637227bdb2aeb09cfecc6dffd9eee2b1015802db45c7f84decb2410",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_05v0_nvt_RLJRR9.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_05v0_nvt_RLJRR9.mag",
+      "source_sha256": "2d81a920d53f22d1ae4a18725b42eb6fb898e7461e251cae953243f0ad25df65",
+      "packaged_sha256": "2d81a920d53f22d1ae4a18725b42eb6fb898e7461e251cae953243f0ad25df65",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_23MX5T.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_23MX5T.mag",
+      "source_sha256": "ac7a3a2e3e338e1eaa53561a40c127df51ead136bbf401c4b848645e7dc00815",
+      "packaged_sha256": "ac7a3a2e3e338e1eaa53561a40c127df51ead136bbf401c4b848645e7dc00815",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_3WU84W.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_3WU84W.mag",
+      "source_sha256": "29b6469fccfe6e555efdcf891b0032b784e347543803932b5155f8073e233402",
+      "packaged_sha256": "29b6469fccfe6e555efdcf891b0032b784e347543803932b5155f8073e233402",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_4LR2CH.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_4LR2CH.mag",
+      "source_sha256": "1791091066688c837c6844e246d3cdbc2cd911414e0f0f6a4eed121c6c4b90a4",
+      "packaged_sha256": "1791091066688c837c6844e246d3cdbc2cd911414e0f0f6a4eed121c6c4b90a4",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_7WHXCK.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_7WHXCK.mag",
+      "source_sha256": "bebf997df86979cd4fba6714a27abd452b604bb92f02a32120638e735d93ee47",
+      "packaged_sha256": "bebf997df86979cd4fba6714a27abd452b604bb92f02a32120638e735d93ee47",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_8EN3UA.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_8EN3UA.mag",
+      "source_sha256": "7a76f0bfd658771621cb756d7186ccacb9cd233362f448231c8f772e16ee761d",
+      "packaged_sha256": "7a76f0bfd658771621cb756d7186ccacb9cd233362f448231c8f772e16ee761d",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_8JY3H3.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_8JY3H3.mag",
+      "source_sha256": "8072dfcbfa6da23f2693a1ad0b516b0552023368848a7ede3fb8464cc0d279ce",
+      "packaged_sha256": "8072dfcbfa6da23f2693a1ad0b516b0552023368848a7ede3fb8464cc0d279ce",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_92HZNS.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_92HZNS.mag",
+      "source_sha256": "86d651af5fc4df4bf3641d4ebfbfb3ce8b2c8e140a81fd2c08a6ed098d41e479",
+      "packaged_sha256": "86d651af5fc4df4bf3641d4ebfbfb3ce8b2c8e140a81fd2c08a6ed098d41e479",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_AGW2CT.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_AGW2CT.mag",
+      "source_sha256": "5e4909751e8fefeb5a5c02e43b54535edbb05024cb1154d15c48d9ad07e3b9f9",
+      "packaged_sha256": "5e4909751e8fefeb5a5c02e43b54535edbb05024cb1154d15c48d9ad07e3b9f9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_BGW2HN.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_BGW2HN.mag",
+      "source_sha256": "6f827af1af8016e68c85dc5215e1781807ad0d5a010c038f853bf58ad04ab477",
+      "packaged_sha256": "6f827af1af8016e68c85dc5215e1781807ad0d5a010c038f853bf58ad04ab477",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_DGW2ZQ.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_DGW2ZQ.mag",
+      "source_sha256": "1451963f49d2408a331d68898e9092d2f57b823a12825b6a508f9899db3ca2d1",
+      "packaged_sha256": "1451963f49d2408a331d68898e9092d2f57b823a12825b6a508f9899db3ca2d1",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_EXU8P8.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_EXU8P8.mag",
+      "source_sha256": "fff1f41538b6ec6687868b1dc82edfe47f992d1f51f1e1d915e1a41105d52cfd",
+      "packaged_sha256": "fff1f41538b6ec6687868b1dc82edfe47f992d1f51f1e1d915e1a41105d52cfd",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_F27K9T.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_F27K9T.mag",
+      "source_sha256": "98b52f1208de336b4b58408a832930721d654472b03522ebf09ea7c07d9a4b65",
+      "packaged_sha256": "98b52f1208de336b4b58408a832930721d654472b03522ebf09ea7c07d9a4b65",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_KWU84Z.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_KWU84Z.mag",
+      "source_sha256": "b27d5229d9867844c6232a03a41952bbe24ebc41c8d07bc333b032130e730ad8",
+      "packaged_sha256": "b27d5229d9867844c6232a03a41952bbe24ebc41c8d07bc333b032130e730ad8",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_NL97T4.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_NL97T4.mag",
+      "source_sha256": "af8fc65fd684fef78b808cb9f12cefbdca00bb02e8649596b4a693b3a51cbd8a",
+      "packaged_sha256": "af8fc65fd684fef78b808cb9f12cefbdca00bb02e8649596b4a693b3a51cbd8a",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_NZU856.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_NZU856.mag",
+      "source_sha256": "38dd2445936cd9cc40548e8d09300ec2d05cec3cb1ec2735ae3fac392a645159",
+      "packaged_sha256": "38dd2445936cd9cc40548e8d09300ec2d05cec3cb1ec2735ae3fac392a645159",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_TZT4V2.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_TZT4V2.mag",
+      "source_sha256": "04b00559b643d80cac0f5a75c75f2ddc2ad35195b799dca70f188eca7c3977f5",
+      "packaged_sha256": "04b00559b643d80cac0f5a75c75f2ddc2ad35195b799dca70f188eca7c3977f5",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_X3G4ZS.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_X3G4ZS.mag",
+      "source_sha256": "4973eaa6bd1307172714c535783b4a5c304ab29fa175a729341654d5d3ce9c67",
+      "packaged_sha256": "4973eaa6bd1307172714c535783b4a5c304ab29fa175a729341654d5d3ce9c67",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_XU2DD7.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__nfet_g5v0d10v5_XU2DD7.mag",
+      "source_sha256": "51b607c4458ad14a0bff33a8a704b5c1cbd4c3bfd4dafe0dadd4ee2558c831b1",
+      "packaged_sha256": "51b607c4458ad14a0bff33a8a704b5c1cbd4c3bfd4dafe0dadd4ee2558c831b1",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__pfet_01v8_lvt_UX3DP3.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_01v8_lvt_UX3DP3.mag",
+      "source_sha256": "e4684a1b4cd28a8ecce75a48f33307f9c963541a1b5a26e326cf6164097e2dec",
+      "packaged_sha256": "e4684a1b4cd28a8ecce75a48f33307f9c963541a1b5a26e326cf6164097e2dec",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__pfet_01v8_lvt_UXLAP3.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_01v8_lvt_UXLAP3.mag",
+      "source_sha256": "14e300916651fc932b4c2dda56195097c13d17a1ed661d0443437ce5d5b1d6ff",
+      "packaged_sha256": "14e300916651fc932b4c2dda56195097c13d17a1ed661d0443437ce5d5b1d6ff",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_8UL4MK.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_8UL4MK.mag",
+      "source_sha256": "563a83b8c2b3ca1e70de045604e5126de499eeda4ce0b2a80c8c16a93ec122e6",
+      "packaged_sha256": "563a83b8c2b3ca1e70de045604e5126de499eeda4ce0b2a80c8c16a93ec122e6",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_TUFYNQ.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__pfet_g5v0d10v5_TUFYNQ.mag",
+      "source_sha256": "5c2c92ba736e3879c8d1b995d7aeee3c6b7a322f59f4d0f355c5033dea5014b1",
+      "packaged_sha256": "5c2c92ba736e3879c8d1b995d7aeee3c6b7a322f59f4d0f355c5033dea5014b1",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_36W7R5.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_36W7R5.mag",
+      "source_sha256": "5b97887f9ec23bea8f363af83e507970865103ae3fde43a2cafe62b78bbd86e7",
+      "packaged_sha256": "5b97887f9ec23bea8f363af83e507970865103ae3fde43a2cafe62b78bbd86e7",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_3B3HCP.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_3B3HCP.mag",
+      "source_sha256": "f988638fbb5d6ded6943478e87f1bca1052f354141557ccf7798b3bded2d40e9",
+      "packaged_sha256": "f988638fbb5d6ded6943478e87f1bca1052f354141557ccf7798b3bded2d40e9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_625VB6.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_625VB6.mag",
+      "source_sha256": "1b4398c3f82f9f5231be05d81207c84e7db39a4179c9a47b1126e0116cd83537",
+      "packaged_sha256": "1b4398c3f82f9f5231be05d81207c84e7db39a4179c9a47b1126e0116cd83537",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_7E3VSS.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_7E3VSS.mag",
+      "source_sha256": "10e1fdf7943a79b2708526873573e162c6b917f0c89bec5f384c1b19668b5016",
+      "packaged_sha256": "10e1fdf7943a79b2708526873573e162c6b917f0c89bec5f384c1b19668b5016",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_7GQFR5.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_7GQFR5.mag",
+      "source_sha256": "6a8071bff5c5ca42e5a21bf6d6de904dc14a8a40cf43a64414c53bc6472cf2dc",
+      "packaged_sha256": "6a8071bff5c5ca42e5a21bf6d6de904dc14a8a40cf43a64414c53bc6472cf2dc",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_FJD3D2.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_FJD3D2.mag",
+      "source_sha256": "b816a5256b93d35e5ac3091337e07040d2e798223e9555c12dae1287ab9cbd48",
+      "packaged_sha256": "b816a5256b93d35e5ac3091337e07040d2e798223e9555c12dae1287ab9cbd48",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_HDK8MS.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_HDK8MS.mag",
+      "source_sha256": "3d037acdfb763ba13dbc31f4ca391b8ca4c9ea88ffe923343c2ecf8483b6041a",
+      "packaged_sha256": "3d037acdfb763ba13dbc31f4ca391b8ca4c9ea88ffe923343c2ecf8483b6041a",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_L8MN5R.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_L8MN5R.mag",
+      "source_sha256": "f32422adf12503c4785c36a0572fe255f75e2642e53d5d4e2a9661cff8987d43",
+      "packaged_sha256": "f32422adf12503c4785c36a0572fe255f75e2642e53d5d4e2a9661cff8987d43",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_NC7D8C.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_NC7D8C.mag",
+      "source_sha256": "281fc24b06980a79945058853cfd55a329bca89212477361ec12505f1878b337",
+      "packaged_sha256": "281fc24b06980a79945058853cfd55a329bca89212477361ec12505f1878b337",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_P2NS5Z.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_P2NS5Z.mag",
+      "source_sha256": "289e5ec318a7e894e4e44da3782fe5683acb6302526a63c63874426aac2ade35",
+      "packaged_sha256": "289e5ec318a7e894e4e44da3782fe5683acb6302526a63c63874426aac2ade35",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_high_po_0p69_RDD4P3.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_high_po_0p69_RDD4P3.mag",
+      "source_sha256": "93d341838fe12b30bc248486d4fa42328beed2d54ce3c31b1ff7406cc6f0f25b",
+      "packaged_sha256": "93d341838fe12b30bc248486d4fa42328beed2d54ce3c31b1ff7406cc6f0f25b",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_6UM5XP.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_6UM5XP.mag",
+      "source_sha256": "425e25599a604617927401f84611763442b981bccb1a79f97acf5d489ea0c8cf",
+      "packaged_sha256": "425e25599a604617927401f84611763442b981bccb1a79f97acf5d489ea0c8cf",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_9AYFKX.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_9AYFKX.mag",
+      "source_sha256": "889ca652939a99685892c135816115bdff36f8283e869456d67da0ac0abdd08a",
+      "packaged_sha256": "889ca652939a99685892c135816115bdff36f8283e869456d67da0ac0abdd08a",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_AN78X3.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_AN78X3.mag",
+      "source_sha256": "99e98c1ae14f0eb0d5fc9cac56a8cb48b691aea2278ec6d1ada5daea69742e9c",
+      "packaged_sha256": "99e98c1ae14f0eb0d5fc9cac56a8cb48b691aea2278ec6d1ada5daea69742e9c",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_FDV9Y5.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_FDV9Y5.mag",
+      "source_sha256": "70e224af95475f95695f6b956cc7e6e1609053bb7d69d35d05a49d4ff11ac687",
+      "packaged_sha256": "70e224af95475f95695f6b956cc7e6e1609053bb7d69d35d05a49d4ff11ac687",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_FDVHJ6.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_FDVHJ6.mag",
+      "source_sha256": "ac7bb4dd4489abf52c6e96d2dec54bfdc8ef4d5e6e0db32c74d561f548a35524",
+      "packaged_sha256": "ac7bb4dd4489abf52c6e96d2dec54bfdc8ef4d5e6e0db32c74d561f548a35524",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_HGNRCC.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_HGNRCC.mag",
+      "source_sha256": "e237e34b456e95c8a5572c140da534dae43165d9dd7bba4d2773cfaae0f762df",
+      "packaged_sha256": "e237e34b456e95c8a5572c140da534dae43165d9dd7bba4d2773cfaae0f762df",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_PYT2V7.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_PYT2V7.mag",
+      "source_sha256": "8edce2c26db8d144f3ad9bf6eea7f63a1ded58dfe26ffd5413c90b514730b4c2",
+      "packaged_sha256": "8edce2c26db8d144f3ad9bf6eea7f63a1ded58dfe26ffd5413c90b514730b4c2",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_Q2LWZP.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_Q2LWZP.mag",
+      "source_sha256": "176dd628b630efbfe87e48a3a008399b2c78c5c75246ef191ae3c5d62127f246",
+      "packaged_sha256": "176dd628b630efbfe87e48a3a008399b2c78c5c75246ef191ae3c5d62127f246",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_QDMB52.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_QDMB52.mag",
+      "source_sha256": "8336a9e6cefa6ca532b327e66b213a78f70facbd90c83aabaf428f17b9dfab32",
+      "packaged_sha256": "8336a9e6cefa6ca532b327e66b213a78f70facbd90c83aabaf428f17b9dfab32",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_QHQRGL.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_QHQRGL.mag",
+      "source_sha256": "82c16a24af2b29cf8a9a9e220b4b47f0ea284296a1188bceb59588462cc82543",
+      "packaged_sha256": "82c16a24af2b29cf8a9a9e220b4b47f0ea284296a1188bceb59588462cc82543",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_S4N9LQ.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_S4N9LQ.mag",
+      "source_sha256": "6c0366bb0d92b0b85f8585cec3362f723131950b5cfbfbff6191cea1abbba6cd",
+      "packaged_sha256": "6c0366bb0d92b0b85f8585cec3362f723131950b5cfbfbff6191cea1abbba6cd",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_TVN32V.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_TVN32V.mag",
+      "source_sha256": "3b0d08788ab45c319abc2b4085c79e07c89d7c223e0e6c151587014be85a3096",
+      "packaged_sha256": "3b0d08788ab45c319abc2b4085c79e07c89d7c223e0e6c151587014be85a3096",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_TVN88V.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_TVN88V.mag",
+      "source_sha256": "e4f7bedd30c2de4424e35c0de5383c672230d798ce9e5200d27d700ba97618d5",
+      "packaged_sha256": "e4f7bedd30c2de4424e35c0de5383c672230d798ce9e5200d27d700ba97618d5",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_V6AMGK.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_V6AMGK.mag",
+      "source_sha256": "b236d47a226257a9deb7abdcc1526fc96b8eef5f8928d984e99073306d3a663e",
+      "packaged_sha256": "b236d47a226257a9deb7abdcc1526fc96b8eef5f8928d984e99073306d3a663e",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_VVNKN9.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/paramcells/sky130_fd_pr__res_xhigh_po_0p35_VVNKN9.mag",
+      "source_sha256": "8cf15e8ba3bac5d254924cc08e22049a73a28f5b4e7ad762625652d8fb40e906",
+      "packaged_sha256": "8cf15e8ba3bac5d254924cc08e22049a73a28f5b4e7ad762625652d8fb40e906",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/sky130_pa_ip__instramp.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/sky130_pa_ip__instramp.mag",
+      "source_sha256": "23559ca413278d6bcf30ef989f815b62a17d82449215d232e7a5adbf4923bc47",
+      "packaged_sha256": "23559ca413278d6bcf30ef989f815b62a17d82449215d232e7a5adbf4923bc47",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/vbias_gen_pga.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/vbias_gen_pga.mag",
+      "source_sha256": "b3a3ace9ffa027bdf1e839d0a040d1af1c5ace989324af530b950c46e3931f35",
+      "packaged_sha256": "b3a3ace9ffa027bdf1e839d0a040d1af1c5ace989324af530b950c46e3931f35",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/mag/x1_x32_OA.mag",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "mag/x1_x32_OA.mag",
+      "source_sha256": "299cb59e55b6544202a4c5be58d1d16ad86fa6ef9ed3a255306d295ccebc3892",
+      "packaged_sha256": "299cb59e55b6544202a4c5be58d1d16ad86fa6ef9ed3a255306d295ccebc3892",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/netlist/layout/sky130_pa_ip__instramp.spice",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "netlist/layout/sky130_pa_ip__instramp.spice",
+      "source_sha256": "567be5e8422b10f06df5b6531a495786fd86ce4a2f42ce3762e4131978e483bf",
+      "packaged_sha256": "567be5e8422b10f06df5b6531a495786fd86ce4a2f42ce3762e4131978e483bf",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/netlist/layout/sky130_pa_ip__instramp_test.spice",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "netlist/layout/sky130_pa_ip__instramp_test.spice",
+      "source_sha256": "fec9f159fa3bf8cb4c9c1d71fb5ad9446709f3aeae4ffd9b21ae09d91f8ba378",
+      "packaged_sha256": "fec9f159fa3bf8cb4c9c1d71fb5ad9446709f3aeae4ffd9b21ae09d91f8ba378",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/netlist/schematic/sky130_pa_ip__instramp.spice",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "netlist/schematic/sky130_pa_ip__instramp.spice",
+      "source_sha256": "af2d9f2db2891fc76015846d849e8a66d30808602569aec8e826a1e35af4d1c7",
+      "packaged_sha256": "ae9a39564401a36793e67e48f9353e58ad2d1e214d108f0a5531a3c5b15f85e3",
+      "provenance_check": "exact_match",
+      "changes": [
+        "Converted upstream absolute sch_path/sym_path comments to relative xschem paths; added modification notice. No circuit statements changed."
+      ]
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/5V_Inverter1.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/5V_Inverter1.sch",
+      "source_sha256": "eb3a14058aece3e120c32f296c0ba61b6b9ae900ab0a042d15ef1baf142a8e1f",
+      "packaged_sha256": "eb3a14058aece3e120c32f296c0ba61b6b9ae900ab0a042d15ef1baf142a8e1f",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/5V_Inverter1.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/5V_Inverter1.sym",
+      "source_sha256": "0cb8cb35e28da778ed781217f8c8fdb0ef538e883df9443558e64a84dc8fad92",
+      "packaged_sha256": "0cb8cb35e28da778ed781217f8c8fdb0ef538e883df9443558e64a84dc8fad92",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Input_Stage_OA1.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Input_Stage_OA1.sch",
+      "source_sha256": "8c88c9ef732f23b5e774cff99d69afa1e54ccfbc0407782545e5c2516f939879",
+      "packaged_sha256": "8c88c9ef732f23b5e774cff99d69afa1e54ccfbc0407782545e5c2516f939879",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Input_Stage_OA1.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Input_Stage_OA1.sym",
+      "source_sha256": "40b62c3378bfdc9bd76efb9a2a0672cb327a81fac470be8f9ad95ed509cd4157",
+      "packaged_sha256": "40b62c3378bfdc9bd76efb9a2a0672cb327a81fac470be8f9ad95ed509cd4157",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Input_Stage_OA2.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Input_Stage_OA2.sch",
+      "source_sha256": "702f8c41f16f72409da7863ff8a0514623669e31641df8de08c446ac5b0372a0",
+      "packaged_sha256": "702f8c41f16f72409da7863ff8a0514623669e31641df8de08c446ac5b0372a0",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Input_Stage_OA2.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Input_Stage_OA2.sym",
+      "source_sha256": "9ed6499a21e58a4927d291c9ba8533df00b8761e84e55b2a751ace9310f031bb",
+      "packaged_sha256": "9ed6499a21e58a4927d291c9ba8533df00b8761e84e55b2a751ace9310f031bb",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Input_Stage_v1.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Input_Stage_v1.sch",
+      "source_sha256": "c05f9fd98940f1e66fbd1ff6e3497f13d2b2624423bb3a773e1d81f91ca5a859",
+      "packaged_sha256": "c05f9fd98940f1e66fbd1ff6e3497f13d2b2624423bb3a773e1d81f91ca5a859",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Input_Stage_v1.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Input_Stage_v1.sym",
+      "source_sha256": "f9efe7865dce37aa221bb87b8e5391234e8b29f6c622588b881b53a36e189591",
+      "packaged_sha256": "f9efe7865dce37aa221bb87b8e5391234e8b29f6c622588b881b53a36e189591",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Output_OA.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Output_OA.sch",
+      "source_sha256": "9d37e3f148f1ec905fb95afe1835e5e1524023380c36ed3dfa5ee961682ebb6c",
+      "packaged_sha256": "9d37e3f148f1ec905fb95afe1835e5e1524023380c36ed3dfa5ee961682ebb6c",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Output_OA.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Output_OA.sym",
+      "source_sha256": "f041e51a3e57f6e9909af69a1a9110e1536951cb372870a9139b898846db204a",
+      "packaged_sha256": "f041e51a3e57f6e9909af69a1a9110e1536951cb372870a9139b898846db204a",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Parallel_10B_Block2.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Parallel_10B_Block2.sch",
+      "source_sha256": "e98b25a63ef27bd384b5209f5cf5c2de4ed4e338d2796bb057faaa8fd6a55309",
+      "packaged_sha256": "e98b25a63ef27bd384b5209f5cf5c2de4ed4e338d2796bb057faaa8fd6a55309",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Parallel_10B_Block2.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Parallel_10B_Block2.sym",
+      "source_sha256": "87d61839183b8f0772508627c0e073f161b2b832b31d158780bc8aa8c173294f",
+      "packaged_sha256": "87d61839183b8f0772508627c0e073f161b2b832b31d158780bc8aa8c173294f",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Parallel_PGA_Complete_DC.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Parallel_PGA_Complete_DC.sch",
+      "source_sha256": "180216478cf07dcec573acc7def2f298813a73801644b18650744f4b96571c9c",
+      "packaged_sha256": "180216478cf07dcec573acc7def2f298813a73801644b18650744f4b96571c9c",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/T_Gate_5V.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/T_Gate_5V.sch",
+      "source_sha256": "21599faa88a6a0957e8793406e6a381867b29981a7d7147486ecfd0ba68e35d9",
+      "packaged_sha256": "21599faa88a6a0957e8793406e6a381867b29981a7d7147486ecfd0ba68e35d9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/T_Gate_5V.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/T_Gate_5V.sym",
+      "source_sha256": "fca9632a3f8a93d4f4cdc7df3624c0c8c776365cec1c2809414616159e2080b0",
+      "packaged_sha256": "fca9632a3f8a93d4f4cdc7df3624c0c8c776365cec1c2809414616159e2080b0",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Universal_R_2R_Block2.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Universal_R_2R_Block2.sch",
+      "source_sha256": "6d21f151a542512f8c15b549dcaaa9a3099314400b90f755ffb556223dd19679",
+      "packaged_sha256": "6d21f151a542512f8c15b549dcaaa9a3099314400b90f755ffb556223dd19679",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/Universal_R_2R_Block2.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/Universal_R_2R_Block2.sym",
+      "source_sha256": "d2e0af80eb25bb9ebc616782bccf67336782a2a3570e3b9f9e2393f42f8d1b6d",
+      "packaged_sha256": "d2e0af80eb25bb9ebc616782bccf67336782a2a3570e3b9f9e2393f42f8d1b6d",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/lsbuflv2hv_1.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/lsbuflv2hv_1.sym",
+      "source_sha256": "f4976405dc3749c6f4d6bbf695c3da9c7e389b4dabaa9c7341d973330a428464",
+      "packaged_sha256": "f4976405dc3749c6f4d6bbf695c3da9c7e389b4dabaa9c7341d973330a428464",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/sky130_pa_ip__instramp.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/sky130_pa_ip__instramp.sch",
+      "source_sha256": "f2f60bc7ac683065c7a82521c6e6c00e9603ca9989beea418a159d960d5ea3f9",
+      "packaged_sha256": "f2f60bc7ac683065c7a82521c6e6c00e9603ca9989beea418a159d960d5ea3f9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/sky130_pa_ip__instramp.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/sky130_pa_ip__instramp.sym",
+      "source_sha256": "eb12cc4305eb683e4ceeb102d56005f94f53b47a51cae7afad3ffcd110401903",
+      "packaged_sha256": "eb12cc4305eb683e4ceeb102d56005f94f53b47a51cae7afad3ffcd110401903",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/vbias_gen_pga.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/vbias_gen_pga.sch",
+      "source_sha256": "bf34be5224663c10d729f689492dc0d324095a4bac4c866a245a6a464eb9908e",
+      "packaged_sha256": "bf34be5224663c10d729f689492dc0d324095a4bac4c866a245a6a464eb9908e",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/vbias_gen_pga.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/vbias_gen_pga.sym",
+      "source_sha256": "3d97bba1521b1d996bc2f16bbbbe729663e300e45e5c7d7a9b616c4f99bf3884",
+      "packaged_sha256": "3d97bba1521b1d996bc2f16bbbbe729663e300e45e5c7d7a9b616c4f99bf3884",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/x1_x32_OA.sch",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/x1_x32_OA.sch",
+      "source_sha256": "1a83230b10a64f0eee9b30503f4db47e57f8ba596a3b1e57c53d09c4a1c1d5fd",
+      "packaged_sha256": "1a83230b10a64f0eee9b30503f4db47e57f8ba596a3b1e57c53d09c4a1c1d5fd",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/x1_x32_OA.sym",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/x1_x32_OA.sym",
+      "source_sha256": "3c0be41ba154165bf21dbbffeeb0ec35744bb3a660d9a488143871f172795c58",
+      "packaged_sha256": "3c0be41ba154165bf21dbbffeeb0ec35744bb3a660d9a488143871f172795c58",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/02_instrumentation_amplifier/xschem/xschemrc",
+      "repository": "https://github.com/efabless/sky130_pa_ip__instramp",
+      "checked_revision": "67a57bbfeef03e70fdaea05ec05004bdb09a8e51",
+      "upstream_path": "xschem/xschemrc",
+      "source_sha256": "78e2a0541f5e5cca62f18d0a1fe135ae32e87a3a0630f1a5560ab74534e386c8",
+      "packaged_sha256": "78e2a0541f5e5cca62f18d0a1fe135ae32e87a3a0630f1a5560ab74534e386c8",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/LICENSE",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "LICENSE",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "packaged_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/README.md",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "README.md",
+      "source_sha256": "def11bfc4e2ccb9f403cc722c101dd1c069c091851bbef834b688c31dd963c25",
+      "packaged_sha256": "def11bfc4e2ccb9f403cc722c101dd1c069c091851bbef834b688c31dd963c25",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/SOURCE.txt",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": null,
+      "source_sha256": "2f3f6c2254deba1b0daf19c0219a2423003f766e9f6df852c416b3ef0fcb820e",
+      "packaged_sha256": "2f3f6c2254deba1b0daf19c0219a2423003f766e9f6df852c416b3ef0fcb820e",
+      "provenance_check": "local_provenance_file",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/FF_process_corners_met.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/FF_process_corners_met.png",
+      "source_sha256": "61ccb2d0b35e21644f364df8408bec4d49a46c89691c2b0d59491b47917d79ed",
+      "packaged_sha256": "61ccb2d0b35e21644f364df8408bec4d49a46c89691c2b0d59491b47917d79ed",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/Gain_GBW_PM.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/Gain_GBW_PM.png",
+      "source_sha256": "a7ad0810b762d5c1b3d04945354337b45ba8d401c6b28d08c3e148c25419c812",
+      "packaged_sha256": "a7ad0810b762d5c1b3d04945354337b45ba8d401c6b28d08c3e148c25419c812",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/Operating_point_en_high.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/Operating_point_en_high.png",
+      "source_sha256": "1ba7f13a5cf108d363430d7f5f58dd9d5e2c5897f347b80e0d67b6b728efd2c1",
+      "packaged_sha256": "1ba7f13a5cf108d363430d7f5f58dd9d5e2c5897f347b80e0d67b6b728efd2c1",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/Operating_point_en_low.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/Operating_point_en_low.png",
+      "source_sha256": "82ec2044a569a682197e8afa7927ab8a2e229fcbbfd044601739bad2f30b3950",
+      "packaged_sha256": "82ec2044a569a682197e8afa7927ab8a2e229fcbbfd044601739bad2f30b3950",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/SS_process_corners_met.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/SS_process_corners_met.png",
+      "source_sha256": "1ea891d818d0b55292cfd192e4093d7f0d10e5811990a56c134dd5499fd61b1e",
+      "packaged_sha256": "1ea891d818d0b55292cfd192e4093d7f0d10e5811990a56c134dd5499fd61b1e",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/Schematic.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/Schematic.png",
+      "source_sha256": "360d68112667ca3b2727d5d0ba95b3fbafef96ea6d6ef2d54c9ab34d5379fd31",
+      "packaged_sha256": "360d68112667ca3b2727d5d0ba95b3fbafef96ea6d6ef2d54c9ab34d5379fd31",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/Testbench-closed_loop.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/Testbench-closed_loop.png",
+      "source_sha256": "977d78ff6b39a348f9d7effe5b963f4003f7983c95568d21db5cd20755cf6cbd",
+      "packaged_sha256": "977d78ff6b39a348f9d7effe5b963f4003f7983c95568d21db5cd20755cf6cbd",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/Testbench-open_loop.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/Testbench-open_loop.png",
+      "source_sha256": "ce240834ccd560c6b61ae5c69489dcaeb78952945cac076b1f396b4763083ab0",
+      "packaged_sha256": "ce240834ccd560c6b61ae5c69489dcaeb78952945cac076b1f396b4763083ab0",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/closedloop-slewrate-negative-1.3.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/closedloop-slewrate-negative-1.3.png",
+      "source_sha256": "e10add7cfae9f3f5e6553925e59ba607a2f73829eb8c1f3952dca922f2e96789",
+      "packaged_sha256": "e10add7cfae9f3f5e6553925e59ba607a2f73829eb8c1f3952dca922f2e96789",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/closedloop-slewrate-positive-5.8.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/closedloop-slewrate-positive-5.8.png",
+      "source_sha256": "4c10b008047460c8f67e36582177caaae18234c31e268cbc2b7b2cd8721c8976",
+      "packaged_sha256": "4c10b008047460c8f67e36582177caaae18234c31e268cbc2b7b2cd8721c8976",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/openloop-slewrate-negative-1.3.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/openloop-slewrate-negative-1.3.png",
+      "source_sha256": "91ec2951bc4517a7b1e1371ea754cd71c5e833e10ae35e4780cb7ab9a93daeff",
+      "packaged_sha256": "91ec2951bc4517a7b1e1371ea754cd71c5e833e10ae35e4780cb7ab9a93daeff",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/openloop-slewrate-positive-9.08.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/openloop-slewrate-positive-9.08.png",
+      "source_sha256": "026861c0850d49b638eedc53e67e148d66063a783d9250c6eabfb7dc5cc7f57b",
+      "packaged_sha256": "026861c0850d49b638eedc53e67e148d66063a783d9250c6eabfb7dc5cc7f57b",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/assets/transient.png",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "assets/transient.png",
+      "source_sha256": "adc4e5052badbeca139cccf727790de74b97b76d29b7a9c709cbc1392d8acebf",
+      "packaged_sha256": "adc4e5052badbeca139cccf727790de74b97b76d29b7a9c709cbc1392d8acebf",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/gds/layout_new.gds",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "gds/layout_new.gds",
+      "source_sha256": "c2252a7b80073d22f3febc2e08623e932d357cd54dd0893b2cd217f6051cae13",
+      "packaged_sha256": "c2252a7b80073d22f3febc2e08623e932d357cd54dd0893b2cd217f6051cae13",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/xschem/Opamp.sch",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "xschem/Opamp.sch",
+      "source_sha256": "30b296e5535cc35ff8fb7397d3a1765ed9d9c43cce266627651617a207e1a2d1",
+      "packaged_sha256": "30b296e5535cc35ff8fb7397d3a1765ed9d9c43cce266627651617a207e1a2d1",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/xschem/Opamp.spice",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "xschem/Opamp.spice",
+      "source_sha256": "c1be2cc41eea0a54a38eed69a27d0d8a43909531778290f9d20afa940c5a12f5",
+      "packaged_sha256": "84fff1f5ae27eaa5200f0539a8d95fbb93d3ab2959da5a62f7f328f5f5225b4d",
+      "provenance_check": "exact_match",
+      "changes": [
+        "Converted upstream absolute sch_path/sym_path comments to relative xschem paths; added modification notice. No circuit statements changed."
+      ]
+    },
+    {
+      "path": "sky130/03_two_stage_opamp/xschem/Opamp.sym",
+      "repository": "https://github.com/SkillSurf/ttsky25_se_opamp",
+      "checked_revision": "d296672b3f5de908eb1764ab309abb7cdb67e221",
+      "upstream_path": "xschem/Opamp.sym",
+      "source_sha256": "a971b889ee3450251c611b10f80c5b080cde9893b2c9fedcfa475211d96973be",
+      "packaged_sha256": "a971b889ee3450251c611b10f80c5b080cde9893b2c9fedcfa475211d96973be",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/LICENSE",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "LICENSE",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "packaged_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/README.md",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "README.md",
+      "source_sha256": "4e4703a5b7dc08af8bd18be3439966fd53195c38054454c98a63c28c71854fa9",
+      "packaged_sha256": "4e4703a5b7dc08af8bd18be3439966fd53195c38054454c98a63c28c71854fa9",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/SOURCE.txt",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": null,
+      "source_sha256": "22138726b17982160a35a578b5b7b8d6b620bf5bd5ce7f96d0147aaacf08b783",
+      "packaged_sha256": "22138726b17982160a35a578b5b7b8d6b620bf5bd5ce7f96d0147aaacf08b783",
+      "provenance_check": "local_provenance_file",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/BGR.svg",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/BGR.svg",
+      "source_sha256": "79c31fab4dbfe2b25a3acb9cfae5477456444a8eeb7b57a7b950629b633b3427",
+      "packaged_sha256": "79c31fab4dbfe2b25a3acb9cfae5477456444a8eeb7b57a7b950629b633b3427",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/BGR_layout.png",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/BGR_layout.png",
+      "source_sha256": "8cc5ce522d052c1c539ca4b0e8ddefb35251febc1ee5ae645b6a7c9674ca1771",
+      "packaged_sha256": "8cc5ce522d052c1c539ca4b0e8ddefb35251febc1ee5ae645b6a7c9674ca1771",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/MC_plot.svg",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/MC_plot.svg",
+      "source_sha256": "db7e35e83f7fe7f2cfa50a47120fa8a641d5eab5d41e07c822099c728d05a219",
+      "packaged_sha256": "db7e35e83f7fe7f2cfa50a47120fa8a641d5eab5d41e07c822099c728d05a219",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/bgr_block.svg",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/bgr_block.svg",
+      "source_sha256": "a8cdbf7ae44c404fd3a0eb4064d38aedb136d69968f26fda7a5a0f300a2d95be",
+      "packaged_sha256": "a8cdbf7ae44c404fd3a0eb4064d38aedb136d69968f26fda7a5a0f300a2d95be",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/design.md",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/design.md",
+      "source_sha256": "bb48afee15bd7e2f631907f8ee4f3ef05186b253c821eb70ce35aff91b8e361d",
+      "packaged_sha256": "bb48afee15bd7e2f631907f8ee4f3ef05186b253c821eb70ce35aff91b8e361d",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/info.md",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/info.md",
+      "source_sha256": "d2613e4289a7b48ca44da51eaa81d5e187c802c455a570e1b15e648ca6d50c74",
+      "packaged_sha256": "d2613e4289a7b48ca44da51eaa81d5e187c802c455a570e1b15e648ca6d50c74",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/layout.md",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/layout.md",
+      "source_sha256": "3391b41813adaff78d129724f173379aa4d598a64b4db0e62c57c7223371ed66",
+      "packaged_sha256": "3391b41813adaff78d129724f173379aa4d598a64b4db0e62c57c7223371ed66",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/docs/simulations.md",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "docs/simulations.md",
+      "source_sha256": "8c77d6df83a12b9c5aa73bc09a62025e66ffd08fdbe873adeba371ee7075a937",
+      "packaged_sha256": "8c77d6df83a12b9c5aa73bc09a62025e66ffd08fdbe873adeba371ee7075a937",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/gds/tt_um_bgr.gds",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "gds/tt_um_bgr.gds",
+      "source_sha256": "c9a9a59eda005b1e44d7b3cd74d38d466a581e4583be3c82ec5f162244589275",
+      "packaged_sha256": "c9a9a59eda005b1e44d7b3cd74d38d466a581e4583be3c82ec5f162244589275",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/mag/tt_um_bgr.mag",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "mag/tt_um_bgr.mag",
+      "source_sha256": "85e348b06e6ae9afef89e5d462919f54e719ce57b98cb3abb566a3a2430fd18c",
+      "packaged_sha256": "85e348b06e6ae9afef89e5d462919f54e719ce57b98cb3abb566a3a2430fd18c",
+      "provenance_check": "exact_match",
+      "changes": []
+    },
+    {
+      "path": "sky130/04_bandgap_reference/spice/bgr_core.spice",
+      "repository": "https://github.com/guru-gitrepo/TTSKY26a-analog-bgr",
+      "checked_revision": "c634cc98e5fc921d6036bc278a54b08a74c9e7fc",
+      "upstream_path": "spice/bgr_core.spice",
+      "source_sha256": "d37aa53fd2b15757017ad4ffc6b407f6a7e61650f85aa04630f1d20fedd8c28b",
+      "packaged_sha256": "d37aa53fd2b15757017ad4ffc6b407f6a7e61650f85aa04630f1d20fedd8c28b",
+      "provenance_check": "exact_match",
+      "changes": []
+    }
+  ]
+}

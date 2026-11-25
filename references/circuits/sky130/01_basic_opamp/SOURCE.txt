@@ -1,0 +1,2 @@
+https://github.com/efabless/sky130_ef_ip__opamp
+branch: main

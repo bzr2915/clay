@@ -1,0 +1,2 @@
+# Preserve collected source bytes and the hashes recorded in manifest.json.
+* -text

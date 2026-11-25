@@ -1,0 +1,5 @@
+# These are intentional upstream reference layouts, not generated build outputs.
+!sky130/01_basic_opamp/gds/sky130_ef_ip__opamp.gds
+!sky130/02_instrumentation_amplifier/gds/sky130_pa_ip__instramp.gds
+!sky130/03_two_stage_opamp/gds/layout_new.gds
+!sky130/04_bandgap_reference/gds/tt_um_bgr.gds
