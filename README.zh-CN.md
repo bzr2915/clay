@@ -179,6 +179,8 @@ python scripts/verify_oss_package.py
 - **毕朝日（Zhaori Bi）** ([@bzr2915](https://github.com/bzr2915)) — 复旦大学
 - **姜雨辰（Yuchen Jiang）** ([@Jiangyc08](https://github.com/Jiangyc08)) — 复旦大学
 - **黄柔希（Rouxi Huang）** ([@HRXrosy](https://github.com/HRXrosy)) — 复旦大学
+- **鲁洲舒（Zhoushu Lu）** ([@luzhoushu](https://github.com/luzhoushu)) — 复旦大学
+- **魏重烨（Chongye Wei）** ([@chongyewei](https://github.com/chongyewei)) — 复旦大学
 
 ---
 

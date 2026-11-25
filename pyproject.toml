@@ -13,6 +13,8 @@ authors = [
     { name = "Zhaori Bi (毕朝日)", email = "zhaori_bi@fudan.edu.cn" },
     { name = "Yuchen Jiang (姜雨辰)", email = "2430XH20034@m.fudan.edu.cn" },
     { name = "Rouxi Huang (黄柔希)", email = "15858488647@163.com" },
+    { name = "Zhoushu Lu (鲁洲舒)", email = "luzhoushupx@126.com" },
+    { name = "Chongye Wei (魏重烨)", email = "123081883+chongyewei@users.noreply.github.com" },
 ]
 keywords = ["EDA", "analog", "layout", "sky130", "gf180mcu", "GDSII", "C++20", "PnR"]
 classifiers = [

@@ -180,6 +180,8 @@ Contributions—new open-PDK benchmarks, design primitives, placement/routing im
 - **Zhaori Bi (毕朝日)** ([@bzr2915](https://github.com/bzr2915)) — Fudan University
 - **Yuchen Jiang (姜雨辰)** ([@Jiangyc08](https://github.com/Jiangyc08)) — Fudan University
 - **Rouxi Huang (黄柔希)** ([@HRXrosy](https://github.com/HRXrosy)) — Fudan University
+- **Zhoushu Lu (鲁洲舒)** ([@luzhoushu](https://github.com/luzhoushu)) — Fudan University
+- **Chongye Wei (魏重烨)** ([@chongyewei](https://github.com/chongyewei)) — Fudan University
 
 ---
 
