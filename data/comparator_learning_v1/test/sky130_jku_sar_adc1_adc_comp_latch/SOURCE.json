@@ -1,0 +1,73 @@
+{
+  "id": "sky130_jku_sar_adc1_adc_comp_latch",
+  "split": "test",
+  "pdk_id": "sky130_1v8",
+  "architecture_as_described_upstream": "JKU SAR-ADC comparator latch; independent held-out test source",
+  "repository": "https://github.com/iic-jku/SKY130_SAR-ADC1",
+  "commit": "3cec5823e64cf1ea5c625615ad71f2a505cf27bc",
+  "license": "Apache-2.0",
+  "retrieved_date": "2026-11-10",
+  "notes": [
+    "Held out from training and model selection.",
+    "Master thesis: https://epub.jku.at/obvulihs/content/titleinfo/8694768",
+    "Upstream paper citation: M. Moser et al., Austrochip 2023, DOI 10.1109/Austrochip61217.2023.10285152."
+  ],
+  "files": [
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/LICENSE",
+      "role": "upstream license",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "README.md",
+      "upstream_path": "README.md",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/README.md",
+      "role": "upstream project metadata and citation",
+      "bytes": 6835,
+      "sha256": "ffb600793adeb018d1bf154072e5102a93879539ee2ce2014f9b4d66b620444f"
+    },
+    {
+      "path": "gds/adc_comp_latch.gds.gz",
+      "upstream_path": "gds/adc_comp_latch.gds.gz",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/gds/adc_comp_latch.gds.gz",
+      "role": "requested reference GDS, original gzip bytes",
+      "bytes": 46728,
+      "sha256": "7129d12e6f0e7fa77609cdb6f4ce9c61656c23df3815c5b670bc11caac415bea"
+    },
+    {
+      "path": "mag/adc_comp_latch.mag",
+      "upstream_path": "mag/adc_comp_latch.mag",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/mag/adc_comp_latch.mag",
+      "role": "Magic source layout",
+      "bytes": 6770,
+      "sha256": "fb0177a254d6f14f3bd33a09ed7a22a69399013d98224374d25f3cca38bc6885"
+    },
+    {
+      "path": "spice/adc_comp_latch.sch.spice",
+      "upstream_path": "spice/adc_comp_latch.sch.spice",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/spice/adc_comp_latch.sch.spice",
+      "role": "schematic-derived SPICE netlist",
+      "bytes": 12594,
+      "sha256": "4b04ae03630f5fb88fd61426e7b949f9aa54cb58939bee2b33c2f65a1ebe7119"
+    },
+    {
+      "path": "spice/adc_comp_latch.mag.lvs.spice",
+      "upstream_path": "spice/adc_comp_latch.mag.lvs.spice",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/spice/adc_comp_latch.mag.lvs.spice",
+      "role": "layout-extracted LVS SPICE netlist",
+      "bytes": 9219,
+      "sha256": "0450d8a5500e2b39388e9bebb310fbe157bc42be3fb070ae97e7abb85c3df9f7"
+    },
+    {
+      "path": "xschem/adc_comp_latch.sch",
+      "upstream_path": "xschem/adc_comp_latch.sch",
+      "url": "https://github.com/iic-jku/SKY130_SAR-ADC1/blob/3cec5823e64cf1ea5c625615ad71f2a505cf27bc/xschem/adc_comp_latch.sch",
+      "role": "source xschem schematic",
+      "bytes": 3570,
+      "sha256": "efee0168e8fe3195320aa3b476365da179ddc27580a152749bbef740aa86695a"
+    }
+  ]
+}

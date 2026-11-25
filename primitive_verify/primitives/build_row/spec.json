@@ -1,0 +1,107 @@
+{
+  "primitive": "build_row",
+  "inputs": {
+    "device": {
+      "name": "M1",
+      "model": "nfet_05v0",
+      "drain": "OUT",
+      "gate": "IN",
+      "source": "VSS",
+      "body": "VPW",
+      "w_nm": 1000,
+      "l_nm": 600,
+      "m": 1,
+      "nf": 1
+    },
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "contact_plan": {
+      "count": 1,
+      "centers_nm": [
+        500
+      ]
+    },
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[22/0][0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[30/0][0]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[33/0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[32/0][0]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[34/0]"
+    },
+    {
+      "name": "E6",
+      "from": "layout.polygons[21/0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1480,
+        1000
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        440,
+        -220,
+        1040,
+        1460
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E4",
+      "how": "bbox",
+      "value": [
+        -230,
+        -230,
+        1710,
+        1230
+      ]
+    },
+    {
+      "name": "E5",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E6",
+      "how": "count",
+      "value": 0
+    }
+  ],
+  "derivation": "外段 = max(DF.6 400, 70+220+150) = 440 → 有源区宽 = L 600 + 2×440 = 1480，高 = W 1000。多晶宽 = L = 600，x 440–1040；下端帽 220（PL.4），上端须覆盖栅极孔：gy = max(W+280, 孔中心 500+215+M1 距 230+190) = 1280，故上沿 1280+180 = 1460。孔 = 2 个 S/D + 1 个栅极 = 3。N+ = 有源区外扩 230（NP.5a）。NMOS 无 N 阱。M1 着陆 3 块，分别对应 3 个孔。",
+  "notes": "对应测试 U01。"
+}

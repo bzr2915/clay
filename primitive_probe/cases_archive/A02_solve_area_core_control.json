@@ -1,0 +1,56 @@
+{
+  "id": "A02_solve_area_core_control",
+  "adapter": "solve_area_core",
+  "title": "面积放置对照组：不带 core_boxes",
+  "expect_rejection": false,
+  "params": {
+    "items": {
+      "N": {
+        "rect": [
+          1000,
+          1000
+        ],
+        "outer": [
+          -240,
+          -240,
+          1240,
+          1640
+        ],
+        "core": [
+          0,
+          0,
+          1000,
+          1400
+        ]
+      },
+      "P": {
+        "rect": [
+          1000,
+          1000
+        ],
+        "outer": [
+          -600,
+          -600,
+          1600,
+          1600
+        ],
+        "core": [
+          0,
+          -400,
+          1000,
+          1000
+        ]
+      }
+    },
+    "clearance_nm": 1200,
+    "use_core_boxes": false,
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "无 core_boxes 时第二目标为坐标和最小。",
+    "statements": [
+      "有源区净距 ≥1200。",
+      "记录 area_nm2 与 30/0 核心框总包围盒面积，供 A01 对比。"
+    ]
+  }
+}

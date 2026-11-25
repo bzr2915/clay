@@ -1,0 +1,49 @@
+{
+  "id": "K02_relation_rank_relations_win",
+  "adapter": "relation_rank",
+  "title": "关系排序：关系偏差大于面积优势",
+  "expect_rejection": false,
+  "params": {
+    "library_file": "data/primitive_generalization/relation_training_v1/learned_primitive.json",
+    "weights": {
+      "relations": 0.1,
+      "wirelength_proxy": 0.05
+    },
+    "candidates": [
+      {
+        "name": "C0_matches_relations",
+        "passed": true,
+        "area_nm2": 10000000,
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 1.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      },
+      {
+        "name": "C1_smaller_three_bad_relations",
+        "passed": true,
+        "area_nm2": 9500000,
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 0.0,
+          "p_gate_access_inward": 0.0,
+          "output_transverse_misalignment": 1.0
+        },
+        "hpwl_total_nm": 2000
+      }
+    ]
+  },
+  "expected": {
+    "derivation": "同 K01 公式。C1：relation_loss = 3/5 = 0.6，score = 1 + 0.06 + 0.05 = 1.11；C0：1.10263。",
+    "statements": [
+      "C1 score = 1.11，relation_loss = 0.6。",
+      "C0 score ≈ 1.10263。",
+      "selected_index = 0（C0）：关系偏差足以抵消 5% 的面积优势。"
+    ]
+  }
+}

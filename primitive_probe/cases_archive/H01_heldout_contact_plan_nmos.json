@@ -1,0 +1,31 @@
+{
+  "id": "H01_heldout_contact_plan_nmos",
+  "adapter": "contact_plan",
+  "title": "泛化：冻结库的 NMOS 接触策略作用于未见宽度 W=2150",
+  "purpose": "使用训练冻结的真实策略库（非手写策略），检验策略在未见尺寸上的输出与预期一致。W/L 均不在训练数据中（训练出现的 W：600–3000 中 17 个取值，不含 2150/2650；L：150/500/600/650/700/900，不含 750/550）。",
+  "expect_rejection": false,
+  "params": {
+    "library_file": "data/primitive_generalization/relation_training_v1/learned_primitive.json",
+    "kind": "nmos",
+    "w_nm": 2150,
+    "l_nm": 750,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "冻结库 NMOS：width_stump 阈值 1070（≤ 取 1 行，> 取 2 行），首孔余量比例 0.6848935。n=2 时区间 [180, 2150−180−470] = [180,1500]；180 + 0.6848935×1320 = 1084.06，按 5 nm 取整为 1085。",
+    "statements": [
+      "count = 2。",
+      "centers_nm = [1085, 1555]。",
+      "GDS：有源区 1630×2150（750 + 2×440），每个 S/D 段 2 个孔，y = 1085、1555。",
+      "manifest 中的 library_sha256 与冻结库文件一致（certutil 复核）。"
+    ]
+  }
+}

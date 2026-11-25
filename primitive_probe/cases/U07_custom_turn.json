@@ -1,0 +1,81 @@
+{
+  "id": "U07_custom_turn",
+  "adapter": "turn",
+  "title": "自定义起点：行旋转 270°（3 个四分之一圈）",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。",
+  "expect_rejection": false,
+  "params": {
+    "row": {
+      "layers": {
+        "active": [
+          [
+            0,
+            0,
+            2000,
+            1000
+          ]
+        ],
+        "poly": [
+          [
+            0,
+            0,
+            400,
+            1000
+          ]
+        ],
+        "metal1": [
+          [
+            1700,
+            700,
+            1900,
+            900
+          ]
+        ]
+      },
+      "terminals": [
+        [
+          "TOPRIGHT",
+          [
+            1700,
+            700,
+            1900,
+            900
+          ]
+        ]
+      ]
+    },
+    "quarter_turns": 3,
+    "display_offset_nm": [
+      -4000,
+      0
+    ]
+  },
+  "expected": {
+    "derivation": "r270：(x,y)→(y,−x)，再平移有源区至原点。",
+    "statements": [
+      "有源区 (0,0)–(1000,2000)。",
+      "原左侧多晶条移到顶部：(0,1600)–(1000,2000)。",
+      "原右上 M1 方块移到右下：(700,100)–(900,300)。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          0,
+          1600,
+          1000,
+          2000
+        ],
+        "label": "多晶条"
+      },
+      {
+        "bbox_nm": [
+          700,
+          100,
+          900,
+          300
+        ],
+        "label": "M1"
+      }
+    ]
+  }
+}

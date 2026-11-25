@@ -1,0 +1,59 @@
+{
+  "id": "A01_solve_area_core_mode",
+  "adapter": "solve_area_core",
+  "title": "面积放置（流程实际调用方式：带 core_boxes）",
+  "purpose": "与 A02（不带 core_boxes 的对照）比较。22/0 = 有源区矩形，30/0 = 核心框，34/0 = 外框；此处图层仅作载体。",
+  "expect_rejection": false,
+  "params": {
+    "items": {
+      "N": {
+        "rect": [
+          1000,
+          1000
+        ],
+        "outer": [
+          -240,
+          -240,
+          1240,
+          1640
+        ],
+        "core": [
+          0,
+          0,
+          1000,
+          1400
+        ]
+      },
+      "P": {
+        "rect": [
+          1000,
+          1000
+        ],
+        "outer": [
+          -600,
+          -600,
+          1600,
+          1600
+        ],
+        "core": [
+          0,
+          -400,
+          1000,
+          1000
+        ]
+      }
+    },
+    "clearance_nm": 1200,
+    "use_core_boxes": true,
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "solve_area 文档：先最小化外框总包围面积；面积相同时（core_boxes 模式）最小化核心框总包围面积。",
+    "statements": [
+      "两个有源区（22/0）之间的净距 ≥1200。",
+      "area_nm2 = 全部 34/0 外框的总包围盒面积（KLayout 测量核对）。",
+      "与 A02 的 area_nm2 相同（第一目标一致）。",
+      "30/0 核心框的总包围盒面积 ≤ A02 中的对应值。"
+    ]
+  }
+}

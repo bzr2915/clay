@@ -1,0 +1,49 @@
+{
+  "id": "sky130_2amlogic_dynamic_latched",
+  "split": "training",
+  "pdk_id": "sky130_1v8",
+  "architecture_as_described_upstream": "dynamic latched comparator; upstream describes static preamplifier plus StrongARM latch",
+  "repository": "https://github.com/2AMLogic/sky130-comparator",
+  "commit": "e90075dd75f5dde7f386326186d8ef3842ace0dd",
+  "license": "Apache-2.0",
+  "retrieved_date": "2026-11-10",
+  "notes": [
+    "Upstream README reports committed DRC/LVS evidence; no evidence was rerun for this dataset.",
+    "Upstream README says design and evidence are agent-built.",
+    "comparator.extract.spice is layout-extracted, not the schematic source netlist."
+  ],
+  "files": [
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "url": "https://github.com/2AMLogic/sky130-comparator/blob/e90075dd75f5dde7f386326186d8ef3842ace0dd/LICENSE",
+      "role": "upstream license",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "design/comparator.sch",
+      "upstream_path": "design/comparator.sch",
+      "url": "https://github.com/2AMLogic/sky130-comparator/blob/e90075dd75f5dde7f386326186d8ef3842ace0dd/design/comparator.sch",
+      "role": "source schematic",
+      "bytes": 16012,
+      "sha256": "bbcf7430218b6a6999f2b4a654978a59859f5815951d18820b81bf37ae76a69b"
+    },
+    {
+      "path": "layout/comparator.gds",
+      "upstream_path": "layout/comparator.gds",
+      "url": "https://github.com/2AMLogic/sky130-comparator/blob/e90075dd75f5dde7f386326186d8ef3842ace0dd/layout/comparator.gds",
+      "role": "reference layout GDS",
+      "bytes": 36124,
+      "sha256": "d626061fb4c125432fdba3f8a35aa5c9ee541d0ade0266e65ad86c12cd56434c"
+    },
+    {
+      "path": "layout/comparator.extract.spice",
+      "upstream_path": "layout/comparator.extract.spice",
+      "url": "https://github.com/2AMLogic/sky130-comparator/blob/e90075dd75f5dde7f386326186d8ef3842ace0dd/layout/comparator.extract.spice",
+      "role": "layout-extracted SPICE netlist",
+      "bytes": 12257,
+      "sha256": "268a49090ae341efc4a0ae8692876ef702092072e766bb936a701a09841497f1"
+    }
+  ]
+}

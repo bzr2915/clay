@@ -1,0 +1,28 @@
+{
+  "schema": "clay.circuit-learning-contract.v1",
+  "note": "Paths are relative to this file. 'netlist' is the generator's only circuit input; 'reference_gds' is read by training (training split) and by evaluation after generation (test split), never by generation.",
+  "samples": [
+    {
+      "id": "gf180_ishi_kai_chipathon2023_dynamic_comparator",
+      "split": "training",
+      "pdk": "gf180mcu_3v3",
+      "netlist": "../../comparator_learning_v1/training/gf180_ishi_kai_chipathon2023_dynamic_comparator/netlist/comp_20240331_magic.cdl",
+      "reference_gds": "../../comparator_learning_v1/training/gf180_ishi_kai_chipathon2023_dynamic_comparator/layout/comp_20240331.gds"
+    },
+    {
+      "id": "sky130_2amlogic_dynamic_latched",
+      "split": "training",
+      "pdk": "sky130_1v8",
+      "netlist": "../../comparator_learning_v1/training/sky130_2amlogic_dynamic_latched/layout/comparator.extract.spice",
+      "net_alias": "__t\\d+$",
+      "reference_gds": "../../comparator_learning_v1/training/sky130_2amlogic_dynamic_latched/layout/comparator.gds"
+    },
+    {
+      "id": "sky130_jku_sar_adc1_adc_comp_latch",
+      "split": "test",
+      "pdk": "sky130_1v8",
+      "netlist": "../../comparator_learning_v1/test/sky130_jku_sar_adc1_adc_comp_latch/spice/adc_comp_latch.sch.spice",
+      "reference_gds": "../../comparator_learning_v1/test/sky130_jku_sar_adc1_adc_comp_latch/gds/adc_comp_latch.gds.gz"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "id": "K01_relation_rank_area_wins",
+  "adapter": "relation_rank",
+  "title": "关系排序：面积优势大于关系偏差",
+  "expect_rejection": false,
+  "params": {
+    "library_file": "data/primitive_generalization/relation_training_v1/learned_primitive.json",
+    "weights": {
+      "relations": 0.1,
+      "wirelength_proxy": 0.05
+    },
+    "candidates": [
+      {
+        "name": "C0_matches_relations",
+        "passed": true,
+        "area_nm2": 10000000,
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 1.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      },
+      {
+        "name": "C1_smaller_one_bad_relation",
+        "passed": true,
+        "area_nm2": 9500000,
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 0.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      },
+      {
+        "name": "C2_illegal_smallest",
+        "passed": false,
+        "area_nm2": 5000000,
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 1.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      }
+    ]
+  },
+  "expected": {
+    "derivation": "score = 面积/Amin + 0.10×(5 项特征与库均值之差的平方的平均) + 0.05×HPWL/HPWLmin；Amin 只在通过检查的候选中取 = 9 500 000。C0：10/9.5 + 0 + 0.05 = 1.10263；C1：1 + 0.10×(1/5) + 0.05 = 1.07。",
+    "statements": [
+      "C2 未通过检查，不参与排序（ranking 为空）。",
+      "C0 score ≈ 1.10263，relation_loss = 0。",
+      "C1 score = 1.07，relation_loss = 0.2。",
+      "selected_index = 1（C1）。"
+    ]
+  }
+}

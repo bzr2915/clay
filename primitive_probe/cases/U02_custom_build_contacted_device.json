@@ -1,0 +1,40 @@
+{
+  "id": "U02_custom_build_contacted_device",
+  "adapter": "build_contacted_device",
+  "title": "自定义起点：单器件构造器",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。",
+  "expect_rejection": false,
+  "params": {
+    "device": {
+      "name": "M1",
+      "model": "nfet_05v0",
+      "drain": "OUT",
+      "gate": "IN",
+      "source": "VSS",
+      "body": "VPW",
+      "w_nm": 1000,
+      "l_nm": 600
+    },
+    "contact_rows": false
+  },
+  "expected": {
+    "derivation": "同 U01 的 S/D 段规则；v1 每端 1 个孔。",
+    "statements": [
+      "22/0 有源区 1480×1000。",
+      "多晶 x 440–1040，下端伸出 ≥220。",
+      "源孔中心 x=180（左，VSS），漏孔中心 x=1300（右，OUT），各 1 个；栅孔在有源区上方。",
+      "N+ = 有源区外扩 230。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          0,
+          0,
+          1480,
+          1000
+        ],
+        "label": "有源区"
+      }
+    ]
+  }
+}

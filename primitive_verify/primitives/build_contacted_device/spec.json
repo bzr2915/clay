@@ -1,0 +1,124 @@
+{
+  "primitive": "build_contacted_device",
+  "inputs": {
+    "device": {
+      "name": "M1",
+      "model": "nfet_05v0",
+      "drain": "D",
+      "gate": "G",
+      "source": "S",
+      "body": "VPW",
+      "w_nm": 1000,
+      "l_nm": 600
+    },
+    "origins": {
+      "M1": [
+        0,
+        0
+      ]
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[22/0][0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[30/0][0]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[33/0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[34/0]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[34/0][0]"
+    },
+    {
+      "name": "E6",
+      "from": "layout.polygons[32/0][0]"
+    },
+    {
+      "name": "E7",
+      "from": "layout.polygons[55/0][0]"
+    },
+    {
+      "name": "E8",
+      "from": "layout.polygons[21/0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1480,
+        1000
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        440,
+        -220,
+        1040,
+        1460
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E4",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E5",
+      "how": "bbox",
+      "value": [
+        10,
+        285,
+        350,
+        715
+      ]
+    },
+    {
+      "name": "E6",
+      "how": "bbox",
+      "value": [
+        -230,
+        -230,
+        1710,
+        1230
+      ]
+    },
+    {
+      "name": "E7",
+      "how": "bbox",
+      "value": [
+        -240,
+        -620,
+        1720,
+        1860
+      ]
+    },
+    {
+      "name": "E8",
+      "how": "count",
+      "value": 0
+    }
+  ],
+  "derivation": "GF180 5 V：外段 = max(DF.6_5V 400, CO.3 70 + CO.1 220 + CO.7 150 = 440) = 440 → 有源区 [0,0,600+880=1480,1000]。poly 尾 = CO.8 170 + 220 + CO.4 70 = 460 → poly [440,−220(PL.4 端帽),1040,1000+460=1460]。单排孔：中心 y = 1000//2 = 500；源 x = 70+110 = 180、漏 x = 1480−180 = 1300；栅孔 x = 440+300 = 740，y = 1000+170+110 = 1280 → 共 3 孔。M1 焊盘：S/D 半宽 170（110+CO.6a 60）半高 215（M1.3 面积）→ 源焊盘 [10,285,350,715]；栅焊盘半边 190 → [550,1090,930,1470]，共 3 块。nplus = 有源区外扩 230 (NP.5a)。氧化层标记 = bbox(有源区外扩 240 (DV.6), poly 外扩 400 (DV.8)) = [−240,−620,1720,1860]（dualgate 55/0 与 v5_xtor 112/1 相同）。NMOS 无 n 阱。",
+  "notes": "已登记但此前缺少提交物的旧原语，本次补齐。"
+}

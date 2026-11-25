@@ -1,0 +1,135 @@
+{
+  "primitive": "netlist_flatten",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "text": "* two-level hierarchy, parasitic R/C elements, nf and a poly resistor\n.subckt inv in out vdd vss\nXMP out in vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=0.84 nf=2\nXMN out in vss vss sky130_fd_pr__nfet_01v8 L=0.15 W=0.42\n.ends\n.subckt top a y vdd vss\nx1 a m vdd vss inv\nx2 m y vdd vss inv\nR1 m y 10\nC1 a vss 1f\nXR1 y vss vss sky130_fd_pr__res_high_po_0p35 l=1.75 w=0.35\n.ends\n.end\n"
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "c.devices"
+    },
+    {
+      "name": "E2",
+      "from": "c.dropped_parasitics"
+    },
+    {
+      "name": "E3",
+      "from": "c.devices[0].name"
+    },
+    {
+      "name": "E4",
+      "from": "c.devices[0].nets['d']"
+    },
+    {
+      "name": "E5",
+      "from": "c.devices[0].nets['g']"
+    },
+    {
+      "name": "E6",
+      "from": "c.devices[0].w_nm"
+    },
+    {
+      "name": "E7",
+      "from": "c.devices[0].nf"
+    },
+    {
+      "name": "E8",
+      "from": "c.devices[1].kind"
+    },
+    {
+      "name": "E9",
+      "from": "c.devices[3].name"
+    },
+    {
+      "name": "E10",
+      "from": "c.devices[3].nets['d']"
+    },
+    {
+      "name": "E11",
+      "from": "c.devices[4].cls"
+    },
+    {
+      "name": "E12",
+      "from": "c.devices[4].l_nm"
+    },
+    {
+      "name": "E13",
+      "from": "c.ports"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "count",
+      "value": 5
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": 2
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": "x1/XMP"
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": "m"
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": "a"
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": 840
+    },
+    {
+      "name": "E7",
+      "how": "eq",
+      "value": 2
+    },
+    {
+      "name": "E8",
+      "how": "eq",
+      "value": "nmos"
+    },
+    {
+      "name": "E9",
+      "how": "eq",
+      "value": "x2/XMN"
+    },
+    {
+      "name": "E10",
+      "how": "eq",
+      "value": "y"
+    },
+    {
+      "name": "E11",
+      "how": "eq",
+      "value": "res_poly"
+    },
+    {
+      "name": "E12",
+      "how": "eq",
+      "value": 1750
+    },
+    {
+      "name": "E13",
+      "how": "set",
+      "value": [
+        "a",
+        "y",
+        "vdd",
+        "vss"
+      ]
+    }
+  ],
+  "derivation": "顶层 top 未被任何 X 引用 → 选为顶层。x1/x2 各展开 inv 的 2 个 MOS，XR1 按 pack.device_classes 归为 res_poly → 共 5 个器件；R1 (3 个位置参数且末项为数值 10) 与 C1 (1f) 是无模型寄生元件 → dropped_parasitics=2。展开顺序 x1/XMP, x1/XMN, x2/XMP, x2/XMN, XR1。x1/XMP 的端口 out→顶层 m、in→a；sky130 pack cdl_units=micrometre，W=0.84→840 nm，nf=2。x1/XMN 模型 nfet_01v8 → nmos。x2/XMN 的 out→y。XR1 l=1.75→1750 nm。顶层端口集合 {a,y,vdd,vss}。",
+  "notes": "新原语：通用网表前端（替代反相器专用 parse_cdl+inverter_groups）。"
+}

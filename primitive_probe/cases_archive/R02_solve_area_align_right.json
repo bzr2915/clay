@@ -1,0 +1,41 @@
+{
+  "id": "R02_solve_area_align_right",
+  "adapter": "solve_area_relation",
+  "title": "放置关系 align:right",
+  "expect_rejection": false,
+  "params": {
+    "rectangles": {
+      "A": [
+        2000,
+        2000
+      ],
+      "B": [
+        1500,
+        500
+      ]
+    },
+    "clearances": [
+      [
+        "A",
+        "B",
+        300
+      ]
+    ],
+    "preferences": [
+      [
+        "A",
+        "B",
+        "align:right"
+      ]
+    ],
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "两个矩形 A 2000×2000、B 1500×500，净距 300。上下堆叠外框 2000×2800 = 5.6 µm²，左右并排 3800×2000 = 7.6 µm²，故面积最优为上下堆叠。关系是软约束，仅在面积最优解集合内生效。",
+    "statements": [
+      "面积与对照组相同（5 600 000 nm²，上下堆叠）。",
+      "B 右边缘 x 与 A 右边缘 x 相等（B 比 A 窄 500，故 B.x = A.x + 500）。",
+      "垂直间距 300；preference_cost = 0。"
+    ]
+  }
+}

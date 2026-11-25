@@ -1,0 +1,9 @@
+* Held-out inverter for primitive generalization checks.
+* Sizes deliberately absent from all training data under data/primitive_generalization:
+* NMOS W=2.15u L=0.75u, PMOS W=2.65u L=0.55u (two parallel fingers each).
+.SUBCKT heldout_inv_2 I ZN VDD VNW VPW VSS
+M_n0 ZN I VSS VPW nfet_05v0 W=2.150000U L=0.750000U
+M_n1 VSS I ZN VPW nfet_05v0 W=2.150000U L=0.750000U
+M_p0 ZN I VDD VNW pfet_05v0 W=2.650000U L=0.550000U
+M_p1 VDD I ZN VNW pfet_05v0 W=2.650000U L=0.550000U
+.ENDS

@@ -29,6 +29,7 @@ dependencies = [
     "scipy>=1.9",
     "ortools==9.8.3296",
     "PyYAML>=6.0",
+    "networkx>=3.0",
 ]
 
 [project.urls]

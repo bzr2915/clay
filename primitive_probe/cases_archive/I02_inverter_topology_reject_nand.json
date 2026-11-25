@@ -1,0 +1,27 @@
+{
+  "id": "I02_inverter_topology_reject_nand",
+  "adapter": "inverter_topology",
+  "title": "负对照：非反相器（两输入）网表",
+  "expect_rejection": true,
+  "params": {
+    "netlist": ".SUBCKT not_an_inverter A B ZN VDD VNW VPW VSS\nMN0 ZN A X VPW nfet_05v0 W=1.32U L=0.6U\nMN1 X B VSS VPW nfet_05v0 W=1.32U L=0.6U\nMP0 ZN A VDD VNW pfet_05v0 W=1.83U L=0.5U\nMP1 ZN B VDD VNW pfet_05v0 W=1.83U L=0.5U\n.ENDS\n",
+    "contract": {
+      "high": "VDD",
+      "low": "VSS",
+      "n_body": "VPW",
+      "p_body": "VNW",
+      "pdk": "gf180mcu_5v",
+      "mode": "free_placement_external_taps",
+      "floorplan": "free_single_pair_rotations",
+      "device_recipe": "gf180_5v_learned_geometry_v1",
+      "grid_nm": 5,
+      "solver_seconds": 3
+    }
+  },
+  "expected": {
+    "derivation": "两个输入 A、B，不是共栅反相器。",
+    "statements": [
+      "工程抛出 ValueError（Not a common-gate inverter），不给出分组。"
+    ]
+  }
+}

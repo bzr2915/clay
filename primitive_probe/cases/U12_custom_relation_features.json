@@ -1,0 +1,32 @@
+{
+  "id": "U12_custom_relation_features",
+  "adapter": "relation_features",
+  "title": "自定义起点：关系特征测量",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。 默认输入为附件图中的复现布局；可把 layout_gds/netlist 换成其它反相器版图，如 data/primitive_generalization/primitive_probe_runs/heldout_full_flow/placement.gds 与 primitive_probe/heldout/heldout_inv2.cdl 的内容。",
+  "expect_rejection": false,
+  "params": {
+    "layout_gds": "data/primitive_generalization/primitive_lab/internal_flow_final4/generated/placement.gds",
+    "netlist": "* Copyright 2022 GlobalFoundries PDK Authors\n*\n* Licensed under the Apache License, Version 2.0 (the \"License\");\n* you may not use this file except in compliance with the License.\n* You may obtain a copy of the License at\n*\n*      http://www.apache.org/licenses/LICENSE-2.0\n*\n* Unless required by applicable law or agreed to in writing, software\n* distributed under the License is distributed on an \"AS IS\" BASIS,\n* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n* See the License for the specific language governing permissions and\n* limitations under the License.\n\n.SUBCKT gf180mcu_fd_sc_mcu9t5v0__inv_2 I ZN VDD VNW VPW VSS\n*.PININFO I:I ZN:O VDD:P VNW:P VPW:P VSS:G\n*.EQN ZN=!I\nM_i_0_0 ZN I VSS VPW nfet_05v0 W=1.320000U L=0.600000U\nM_i_0_1 VSS I ZN VPW nfet_05v0 W=1.320000U L=0.600000U\nM_i_1_0 ZN I VDD VNW pfet_05v0 W=1.830000U L=0.500000U\nM_i_1_1 VDD I ZN VNW pfet_05v0 W=1.830000U L=0.500000U\n.ENDS\n",
+    "contract": {
+      "high": "VDD",
+      "low": "VSS",
+      "n_body": "VPW",
+      "p_body": "VNW",
+      "pdk": "gf180mcu_5v",
+      "mode": "free_placement_external_taps",
+      "floorplan": "free_single_pair_rotations",
+      "device_recipe": "gf180_5v_learned_geometry_v1",
+      "grid_nm": 5,
+      "solver_seconds": 3
+    }
+  },
+  "expected": {
+    "derivation": "在 KLayout 中打开 input_context.gds：两排栅均竖直；NMOS 栅接触在靠 PMOS 一侧，PMOS 栅接触在靠 NMOS 一侧；两排上下排列、中心 x 接近。",
+    "statements": [
+      "parallel_gate_axes = 1。",
+      "n_gate_access_inward = 1，p_gate_access_inward = 1。",
+      "separation_along_gates 接近 1。",
+      "output_transverse_misalignment 接近 0。"
+    ]
+  }
+}

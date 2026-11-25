@@ -1,0 +1,34 @@
+{
+  "id": "K03_relation_rank_reject_no_legal",
+  "adapter": "relation_rank",
+  "title": "负对照：没有合法候选",
+  "expect_rejection": true,
+  "params": {
+    "library_file": "data/primitive_generalization/relation_training_v1/learned_primitive.json",
+    "weights": {
+      "relations": 0.1,
+      "wirelength_proxy": 0.05
+    },
+    "candidates": [
+      {
+        "name": "C0_illegal",
+        "passed": false,
+        "area_nm2": 10000000,
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 1.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      }
+    ]
+  },
+  "expected": {
+    "derivation": "rank 只在通过检查的候选中选择。",
+    "statements": [
+      "工程抛出 ValueError（No legal candidate）。"
+    ]
+  }
+}

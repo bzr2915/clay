@@ -1,0 +1,78 @@
+{
+  "primitive": "inverter_topology",
+  "inputs": {
+    "netlist": ".SUBCKT simple_inv A Y VDD VNW VPW VSS\nMN Y A VSS VPW nfet_05v0 W=1.0U L=0.6U\nMP Y A VDD VNW pfet_05v0 W=1.5U L=0.5U\n.ENDS\n",
+    "contract": {
+      "high": "VDD",
+      "low": "VSS",
+      "n_body": "VPW",
+      "p_body": "VNW",
+      "pdk": "gf180mcu_5v",
+      "mode": "free_placement_external_taps",
+      "floorplan": "free_single_pair_rotations",
+      "device_recipe": "gf180_5v_learned_geometry_v1",
+      "grid_nm": 5,
+      "solver_seconds": 3
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "gate_net"
+    },
+    {
+      "name": "E2",
+      "from": "output_net"
+    },
+    {
+      "name": "E3",
+      "from": "groups.nmos[0].name"
+    },
+    {
+      "name": "E4",
+      "from": "groups.pmos[0].name"
+    },
+    {
+      "name": "E5",
+      "from": "groups.nmos[0].w_nm"
+    },
+    {
+      "name": "E6",
+      "from": "groups.nmos[0].l_nm"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": "A"
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": "Y"
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": "MN"
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": "MP"
+    },
+    {
+      "name": "E5",
+      "how": "eq",
+      "value": 1000
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": 600
+    }
+  ],
+  "derivation": "MN、MP 的栅极都接 A；MN 的源极接 VSS、MP 的源极接 VDD，两者的漏极同为 Y。",
+  "notes": "对应测试 U10；数据形态，无版图。"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "U10_custom_inverter_topology",
+  "adapter": "inverter_topology",
+  "title": "自定义起点：反相器结构识别（单指）",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。 可改网表中的网络名、器件数，观察识别结果。",
+  "expect_rejection": false,
+  "params": {
+    "netlist": ".SUBCKT simple_inv A Y VDD VNW VPW VSS\nMN Y A VSS VPW nfet_05v0 W=1.0U L=0.6U\nMP Y A VDD VNW pfet_05v0 W=1.5U L=0.5U\n.ENDS\n",
+    "contract": {
+      "high": "VDD",
+      "low": "VSS",
+      "n_body": "VPW",
+      "p_body": "VNW",
+      "pdk": "gf180mcu_5v",
+      "mode": "free_placement_external_taps",
+      "floorplan": "free_single_pair_rotations",
+      "device_recipe": "gf180_5v_learned_geometry_v1",
+      "grid_nm": 5,
+      "solver_seconds": 3
+    }
+  },
+  "expected": {
+    "derivation": "MN、MP 栅均接 A；MN 一端接 VSS、MP 一端接 VDD，另一端共接 Y。",
+    "statements": [
+      "groups.nmos = [MN]，groups.pmos = [MP]。",
+      "gate_net = A。",
+      "output_net = Y。"
+    ]
+  }
+}

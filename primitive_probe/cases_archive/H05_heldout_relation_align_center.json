@@ -1,0 +1,41 @@
+{
+  "id": "H05_heldout_relation_align_center",
+  "adapter": "solve_area_relation",
+  "title": "泛化：align:center 作用于新尺寸矩形",
+  "expect_rejection": false,
+  "params": {
+    "rectangles": {
+      "A": [
+        3000,
+        2600
+      ],
+      "B": [
+        900,
+        700
+      ]
+    },
+    "clearances": [
+      [
+        "A",
+        "B",
+        300
+      ]
+    ],
+    "preferences": [
+      [
+        "A",
+        "B",
+        "align:center"
+      ]
+    ],
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "上下堆叠外框 3000×3600 = 10.8 µm²，左右并排 4200×2600 = 10.92 µm²，面积最优为堆叠。",
+    "statements": [
+      "上下堆叠，area_nm2 = 10 800 000。",
+      "B 水平中心 = A 水平中心（B.x = A.x + 1050）。",
+      "垂直间距 300。"
+    ]
+  }
+}

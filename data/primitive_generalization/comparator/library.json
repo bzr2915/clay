@@ -1,0 +1,165 @@
+{
+  "schema": "clay.circuit-primitives.v1",
+  "sources": [
+    {
+      "sample": "gf180_ishi_kai_chipathon2023_dynamic_comparator",
+      "pdk": "gf180mcu_3v3",
+      "gds_sha256": "e9ccd51ffddf95536b87e4d82c4959183dbd02674c8fd56c65f311cdc31e10c9"
+    },
+    {
+      "sample": "sky130_2amlogic_dynamic_latched",
+      "pdk": "sky130_1v8",
+      "gds_sha256": "d626061fb4c125432fdba3f8a35aa5c9ee541d0ade0266e65ad86c12cd56434c"
+    }
+  ],
+  "rule_packs": {
+    "gf180mcu_3v3": {
+      "deck_sha256": "81aa7b614bdd8e71a0c13fb3fea1034ee3c78730cd4fc6d4f0fba7173d60d821",
+      "grid_nm": 5,
+      "cut_pitch_nm": 470
+    },
+    "sky130_1v8": {
+      "deck_sha256": "89f4157c13cf649375f02c76c07b01b290cb080cd3dcb21f909404b30687565c",
+      "grid_nm": 5,
+      "cut_pitch_nm": 340
+    }
+  },
+  "contact_policies": {
+    "gf180mcu_3v3": {
+      "rows": {
+        "kind": "constant",
+        "count": 5
+      },
+      "first_contact_free_margin_fraction": 0.3571,
+      "evidence": {
+        "examples": 30,
+        "squared_error": 0,
+        "alternatives": [
+          {
+            "policy": {
+              "kind": "constant",
+              "count": 5
+            },
+            "squared_error": 0
+          },
+          {
+            "policy": {
+              "kind": "fraction",
+              "f": 0.8333
+            },
+            "squared_error": 0
+          }
+        ],
+        "widths_nm": [
+          2800
+        ]
+      }
+    },
+    "sky130_1v8": {
+      "rows": {
+        "kind": "constant",
+        "count": 1
+      },
+      "first_contact_free_margin_fraction": 0.5,
+      "evidence": {
+        "examples": 30,
+        "squared_error": 0,
+        "alternatives": [
+          {
+            "policy": {
+              "kind": "constant",
+              "count": 1
+            },
+            "squared_error": 0
+          },
+          {
+            "policy": {
+              "kind": "fraction",
+              "f": 0.067
+            },
+            "squared_error": 240
+          }
+        ],
+        "widths_nm": [
+          800,
+          6500,
+          8000,
+          16000,
+          20000,
+          40000
+        ]
+      }
+    }
+  },
+  "relations": {
+    "mirror_pairs": {
+      "decision": "enforce",
+      "support": [
+        {
+          "sample": "gf180_ishi_kai_chipathon2023_dynamic_comparator",
+          "netlist_pairs": 7,
+          "layout_paired_fraction_exact": 0.26666666666666666,
+          "layout_paired_fraction_tolerant": 0.6666666666666666,
+          "layout_centred_fraction_tolerant": 0.0,
+          "axis_relative_to_gates": "parallel"
+        },
+        {
+          "sample": "sky130_2amlogic_dynamic_latched",
+          "netlist_pairs": 7,
+          "layout_paired_fraction_exact": 0.8,
+          "layout_paired_fraction_tolerant": 0.8,
+          "layout_centred_fraction_tolerant": 0.2,
+          "axis_relative_to_gates": "perpendicular"
+        }
+      ],
+      "rule": "netlist-symmetric devices are placed as mirror images about one common axis"
+    },
+    "mirror_axis": {
+      "decision": "free",
+      "observed": [
+        "parallel",
+        "perpendicular"
+      ]
+    },
+    "centre_fixed_devices": {
+      "decision": "soft",
+      "observed_centred_fraction": [
+        0.0,
+        0.2
+      ]
+    },
+    "uniform_gate_orientation": {
+      "decision": "enforce",
+      "observed": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "resistor_style": {
+    "sky130_1v8": {
+      "head_cut_nm": [
+        190,
+        2000
+      ],
+      "poly_over_head_cut_nm": 100,
+      "metal_over_head_cut_nm": 100,
+      "marker_over_poly_nm": 200,
+      "length_relation_to_channel_length": [
+        "parallel"
+      ],
+      "examples": 3
+    }
+  },
+  "not_imitated": {
+    "gates_per_diffusion_island": {
+      "observed_mean": 1,
+      "observed_max": 1
+    },
+    "nwell_islands_per_pmos_domain": [
+      6.0,
+      1.0
+    ],
+    "reason": "construction choices (diffusion sharing, well merging, finger folding) are decided per target by the area objective; copying the training choice would reproduce the training area rather than generalise"
+  }
+}

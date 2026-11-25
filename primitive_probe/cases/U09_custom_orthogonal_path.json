@@ -1,0 +1,29 @@
+{
+  "id": "U09_custom_orthogonal_path",
+  "adapter": "orthogonal_path",
+  "title": "自定义起点：无障碍正交寻路",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。 可在 obstacles 中加入矩形观察绕行。",
+  "expect_rejection": false,
+  "params": {
+    "start": [
+      0,
+      0
+    ],
+    "goal": [
+      3000,
+      2000
+    ],
+    "obstacles": [],
+    "width_nm": 230,
+    "axis_fraction": 0.5,
+    "vertical": true
+  },
+  "expected": {
+    "derivation": "无障碍时最短正交路径为 L 形，曼哈顿长度 5000。",
+    "statements": [
+      "34/0 金属线连接 (0,0) 与 (3000,2000)。",
+      "只有水平和竖直线段，线宽 230。",
+      "中心线总长 5000（一横一竖的 L 形）。"
+    ]
+  }
+}

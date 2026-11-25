@@ -1,0 +1,34 @@
+{
+  "id": "R05_solve_area_clearance",
+  "adapter": "solve_area_relation",
+  "title": "放置净距约束",
+  "expect_rejection": false,
+  "params": {
+    "rectangles": {
+      "A": [
+        1000,
+        1000
+      ],
+      "B": [
+        1000,
+        1000
+      ]
+    },
+    "clearances": [
+      [
+        "A",
+        "B",
+        600
+      ]
+    ],
+    "preferences": [],
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "两个 1000×1000 方块、净距 600：最小外框 2600×1000。",
+    "statements": [
+      "A、B 边到边间距恰为 600，不重叠。",
+      "外框 2600×1000（或 1000×2600），area_nm2 = 2 600 000。"
+    ]
+  }
+}

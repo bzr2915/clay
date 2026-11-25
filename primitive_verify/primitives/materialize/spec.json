@@ -1,0 +1,64 @@
+{
+  "primitive": "materialize",
+  "inputs": {
+    "row": {
+      "active": [
+        [
+          0,
+          0,
+          1000,
+          1000
+        ]
+      ],
+      "pplus": [
+        [
+          -230,
+          -230,
+          1230,
+          1230
+        ]
+      ]
+    },
+    "terminals": [
+      [
+        "NET1",
+        [
+          400,
+          400,
+          600,
+          600
+        ]
+      ]
+    ],
+    "dy": 3000
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[22/0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[31/0][0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "count",
+      "value": 2
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        -230,
+        -230,
+        1230,
+        4230
+      ]
+    }
+  ],
+  "derivation": "materialize 注释：nwell/nplus/pplus/dualgate/v5_xtor 同层合并为外接矩形，其余层只平移。两行有源区不合并（2 个矩形）；P+ 合并为一个 1460×4460 的矩形，覆盖行间空隙。",
+  "notes": "对应测试 U08。"
+}

@@ -1,0 +1,194 @@
+{
+  "primitive": "build_chain",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "devices": [
+      {
+        "name": "M1",
+        "model": "nfet_01v8",
+        "drain": "x",
+        "gate": "a",
+        "source": "x",
+        "body": "vss",
+        "w_nm": 420,
+        "l_nm": 150
+      },
+      {
+        "name": "M2",
+        "model": "nfet_01v8",
+        "drain": "x",
+        "gate": "b",
+        "source": "x",
+        "body": "vss",
+        "w_nm": 420,
+        "l_nm": 150
+      },
+      {
+        "name": "M3",
+        "model": "nfet_01v8",
+        "drain": "x",
+        "gate": "c",
+        "source": "x",
+        "body": "vss",
+        "w_nm": 420,
+        "l_nm": 150
+      }
+    ],
+    "plan": {
+      "count": 1,
+      "centers_nm": [
+        210
+      ]
+    },
+    "gate_nets": [
+      "a",
+      "b",
+      "c"
+    ],
+    "segment_nets": [
+      "n1",
+      "n2",
+      "n3",
+      "n4"
+    ]
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[65/20][0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[66/20]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[66/20][0]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[66/44]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[67/20]"
+    },
+    {
+      "name": "E6",
+      "from": "layout.polygons[67/20][0]"
+    },
+    {
+      "name": "E7",
+      "from": "layout.polygons[93/44][0]"
+    },
+    {
+      "name": "E8",
+      "from": "layout.polygons[95/20]"
+    },
+    {
+      "name": "E9",
+      "from": "layout.polygons[95/20][0]"
+    },
+    {
+      "name": "E10",
+      "from": "row.channels[1].gate"
+    },
+    {
+      "name": "E11",
+      "from": "row.channels[1].left"
+    },
+    {
+      "name": "E12",
+      "from": "row.channels[2].right"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1750,
+        420
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "count",
+      "value": 3
+    },
+    {
+      "name": "E3",
+      "how": "bbox",
+      "value": [
+        240,
+        -130,
+        510,
+        845
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "count",
+      "value": 7
+    },
+    {
+      "name": "E5",
+      "how": "count",
+      "value": 7
+    },
+    {
+      "name": "E6",
+      "how": "bbox",
+      "value": [
+        -40,
+        45,
+        290,
+        375
+      ]
+    },
+    {
+      "name": "E7",
+      "how": "bbox",
+      "value": [
+        -125,
+        -125,
+        1875,
+        545
+      ]
+    },
+    {
+      "name": "E8",
+      "how": "count",
+      "value": 1
+    },
+    {
+      "name": "E9",
+      "how": "bbox",
+      "value": [
+        190,
+        525,
+        1560,
+        895
+      ]
+    },
+    {
+      "name": "E10",
+      "how": "eq",
+      "value": "b"
+    },
+    {
+      "name": "E11",
+      "how": "eq",
+      "value": "n2"
+    },
+    {
+      "name": "E12",
+      "how": "eq",
+      "value": "n4"
+    }
+  ],
+  "derivation": "sky130：cut 170、cut_to_gate 55 (licon.11)、cut_to_active 40 (licon.5)、li 包孔 80 (li.5) → pad_half_x=165、pad_half_y=165、gate_pad_half=165，li 间距 170 (li.3)，first_x = 40+85 = 125。共享段 = max(2×55+170=280, 2×165+170−150=350) = 350。端段 = max(sd_overhang 150, 40+170+55=265, (2×125+330+170−3×150+1)//2=150, 端焊盘与内焊盘间距义务 170+330+125−150−350//2=300) = 300。有源区宽 = 2×300+2×350+3×150 = 1750，高 W=420。沟道 x=[300,450],[800,950],[1300,1450]。栅节距 500 ≥ max(270+210, 330+170)=500 → 不交错，栅孔全在上方：gy = max(420+275, 210+165+170+165) = 710。poly 条 [300,−130(端帽 130),450, 710+135=845]，栅孔 poly 垫宽 max(150,170+2×50)=270 → [240,575,510,845]，合并 bbox [240,−130,510,845]；垫间隙 230 → 3 个 poly 形状。孔 = 4 S/D + 3 栅 = 7；li 同为 7 块，最左 S/D 焊盘 [125−165, 210−165, 125+165, 210+165] = [−40,45,290,375]。nsdm = 有源区外扩 125 (n/psdm.5a)。npc = 栅孔外扩 100 (licon.15)：[190,525,560,895] 等三块间隙 130 < npc.2 270，close 合并为 [190,525,1560,895]。channels[1] 栅 b、左段 n2；channels[2] 右段 n4。",
+  "notes": "build_row 泛化后的通用形式（每沟道/每段独立网名、焊盘间距义务、npc）。"
+}

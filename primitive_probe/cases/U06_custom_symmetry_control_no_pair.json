@@ -1,0 +1,31 @@
+{
+  "id": "U06_custom_symmetry_control_no_pair",
+  "adapter": "symmetry_placement",
+  "title": "自定义起点：对称放置的对照组（不声明对称对）",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。 与 S01 使用同样两个矩形，但不声明 symmetry_pairs，用于判断 S01 中的镜像是否由对称约束引起。",
+  "expect_rejection": false,
+  "params": {
+    "devices": {
+      "A": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      },
+      "B": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      }
+    },
+    "symmetry_pairs": [],
+    "symmetry_axis": "x",
+    "time_limit_s": 10
+  },
+  "expected": {
+    "derivation": "无对称约束时，放置器只受间距和面积目标约束。",
+    "statements": [
+      "记录 A、B 的位置，并与 S01 对比。",
+      "记录工程返回的 axis_x 是否仍处在 A、B 正中；若是，说明对 S01 的结论要更谨慎（等尺寸器件在面积最优下可能自然对称）。"
+    ]
+  }
+}

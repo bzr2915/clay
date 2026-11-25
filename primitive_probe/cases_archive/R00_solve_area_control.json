@@ -1,0 +1,36 @@
+{
+  "id": "R00_solve_area_control",
+  "adapter": "solve_area_relation",
+  "title": "面积放置器对照组：无关系偏好",
+  "purpose": "作为 R01–R04 的对照，观察无偏好时的位置。",
+  "expect_rejection": false,
+  "params": {
+    "rectangles": {
+      "A": [
+        2000,
+        2000
+      ],
+      "B": [
+        1500,
+        500
+      ]
+    },
+    "clearances": [
+      [
+        "A",
+        "B",
+        300
+      ]
+    ],
+    "preferences": [],
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "两个矩形 A 2000×2000、B 1500×500，净距 300。上下堆叠外框 2000×2800 = 5.6 µm²，左右并排 3800×2000 = 7.6 µm²，故面积最优为上下堆叠。关系是软约束，仅在面积最优解集合内生效。 无偏好时次级目标为坐标和最小（area_placement.py 文档）。",
+    "statements": [
+      "A、B 上下堆叠，外框 2000×2800，area_nm2 = 5 600 000。",
+      "A、B 垂直方向间距恰为 300。",
+      "记录 B 位于 A 的上方还是下方、左对齐还是其它（对照用；坐标和最小时预期 B 在下方、x=0）。"
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "primitive": "reflect",
+  "inputs": {
+    "row": {
+      "active": [
+        [
+          0,
+          0,
+          1000,
+          500
+        ]
+      ],
+      "poly": [
+        [
+          200,
+          -100,
+          400,
+          600
+        ]
+      ]
+    },
+    "terminals": [
+      [
+        "A",
+        [
+          100,
+          100,
+          200,
+          200
+        ]
+      ]
+    ],
+    "net_map": {
+      "A": "B"
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[22/0][0]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[30/0][0]"
+    },
+    {
+      "name": "E3",
+      "from": "m.terminals[0][0]"
+    },
+    {
+      "name": "E4",
+      "from": "m.terminals[0][1]"
+    },
+    {
+      "name": "E5",
+      "from": "mx.terminals[0][1]"
+    },
+    {
+      "name": "E6",
+      "from": "mx.terminals[0][0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1000,
+        500
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        600,
+        -100,
+        800,
+        600
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": "B"
+    },
+    {
+      "name": "E4",
+      "how": "bbox",
+      "value": [
+        800,
+        100,
+        900,
+        200
+      ]
+    },
+    {
+      "name": "E5",
+      "how": "bbox",
+      "value": [
+        100,
+        300,
+        200,
+        400
+      ]
+    },
+    {
+      "name": "E6",
+      "how": "eq",
+      "value": "A"
+    }
+  ],
+  "derivation": "axis='y'：关于竖直线镜像 x→−x，再按有源区左下角归零（+1000）：有源区 [0,0,1000,500] 不变；poly [200,400]→[−400,−200]→[600,800]；端子 [100,200]→[800,900]，网名按 net_map A→B。axis='x'：y→−y 后 +500：端子 y [100,200]→[300,400]，未给 net_map 网名不变。GF180 默认 pack：active 22/0、poly 30/0。",
+  "notes": "新原语：turn 的推广，镜像对按构造保证对称。"
+}

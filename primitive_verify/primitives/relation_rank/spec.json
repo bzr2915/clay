@@ -1,0 +1,241 @@
+{
+  "primitive": "relation_rank",
+  "inputs": {
+    "weights": {
+      "relations": 0.1,
+      "wirelength_proxy": 0.05
+    },
+    "trials": [
+      {
+        "candidate": "C0",
+        "verification": {
+          "passed": true
+        },
+        "solver": {
+          "area_nm2": 10000000
+        }
+      },
+      {
+        "candidate": "C1",
+        "verification": {
+          "passed": true
+        },
+        "solver": {
+          "area_nm2": 9000000
+        }
+      }
+    ],
+    "measurements": [
+      {
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 1.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      },
+      {
+        "features": {
+          "parallel_gate_axes": 1.0,
+          "separation_along_gates": 0.9996292446436541,
+          "n_gate_access_inward": 0.0,
+          "p_gate_access_inward": 1.0,
+          "output_transverse_misalignment": 0.0
+        },
+        "hpwl_total_nm": 2000
+      }
+    ],
+    "library": {
+      "schema": "clay.placement-relations.v1",
+      "pdk": "gf180mcu_5v",
+      "geometry": {
+        "schema": "clay.geometry-primitive.v1",
+        "pdk": "gf180mcu_5v",
+        "contacts": {
+          "schema": "clay.contact-primitive.v1",
+          "pdk": "gf180mcu_5v",
+          "patterns": {
+            "nmos": [
+              {
+                "gate_count": 1,
+                "segments": [
+                  "output",
+                  "rail"
+                ]
+              },
+              {
+                "gate_count": 2,
+                "segments": [
+                  "rail",
+                  "output",
+                  "rail"
+                ]
+              }
+            ],
+            "pmos": [
+              {
+                "gate_count": 1,
+                "segments": [
+                  "output",
+                  "rail"
+                ]
+              },
+              {
+                "gate_count": 2,
+                "segments": [
+                  "rail",
+                  "output",
+                  "rail"
+                ]
+              }
+            ]
+          },
+          "contact_policies": {
+            "nmos": {
+              "rows": {
+                "kind": "width_stump",
+                "threshold_nm": 1070.0,
+                "low": 1,
+                "high": 2
+              },
+              "first_contact_free_margin_fraction": 0.6848935226264419
+            },
+            "pmos": {
+              "rows": {
+                "kind": "constant",
+                "count": 2
+              },
+              "first_contact_free_margin_fraction": 0.5939102564102564
+            }
+          },
+          "binding": "target_W_L_models_and_nets",
+          "operator": "rectangular_diffusion_chain_v1"
+        },
+        "geometry_policies": {
+          "nmos:outer:output": {
+            "excess_contact_units": 0.0,
+            "contact_fraction": null,
+            "island_count": 1,
+            "position_island_count": 0
+          },
+          "nmos:outer:rail": {
+            "excess_contact_units": 0.0,
+            "contact_fraction": null,
+            "island_count": 2,
+            "position_island_count": 0
+          },
+          "nmos:shared:output": {
+            "excess_contact_units": 0.13636363636363635,
+            "contact_fraction": 1.0,
+            "island_count": 1,
+            "position_island_count": 1
+          },
+          "pmos:outer:output": {
+            "excess_contact_units": 0.0,
+            "contact_fraction": null,
+            "island_count": 1,
+            "position_island_count": 0
+          },
+          "pmos:outer:rail": {
+            "excess_contact_units": 0.21022727272727273,
+            "contact_fraction": 0.0,
+            "island_count": 2,
+            "position_island_count": 1
+          },
+          "pmos:shared:output": {
+            "excess_contact_units": 0.5909090909090909,
+            "contact_fraction": 1.0,
+            "island_count": 1,
+            "position_island_count": 1
+          }
+        },
+        "operator": "rectangular_chain_with_learned_segments_v1"
+      },
+      "relations": {
+        "parallel_gate_axes": {
+          "mean": 1.0,
+          "variance": 0.0,
+          "parents": 2
+        },
+        "separation_along_gates": {
+          "mean": 0.9996292446436541,
+          "variance": 1.8564465286123596e-08,
+          "parents": 2
+        },
+        "n_gate_access_inward": {
+          "mean": 1.0,
+          "variance": 0.0,
+          "parents": 2
+        },
+        "p_gate_access_inward": {
+          "mean": 1.0,
+          "variance": 0.0,
+          "parents": 2
+        },
+        "output_transverse_misalignment": {
+          "mean": 0.0,
+          "variance": 0.0,
+          "parents": 2
+        }
+      },
+      "operator": "finite_soft_relation_ranking_v1"
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "selected"
+    },
+    {
+      "name": "E2",
+      "from": "t0.relation_loss"
+    },
+    {
+      "name": "E3",
+      "from": "t1.relation_loss"
+    },
+    {
+      "name": "E4",
+      "from": "t0.area_ratio"
+    },
+    {
+      "name": "E5",
+      "from": "t1.area_ratio"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": 1
+    },
+    {
+      "name": "E2",
+      "how": "num",
+      "value": 0.0,
+      "tol": 1e-09
+    },
+    {
+      "name": "E3",
+      "how": "num",
+      "value": 0.2,
+      "tol": 1e-09
+    },
+    {
+      "name": "E4",
+      "how": "num",
+      "value": 1.1111111111111112,
+      "tol": 1e-06
+    },
+    {
+      "name": "E5",
+      "how": "num",
+      "value": 1.0,
+      "tol": 1e-09
+    }
+  ],
+  "derivation": "score = 面积/Amin + 0.10×特征偏差平方均值 + 0.05×HPWL/HPWLmin；Amin 只取合法候选 = 9e6。C0：relation_loss = 0，area_ratio = 10/9。C1：一项特征偏差 1²，loss = 1/5 = 0.2。",
+  "notes": "对应测试 U13。"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "B03_build_row_reject_short_L",
+  "adapter": "build_row",
+  "title": "负对照：NMOS L 低于 5V 最小沟道长度",
+  "purpose": "原语应拒绝非法尺寸而不是静默生成或钳位。",
+  "expect_rejection": true,
+  "params": {
+    "kind": "nmos",
+    "w_nm": 1320,
+    "l_nm": 500,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "contact_plan": {
+      "count": 1,
+      "centers_nm": [
+        660
+      ]
+    },
+    "geometry_plan": null,
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "GF180 5V NMOS 最小沟道长度 600 nm。",
+    "statements": [
+      "工程代码抛出 ValueError（非法目标尺寸），REVIEW.md 中显示“production raised”。",
+      "不生成 production_only.gds（无任何工程图形）。"
+    ]
+  }
+}

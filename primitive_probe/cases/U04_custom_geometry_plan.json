@@ -1,0 +1,119 @@
+{
+  "id": "U04_custom_geometry_plan",
+  "adapter": "geometry_plan",
+  "title": "自定义起点：扩散段几何规划器",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。",
+  "expect_rejection": false,
+  "params": {
+    "library": {
+      "schema": "clay.geometry-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "contacts": {
+        "schema": "clay.contact-primitive.v1",
+        "pdk": "gf180mcu_5v",
+        "patterns": {
+          "nmos": [
+            {
+              "gate_count": 1,
+              "segments": [
+                "output",
+                "rail"
+              ]
+            },
+            {
+              "gate_count": 2,
+              "segments": [
+                "rail",
+                "output",
+                "rail"
+              ]
+            }
+          ],
+          "pmos": [
+            {
+              "gate_count": 1,
+              "segments": [
+                "output",
+                "rail"
+              ]
+            },
+            {
+              "gate_count": 2,
+              "segments": [
+                "rail",
+                "output",
+                "rail"
+              ]
+            }
+          ]
+        },
+        "contact_policies": {
+          "nmos": {
+            "rows": {
+              "kind": "width_stump",
+              "threshold_nm": 1070.0,
+              "low": 1,
+              "high": 2
+            },
+            "first_contact_free_margin_fraction": 0.5
+          },
+          "pmos": {
+            "rows": {
+              "kind": "constant",
+              "count": 2
+            },
+            "first_contact_free_margin_fraction": 0.5
+          }
+        },
+        "binding": "target_W_L_models_and_nets",
+        "operator": "rectangular_diffusion_chain_v1"
+      },
+      "geometry_policies": {
+        "nmos:outer:output": {
+          "excess_contact_units": 1.0,
+          "contact_fraction": 0.0,
+          "island_count": 1,
+          "position_island_count": 1
+        },
+        "nmos:outer:rail": {
+          "excess_contact_units": 0.0,
+          "contact_fraction": null,
+          "island_count": 1,
+          "position_island_count": 0
+        }
+      },
+      "operator": "rectangular_chain_with_learned_segments_v1"
+    },
+    "kind": "nmos",
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "w_nm": 1000,
+    "l_nm": 600,
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "output 外段 = 440 + 1.0×220 = 660，孔位区间 [180, 660−260 = 400]，比例 0 → 180；rail 段 440，区间退化为 180，换算段内左起 260。W 1000 ≤ 1070 → 1 行，中心 500。",
+    "statements": [
+      "segment_lengths_nm = [660, 440]；contact_x_in_segment_nm = [180, 260]。",
+      "有源区 1700×1000；多晶 x 660–1260。",
+      "左孔中心 x=180（距栅 370），右孔中心 x=1520（距有源区右沿 70）；两孔 y=500。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          0,
+          0,
+          1700,
+          1000
+        ],
+        "label": "有源区"
+      }
+    ]
+  }
+}

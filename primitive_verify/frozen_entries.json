@@ -1,0 +1,14 @@
+{
+  "_comment": "已由人复核并冻结的验证条目。只有人可以修改本文件：把 registry.py 中某条目改为 status='frozen' 时，同时把它的 targets 与 form 写进来。tests/test_primitive_classification.py 比对两者，任何对已冻结条目的改动都会让测试失败。",
+  "inverter_topology": {"targets": ["clay.learning.circuit:parse_cdl", "clay.learning.contact_primitives:inverter_groups"], "form": "data"},
+  "contact_plan": {"targets": ["clay.learning.contact_primitives:contact_plan", "clay.learning.contact_primitives:build_row", "clay.learning.contact_primitives:materialize"], "form": "layout"},
+  "geometry_plan": {"targets": ["clay.learning.geometry_primitives:geometry_plan", "clay.learning.contact_primitives:contact_plan", "clay.learning.contact_primitives:build_row", "clay.learning.contact_primitives:materialize"], "form": "layout"},
+  "build_row": {"targets": ["clay.learning.contact_primitives:build_row", "clay.learning.contact_primitives:materialize"], "form": "layout"},
+  "turn": {"targets": ["clay.learning.contact_primitives:turn", "clay.learning.contact_primitives:materialize"], "form": "layout"},
+  "materialize": {"targets": ["clay.learning.contact_primitives:materialize"], "form": "layout"},
+  "solve_area": {"targets": ["clay.layout.synth.area_placement:solve_area", "clay.learning.contact_primitives:materialize"], "form": "layout"},
+  "symmetry_placement": {"targets": ["clay.layout.annotate_to_solver:solve_placement_from_constraints"], "form": "coords"},
+  "relation_features": {"targets": ["clay.learning.placement_relations:features"], "form": "data"},
+  "relation_rank": {"targets": ["clay.learning.placement_relations:rank"], "form": "data"},
+  "candidate_verify": {"targets": ["clay.learning.contact_primitives:verify"], "form": "data"}
+}

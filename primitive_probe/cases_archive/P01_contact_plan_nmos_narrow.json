@@ -1,0 +1,88 @@
+{
+  "id": "P01_contact_plan_nmos_narrow",
+  "adapter": "contact_plan",
+  "title": "接触规划器：窄 NMOS（低于阈值 → 1 行）",
+  "expect_rejection": false,
+  "params": {
+    "library": {
+      "schema": "clay.contact-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "patterns": {
+        "nmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ]
+      },
+      "contact_policies": {
+        "nmos": {
+          "rows": {
+            "kind": "width_stump",
+            "threshold_nm": 1070.0,
+            "low": 1,
+            "high": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        },
+        "pmos": {
+          "rows": {
+            "kind": "constant",
+            "count": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        }
+      },
+      "binding": "target_W_L_models_and_nets",
+      "operator": "rectangular_diffusion_chain_v1"
+    },
+    "kind": "nmos",
+    "w_nm": 1000,
+    "l_nm": 600,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "策略写在 params.library：NMOS width_stump 阈值 1070，≤阈值取 1 行，否则 2 行；首孔自由余量比例 0.5。合法中心区间 [70+110, W−180−(n−1)×470]。",
+    "statements": [
+      "contact_plan 返回 count = 1（W 1000 ≤ 1070）。",
+      "centers_nm = [500]：区间 [180, 820] 的 0.5 处。",
+      "GDS 中每个 S/D 段恰有 1 个孔，中心 y = 500；有源区高 1000。"
+    ]
+  }
+}

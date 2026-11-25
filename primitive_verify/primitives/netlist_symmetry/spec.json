@@ -1,0 +1,68 @@
+{
+  "primitive": "netlist_symmetry",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "text": ".subckt dp inp inn outp outn bias vss\nM1 outn inp tail vss nfet_01v8 W=1 L=0.15\nM2 outp inn tail vss nfet_01v8 W=1 L=0.15\nM3 tail bias vss vss nfet_01v8 W=2 L=0.15\n.ends\n"
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "s.seed"
+    },
+    {
+      "name": "E2",
+      "from": "s.pairs"
+    },
+    {
+      "name": "E3",
+      "from": "s.fixed"
+    },
+    {
+      "name": "E4",
+      "from": "s.net_swaps"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "eq",
+      "value": [
+        "inp",
+        "inn"
+      ]
+    },
+    {
+      "name": "E2",
+      "how": "eq",
+      "value": [
+        [
+          "M1",
+          "M2"
+        ]
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "eq",
+      "value": [
+        "M3"
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "eq",
+      "value": [
+        [
+          "inn",
+          "inp"
+        ],
+        [
+          "outn",
+          "outp"
+        ]
+      ]
+    }
+  ],
+  "derivation": "按端口顺序枚举 WL 颜色相同的端口对，首个为 (inp, inn)。交换 inp↔inn 后唯一的保持器件类型/尺寸/端角色的自同构为 M1↔M2、outn↔outp，tail/bias/vss 与 M3 不动；该映射自身是对合 → pairs=[[M1,M2]]，fixed=[M3]，net_swaps 按字典序 [[inn,inp],[outn,outp]]。",
+  "notes": "新原语：名称无关的匹配对识别，供镜像放置关系使用。"
+}

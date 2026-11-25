@@ -1,0 +1,84 @@
+{
+  "id": "P04_contact_plan_reject_capacity",
+  "adapter": "contact_plan",
+  "title": "负对照：预测孔数超过物理容量",
+  "expect_rejection": true,
+  "params": {
+    "library": {
+      "schema": "clay.contact-primitive.v1",
+      "pdk": "gf180mcu_5v",
+      "patterns": {
+        "nmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ],
+        "pmos": [
+          {
+            "gate_count": 1,
+            "segments": [
+              "output",
+              "rail"
+            ]
+          },
+          {
+            "gate_count": 2,
+            "segments": [
+              "rail",
+              "output",
+              "rail"
+            ]
+          }
+        ]
+      },
+      "contact_policies": {
+        "nmos": {
+          "rows": {
+            "kind": "constant",
+            "count": 3
+          },
+          "first_contact_free_margin_fraction": 0.5
+        },
+        "pmos": {
+          "rows": {
+            "kind": "constant",
+            "count": 2
+          },
+          "first_contact_free_margin_fraction": 0.5
+        }
+      },
+      "binding": "target_W_L_models_and_nets",
+      "operator": "rectangular_diffusion_chain_v1"
+    },
+    "kind": "nmos",
+    "w_nm": 1000,
+    "l_nm": 600,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "3 孔需 3×220 + 2×250 + 2×70 = 1300 > W 1000。",
+    "statements": [
+      "工程代码抛出 ValueError（孔数超过物理容量），不生成 GDS。"
+    ]
+  }
+}

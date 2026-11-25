@@ -1,0 +1,42 @@
+{
+  "id": "U05_custom_solve_area_relation",
+  "adapter": "solve_area_relation",
+  "title": "自定义起点：面积放置与对齐关系",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。",
+  "expect_rejection": false,
+  "params": {
+    "rectangles": {
+      "A": [
+        2000,
+        2000
+      ],
+      "B": [
+        1000,
+        500
+      ]
+    },
+    "clearances": [
+      [
+        "A",
+        "B",
+        300
+      ]
+    ],
+    "preferences": [
+      [
+        "A",
+        "B",
+        "align:left"
+      ]
+    ],
+    "seconds": 5
+  },
+  "expected": {
+    "derivation": "上下堆叠 2000×2800 = 5.6 µm²，左右并排 3300×2000 = 6.6 µm² → 堆叠最优。",
+    "statements": [
+      "上下堆叠，area_nm2 = 5 600 000。",
+      "B 左边缘 x = A 左边缘 x。",
+      "A、B 垂直间距 300；preference_cost = 0。"
+    ]
+  }
+}

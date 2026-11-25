@@ -1,0 +1,57 @@
+{
+  "id": "U01_custom_build_row",
+  "adapter": "build_row",
+  "title": "自定义起点：单栅 NMOS 行构造器",
+  "purpose": "【自定义起点】参数刻意取简单值。修改参数后，请先按 primitive_probe/PARAMETERS_zh.md 重写 expected，再运行。",
+  "expect_rejection": false,
+  "params": {
+    "kind": "nmos",
+    "w_nm": 1000,
+    "l_nm": 600,
+    "chain": [
+      "output",
+      "rail"
+    ],
+    "contact_plan": {
+      "count": 1,
+      "centers_nm": [
+        500
+      ]
+    },
+    "geometry_plan": null,
+    "nets": {
+      "gate": "IN",
+      "output": "OUT",
+      "rail": "VSS"
+    }
+  },
+  "expected": {
+    "derivation": "外段 = max(400, 70+220+150) = 440；有源区宽 = L + 2×440。",
+    "statements": [
+      "22/0 有源区 1480×1000，左下 (0,0)。",
+      "30/0 多晶宽 600，x 440–1040，纵穿有源区，下端伸出 ≥220。",
+      "2 个 S/D 孔（220×220），中心 (180,500)、(1300,500)；1 个栅孔在有源区上方 ≥170。",
+      "32/0 N+ = (-230,-230)–(1710,1230)；无 N 阱。"
+    ],
+    "shapes": [
+      {
+        "bbox_nm": [
+          0,
+          0,
+          1480,
+          1000
+        ],
+        "label": "有源区"
+      },
+      {
+        "bbox_nm": [
+          -230,
+          -230,
+          1710,
+          1230
+        ],
+        "label": "N+"
+      }
+    ]
+  }
+}

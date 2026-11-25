@@ -1,0 +1,134 @@
+{
+  "primitive": "materialize_close",
+  "inputs": {
+    "pdk": "sky130_1v8",
+    "n_row": {
+      "active": [
+        [
+          100,
+          100,
+          900,
+          400
+        ]
+      ],
+      "nplus": [
+        [
+          0,
+          0,
+          1000,
+          500
+        ]
+      ]
+    },
+    "p_row": {
+      "active": [
+        [
+          100,
+          100,
+          900,
+          400
+        ]
+      ],
+      "pplus": [
+        [
+          0,
+          0,
+          1000,
+          500
+        ]
+      ],
+      "nwell": [
+        [
+          -100,
+          -100,
+          1100,
+          600
+        ]
+      ]
+    },
+    "origins": {
+      "N1": [
+        0,
+        0
+      ],
+      "N2": [
+        0,
+        800
+      ],
+      "N3": [
+        0,
+        3000
+      ],
+      "P1": [
+        3000,
+        0
+      ]
+    }
+  },
+  "actual": [
+    {
+      "name": "E1",
+      "from": "layout.polygons[93/44]"
+    },
+    {
+      "name": "E2",
+      "from": "layout.polygons[93/44][0]"
+    },
+    {
+      "name": "E3",
+      "from": "layout.polygons[93/44][1]"
+    },
+    {
+      "name": "E4",
+      "from": "layout.polygons[94/20]"
+    },
+    {
+      "name": "E5",
+      "from": "layout.polygons[64/20][0]"
+    }
+  ],
+  "expected": [
+    {
+      "name": "E1",
+      "how": "count",
+      "value": 2
+    },
+    {
+      "name": "E2",
+      "how": "bbox",
+      "value": [
+        0,
+        0,
+        1000,
+        1300
+      ]
+    },
+    {
+      "name": "E3",
+      "how": "bbox",
+      "value": [
+        0,
+        3000,
+        1000,
+        3500
+      ]
+    },
+    {
+      "name": "E4",
+      "how": "count",
+      "value": 1
+    },
+    {
+      "name": "E5",
+      "how": "bbox",
+      "value": [
+        2900,
+        -100,
+        4100,
+        600
+      ]
+    }
+  ],
+  "derivation": "nsdm 间距 nsd.2 = 380：N1 [0,0,1000,500] 与 N2 [0,800,1000,1300] 间隙 300 < 380 → 闭运算（±190）合并为 [0,0,1000,1300]；N3 [0,3000,1000,3500] 与之间隙 1700 > 380 → 保持独立，故 2 个形状（旧 envelope 模式会错误地合成 1 个包络）。P 行 psdm 单独 1 个；最近 p 扩散 [3100,100,…] 距 nsdm 远大于 130 (n/psdm.7)，不做扣除。n 阱只有一个（无阱网标记）→ [2900,−100,4100,600]。",
+  "notes": "materialize 的 merge='close' 模式（默认 envelope 模式与原规格保持不变）。"
+}

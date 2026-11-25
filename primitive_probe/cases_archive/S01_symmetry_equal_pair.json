@@ -1,0 +1,38 @@
+{
+  "id": "S01_symmetry_equal_pair",
+  "adapter": "symmetry_placement",
+  "title": "镜像对称：两个相同矩形",
+  "purpose": "输入两个无物理意义的矩形，观察 MILP 放置器是否把对称对放在同一行并关于轴镜像。",
+  "expect_rejection": false,
+  "params": {
+    "devices": {
+      "A": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      },
+      "B": {
+        "w": 1000,
+        "h": 600,
+        "kind": "nmos"
+      }
+    },
+    "symmetry_pairs": [
+      [
+        "A",
+        "B"
+      ]
+    ],
+    "symmetry_axis": "x",
+    "time_limit_s": 10
+  },
+  "expected": {
+    "derivation": "对称对语义：同一行（相同 y），关于单一竖直轴镜像。GF180 器件间距 1400 nm（annotate_to_solver._dev_gap_from_tech 文档）。",
+    "statements": [
+      "A、B 下沿 y 相同、高度均 600、宽度均 1000（尺寸未被改变）。",
+      "橙色竖线（工程返回的 axis_x）到 A 右边缘的距离 = 到 B 左边缘的距离。",
+      "A、B 之间水平间距 ≥1400。",
+      "A 在轴左、B 在轴右（声明顺序 left,right）。"
+    ]
+  }
+}
